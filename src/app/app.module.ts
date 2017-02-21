@@ -11,15 +11,19 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 // app services imports
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   //{ path: 'login', component: LoginComponent},
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent },
   { path: '**', component: NotFoundComponent },
+  
 ];
 
 
@@ -29,6 +33,7 @@ const appRoutes: Routes = [
     NotFoundComponent,
     MainMenuComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
