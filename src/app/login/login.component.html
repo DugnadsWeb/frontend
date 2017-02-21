@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Login</h1>
+  <form (ngSubmit)="onSubmit($event)">
+    <div class="form-group">
+      <label>Email</label>
+      <input name="email" type="email"
+      class="form-control" id="email" reqired
+      [(ngModel)]="email">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input name="password" type="password"
+      class="form-control" id="password" reqired
+      [(ngModel)]="password">
+    </div>
+    <button type="submit" class="btn btn-default">Log in</button>
+  </form>
+</div>
