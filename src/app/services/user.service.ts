@@ -31,4 +31,27 @@ export class UserService {
       });
 	
 	}
+	
+	getData(token)
+	{
+		
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify({ token : token });
+    return this.http
+      .post(
+        'http://localhost:8888/api/user/me',
+        body,
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if (res) {
+          
+        }
+
+        return res;
+      });
+	}
+	
 }

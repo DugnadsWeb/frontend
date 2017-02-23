@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
+@Component({
+  selector: 'dw-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
+})
+export class ProfileComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(event) {
+  	this.userService.getData(this.email).subscribe((result) => {
+        if (result) {
+          this.router.navigate(['']);
+        }
+        });
+  }
+}
+
+

@@ -25,7 +25,7 @@ export class AuthService {
       .map(res => res.json())
       .map((res) => {
         if (res.success) {
-          localStorage.setItem('auth_token', res.auth_token);
+          localStorage.setItem('auth_token', res.token);
           this.loggedIn = true;
         }
 
