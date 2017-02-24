@@ -32,6 +32,8 @@ export class UserService {
 	
 	}
 	
+	
+	//Calls database with autchentication token, returns payload of token.
 	getData(token)
 	{
 		
@@ -47,7 +49,7 @@ export class UserService {
       .map(res => res.json())
       .map((res) => {
         if (res) {
-          
+          console.log("Data returned succesfully");
         }
 
         return res;

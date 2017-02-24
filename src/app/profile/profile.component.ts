@@ -11,6 +11,11 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+	first_name = "";
+	last_name = "";
+	email = "";
+	
+	
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
@@ -22,31 +27,20 @@ export class ProfileComponent implements OnInit {
   	
   	var token = window.localStorage.getItem('auth_token');
   	
-  	/*if(token)
-  	{
-  		$.ajaxSetup({
-  			headers: {
-  				'x-access-token': token
-  			}
-  		});	
-  	}*/
-  	
-  	console.log(token);
-  	
   	this.userService.getData(token).subscribe((result) => {
   		if(result){
-  			console.log("Something arrives, not correct JSON");	
+  			//console.log(result.payload.db_fields.email.data);	
+  			this.first_name = result.payload.db_fields.first_name.data;
+  			console.log(result.payload.db_fields.first_name.data);
+  		  this.last_name = result.payload.db_fields.last_name.data;
+  			this.email = result.payload.db_fields.email.data;
+  			//console.log("Does anything fill?");
   		}
   	});
   	
-  	/*this.userService.getData(this.email).subscribe((result) => 
-  	{
-        if (result) 
-        {
-          this.router.navigate(['']);
-        }
-    });*/
   }
+  
+  
 }
 
 
