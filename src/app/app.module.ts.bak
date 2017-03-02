@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
+import { ModalModule } from 'angular2-modal';
 
 // app component imports
 import { AppComponent } from './app.component';
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'dw-profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: NotFoundComponent },
 
 ];
@@ -45,6 +46,8 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]

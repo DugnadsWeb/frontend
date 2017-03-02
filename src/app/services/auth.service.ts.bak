@@ -44,6 +44,10 @@ export class AuthService {
     this.loggedIn = false;
   }
 
+	isLoginFailed(){
+		return this.loginFailed;	
+	}
+
   isLoggedIn() {
     return this.loggedIn;
   }

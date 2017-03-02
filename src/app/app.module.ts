@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 // app component imports
 import { AppComponent } from './app.component';
@@ -45,6 +47,8 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]

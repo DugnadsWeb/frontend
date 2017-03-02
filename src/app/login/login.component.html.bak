@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Login</h1>
+  <form (ngSubmit)="onSubmit($event)">
+    <div class="form-group">
+      <label>Email</label>
+      <input name="email" type="email"
+      class="form-control" id="email" required
+      [(ngModel)]="email">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input name="password" type="password"
+      class="form-control" id="password" required
+      [(ngModel)]="password">
+    </div>
+    <button type="submit" class="btn btn-default">Log in</button>
+  </form>
+</div>
+
+ 
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Login feilet.</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Autentisering misslykket, sjekk at du har stavet korrekt.
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>

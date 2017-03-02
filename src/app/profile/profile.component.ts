@@ -29,12 +29,9 @@ export class ProfileComponent implements OnInit {
   	
   	this.userService.getData(token).subscribe((result) => {
   		if(result){
-  			//console.log(result.payload.db_fields.email.data);	
   			this.first_name = result.payload.db_fields.first_name.data;
-  			console.log(result.payload.db_fields.first_name.data);
   		  this.last_name = result.payload.db_fields.last_name.data;
   			this.email = result.payload.db_fields.email.data;
-  			//console.log("Does anything fill?");
   		}
   	});
   	
