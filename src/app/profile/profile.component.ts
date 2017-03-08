@@ -20,13 +20,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
   	
-  	if(this.authService.isLoggedIn())
-  	{
-  		console.log('You are logged in');	
-  	}
-  	
   	var token = window.localStorage.getItem('auth_token');
   	
+  	
+  	//TODO: Just return data on login, dont need to call getData on the token.
   	this.userService.getData(token).subscribe((result) => {
   		if(result){
   			this.first_name = result.payload.db_fields.first_name.data;

@@ -23,11 +23,11 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
-        if (res.success) {
-          console.log("user created succesfully");
-        }
-
+        
         return res.success;
+      })
+      .catch((error:any) => {
+      		return Observable.throw(new Error(error.status));
       });
 	
 	}
@@ -48,6 +48,9 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
+        if (res) {
+          console.log("Data returned succesfully");
+        }
 
         return res;
       })
