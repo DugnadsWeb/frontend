@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
 	email = "";
 	
 	
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   	
@@ -31,10 +31,13 @@ export class ProfileComponent implements OnInit {
   			this.email = result.payload.db_fields.email.data;
   		}
   	});
-  	
+  		
   }
   
-  
+  onSubmit(event){
+  		this.authService.logout();
+  		this.router.navigate(['']);
+  }
 }
 
 

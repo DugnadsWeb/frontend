@@ -3,15 +3,15 @@
   <form (ngSubmit)="onSubmit($event)">
   	<div class="form-group">
       <label>Organisasjonsnummer</label>
-      <input name="org_number" type="number" placeholder="Må være 9 langt"
+      <input name="org_number" type="text" placeholder="Må være 9 langt"
       class="form-control" id="org_number" required
       [(ngModel)]="org_number">
     </div>
     <div class="form-group">
       <label>Navn</label>
-      <input name="name" type="text"
-      class="form-control" id="name" required
-      [(ngModel)]="name">
+      <input name="org_name" type="text"
+      class="form-control" id="org_name" required
+      [(ngModel)]="org_name">
     </div>
     <div class="form-group">
       <label>Epost</label>
@@ -21,14 +21,14 @@
     </div>
     <div class="form-group">
       <label>Telefon</label>
-      <input name="phone" type="number"
+      <input name="phone" type="text"
       class="form-control" id="phone" required
       [(ngModel)]="phone">
     </div>
     <div class="form-group">
     	<label>Beskrivelse</label>
-    	<input name="description" type="text" placeholder="Skriv litt om organisasjonen..."
-    	class="form-control" id="description" [(ngModel)]="description">
+    	<input name="org_description" type="text" placeholder="Skriv litt om organisasjonen..."
+    	class="form-control" id="org_description" [(ngModel)]="org_description">
     </div>
     <button type="submit" class="btn btn-default">Registrer</button>
   </form>

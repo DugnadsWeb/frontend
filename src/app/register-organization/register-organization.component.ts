@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OrgService } from '../services/org.service';
 
 @Component({
   selector: 'app-register-organization',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterOrganizationComponent implements OnInit {
 
-  constructor() { }
+	org_number = ""; 
+	org_name = "";
+	email = "";
+	phone = "";
+	org_description = "";
+
+  constructor(private orgService : OrgService, private router : Router) { }
 
   ngOnInit() {
   }
 
+	onSubmit(event)
+	{
+		this.orgService.registerorg(this.org_number, this.org_name, this.email, this.phone, this.org_description).subscribe((result)	=> {
+			if(result)
+			{
+				this.router.navigate(['']);
+			}
+		});		
+	}
 }

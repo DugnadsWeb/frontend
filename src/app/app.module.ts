@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 // app services imports
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { OrgService  } from './services/org.service';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterOrganizationComponent } from './register-organization/register-organization.component';
 
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService],
+  providers: [AuthService, UserService, OrgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
