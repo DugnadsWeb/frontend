@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterOrganizationComponent } from './register-organization/register-organization.component';
 
 //NotFoundCompononent needs to be the last in list
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'register-org', component: RegisterOrganizationComponent },
   { path: '**', component: NotFoundComponent },
 
 ];
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    RegisterOrganizationComponent,
   ],
   imports: [
     BrowserModule,
