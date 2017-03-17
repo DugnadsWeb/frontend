@@ -10,13 +10,13 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 // app component imports
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterOrganizationComponent } from './register-organization/register-organization.component';
-import { OrganizationComponent } from './organization/organization.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { RegisterOrganizationComponent } from './pages/register-organization/register-organization.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
 
 // app services imports
 import { AuthService } from './services/auth.service';
