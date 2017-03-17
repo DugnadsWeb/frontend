@@ -22,8 +22,12 @@ export class LoginComponent implements OnInit {
   onSubmit(event) {
       this.authService.login(this.email, this.password).subscribe((result) => {
         if (result) {
-          this.router.navigate(['profile']);
+          	this.router.navigate(['profile']);          
         }
+
       });
     }
+   
+  	
+   
 }

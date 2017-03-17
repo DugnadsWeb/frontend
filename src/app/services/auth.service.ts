@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
   private loggedIn = false;
+  private loginFailed = false;
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -23,13 +24,20 @@ export class AuthService {
         { headers }
       )
       .map(res => res.json())
-      .map((res) => {
-        if (res.success) {
+      .map((res) => {      	
+        if (res.success) {       
           localStorage.setItem('auth_token', res.token);
           this.loggedIn = true;
         }
 
         return res.success;
+      })
+      .catch((error: any) => {
+      	if(error.status == 400) {
+      		this.loginFailed = true;
+      		
+      	}	
+      	return Observable.throw(new Error(error.status));
       });
   }
 
@@ -40,5 +48,9 @@ export class AuthService {
 
   isLoggedIn() {
     return this.loggedIn;
+  }
+  
+  isLoginFailed() {
+  	return this.loginFailed;	
   }
 }
