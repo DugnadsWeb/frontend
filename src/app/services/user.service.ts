@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/Rx';
+import { Observable} from 'rxjs/Rx';
 
-
+	
 @Injectable()
 export class UserService {
 
@@ -48,11 +48,11 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
-        if (res) {
-          console.log("Data returned succesfully");
-        }
 
         return res;
+      })
+      .catch((error:any) => {
+      		return Observable.throw(new Error(error.status));
       });
 	}
 	

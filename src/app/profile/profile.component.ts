@@ -16,31 +16,28 @@ export class ProfileComponent implements OnInit {
 	email = "";
 	
 	
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   	
-  	if(this.authService.isLoggedIn())
-  	{
-  		console.log('You are logged in');	
-  	}
-  	
   	var token = window.localStorage.getItem('auth_token');
   	
+  	
+  	//TODO: Just return data on login, dont need to call getData on the token.
   	this.userService.getData(token).subscribe((result) => {
   		if(result){
-  			//console.log(result.payload.db_fields.email.data);	
   			this.first_name = result.payload.db_fields.first_name.data;
-  			console.log(result.payload.db_fields.first_name.data);
   		  this.last_name = result.payload.db_fields.last_name.data;
   			this.email = result.payload.db_fields.email.data;
-  			//console.log("Does anything fill?");
   		}
   	});
-  	
+  		
   }
   
-  
+  onSubmit(event){
+  		this.authService.logout();
+  		this.router.navigate(['']);
+  }
 }
 
 

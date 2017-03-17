@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
+
 @Injectable()
 export class AuthService {
   private loggedIn = false;
@@ -16,7 +17,6 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = JSON.stringify({ email, password });
-    console.log(body);
     return this.http
       .post(
         'http://localhost:8888/api/auth/',
@@ -32,12 +32,12 @@ export class AuthService {
 
         return res.success;
       })
-      .catch((error: any) => {
-      	if(error.status == 400) {
-      		this.loginFailed = true;
-      		
-      	}	
-      	return Observable.throw(new Error(error.status));
+      .catch((error:any) => {
+      	if(error.status == 400)
+      	{
+      		this.loggedIn = false;
+      		return Observable.throw(new Error(error.status));
+      	}
       });
   }
 
@@ -50,7 +50,5 @@ export class AuthService {
     return this.loggedIn;
   }
   
-  isLoginFailed() {
-  	return this.loginFailed;	
-  }
+
 }
