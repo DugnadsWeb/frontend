@@ -11,16 +11,15 @@ export class OrgService {
 	* Register a new organization.
 	*/
 
-	registerorg(org_number, org_name, email, phone, org_description)
+	registerorg(org_number, org_name, email, phone, description)
 	{
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    if(!org_description)
+    if(!description)
     {
-    	console.log(org_description);
-    	org_description = "Ingen beskrivelse av organisasjonen";	
+    	description = "Ingen beskrivelse av organisasjonen";	
     }
-    let body = JSON.stringify({ org_number, org_name, email, phone, org_description });
+    let body = JSON.stringify({ org_number, org_name, email, phone, description });
     console.log(body);
     return this.http
       .post(
@@ -37,5 +36,25 @@ export class OrgService {
         return res;
       });
 	
+	}
+	
+	getOrgs()
+	{
+		return this.http
+			.get(
+				'http://localhost:8888/api/org/all'
+			)
+			.map(res => res.json())
+			.map((res) => {
+				if(res) 
+				{
+					console.log("organizations fetched");
+				}	
+				
+				return res;
+			})
+			.catch((error:any) => {
+      		return Observable.throw(new Error(error.status));
+      });
 	}
 }

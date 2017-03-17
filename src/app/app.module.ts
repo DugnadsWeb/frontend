@@ -14,22 +14,24 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterOrganizationComponent } from './register-organization/register-organization.component';
+import { OrganizationComponent } from './organization/organization.component';
 
 // app services imports
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { OrgService  } from './services/org.service';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterOrganizationComponent } from './register-organization/register-organization.component';
+
 
 //NotFoundCompononent needs to be the last in list
 const appRoutes: Routes = [
-  //{ path: 'login', component: LoginComponent},
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'register-org', component: RegisterOrganizationComponent },
+  { path: 'org', component: OrganizationComponent },
   { path: '**', component: NotFoundComponent },
 
 ];
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     ProfileComponent,
     RegisterOrganizationComponent,
+    OrganizationComponent,
   ],
   imports: [
     BrowserModule,
