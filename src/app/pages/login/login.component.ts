@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
-import { AuthService} from '../services/auth.service';
+import { AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'login',
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmit(event) {
       this.authService.login(this.email, this.password).subscribe((result) => {
         if (result) {
-          	this.router.navigate(['profile']);          
+          	this.router.navigate(['profile']);
         }
 
       });
@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
       		.body('Autentisering misslykket, sjekk at du har stavet korrekt.')
       		.open();
       }
- 
+
     }
-   
-  	
-   
+
+
+
 }

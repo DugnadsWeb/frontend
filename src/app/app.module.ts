@@ -8,20 +8,24 @@ import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
-// app component imports
+// app routerpage component imports
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterOrganizationComponent } from './pages/register-organization/register-organization.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 
+// app component imports
+import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+
 // app services imports
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { OrgService  } from './services/org.service';
+
 
 
 //NotFoundCompononent needs to be the last in list
@@ -47,6 +51,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     RegisterOrganizationComponent,
     OrganizationComponent,
+    DugnadOverViewComponent,
   ],
   imports: [
     BrowserModule,
