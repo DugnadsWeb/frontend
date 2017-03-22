@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrgService } from '../services/org.service';
+import { OrgService } from '../../services/org.service';
 
 @Component({
   selector: 'app-register-organization',
@@ -9,7 +9,7 @@ import { OrgService } from '../services/org.service';
 })
 export class RegisterOrganizationComponent implements OnInit {
 
-	org_number = ""; 
+	org_number = "";
 	org_name = "";
 	email = "";
 	phone = "";
@@ -27,6 +27,6 @@ export class RegisterOrganizationComponent implements OnInit {
 			{
 				this.router.navigate(['']);
 			}
-		});		
+		});
 	}
 }
