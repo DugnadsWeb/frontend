@@ -34,7 +34,8 @@ export class UserService {
 	
 	
 	//Calls database with autchentication token, returns payload of token.
-	getData(token)
+	//DEPRECATED
+	/*getData(token)
 	{
 		
     let headers = new Headers();
@@ -54,6 +55,6 @@ export class UserService {
       .catch((error:any) => {
       		return Observable.throw(new Error(error.status));
       });
-	}
+	}*/
 	
 }

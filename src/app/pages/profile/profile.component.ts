@@ -11,6 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+	jwt_decode = require('jwt-decode');
 	first_name = "";
 	last_name = "";
 	email = "";
@@ -21,21 +22,18 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
   	var token = window.localStorage.getItem('auth_token');
-
-
-  	//TODO: Just return data on login, dont need to call getData on the token.
-  	this.userService.getData(token).subscribe((result) => {
-  		if(result){
-  			this.first_name = result.payload.first_name;
-  		  this.last_name = result.payload.last_name;
-  			this.email = result.payload.email;
-  		}
-  	});
-
-  }
+		var decoded = this.jwt_decode(token);
+		console.log(decoded);
+		
+		this.first_name = decoded.db_fields.first_name.data;
+	  this.last_name = decoded.db_fields.last_name.data;
+		this.email = decoded.db_fields.email.data;
+  	
+  	}
 
   onSubmit(event){
   		this.authService.logout();
   		this.router.navigate(['']);
   }
+  
 }
