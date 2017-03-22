@@ -16,33 +16,37 @@ export class LoginComponent implements OnInit {
 
   email = '';
   password = '';
-
+	token = window.localStorage.getItem('auth_token');
+	
   constructor(private authService: AuthService, private router: Router, public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef) {
   	overlay.defaultViewContainer = vcRef;
   	}
 
 
   ngOnInit() {
+  	if(this.token)
+  	{
+  		this.router.navigate(['profile']);	
+  	}
   }
 
-	/*
-	*TODO: Fix modal, problems:
-	* Does not trigger on first login failed. Only on 2,3,4,5 etc..
-	* When entering right creds after a failed attempt the modal will open and then close when being redirected to profile-component
-	*/
   onSubmit(event) {
       this.authService.login(this.email, this.password).subscribe((result) => {
         if (result) {
           	this.router.navigate(['profile']);
         }
-
-      });
-      if(!this.authService.isLoggedIn()){
-      	this.modal.alert()
-      		.title('Login Failed')
-      		.body('Autentisering misslykket, sjekk at du har stavet korrekt.')
-      		.open();
-      }
+    },(error) => {
+    	
+    	if(error){
+    		this.modal.alert()
+    		.title('Login Failed')
+    		.body('Autentisering misslykket, sjekk at du har stavet korrekt.')
+    		.open();
+    	}
+    });
+      /*if(!this.authService.isLoggedIn()){
+      	
+      }*/
 
     }
 
