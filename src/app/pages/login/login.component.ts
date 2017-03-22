@@ -44,9 +44,6 @@ export class LoginComponent implements OnInit {
     		.open();
     	}
     });
-      /*if(!this.authService.isLoggedIn()){
-      	
-      }*/
 
     }
 

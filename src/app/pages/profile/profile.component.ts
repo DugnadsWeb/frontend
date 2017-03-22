@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
 
   	var token = window.localStorage.getItem('auth_token');
 		var decoded = this.jwt_decode(token);
-		console.log(decoded);
 		
 		this.first_name = decoded.db_fields.first_name.data;
 	  this.last_name = decoded.db_fields.last_name.data;
