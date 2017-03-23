@@ -33,6 +33,7 @@ export class OrganizationComponent implements OnInit {
   			org_names.push(org.org_name);
   		});
 
+
   		//this.org_name = org_names;
   		this.namelist = org_names;
   		console.log(org_names);
