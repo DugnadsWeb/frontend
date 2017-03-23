@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { OrgService } from '../../services/org.service';
-
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+import { Organization } from '../../models/models';
+import { OrgInfoComponent } from '../../components/org-info/org-info.component';
 
 @Component({
   selector: 'app-organization',
@@ -11,23 +13,19 @@ import { OrgService } from '../../services/org.service';
 export class OrganizationComponent implements OnInit {
 
 
-	org_number = "";
-	org_name = "";
-	email = "";
-	phone = "";
-	description = "";
+  org: Organization;
 
-  constructor(private orgService: OrgService) {
+  constructor(private orgService: OrgService,
+              private route: ActivatedRoute,
+              private router: Router) {
 
   }
 
 
   ngOnInit() {
-
-  	this.orgService.getOrgs().subscribe((result) => {
-        
-
-  	});
+    this.route.params
+    .switchMap((params: Params) => this.orgService.getOrg(params['id']))
+    .subscribe((org: Organization) => this.org = org);
 
   }
 

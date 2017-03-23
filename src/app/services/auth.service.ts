@@ -8,8 +8,13 @@ export class AuthService {
   private loggedIn = false;
   private loginFailed = false;
 
+
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
+  }
+
+  getToken(){
+    return localStorage.getItem('auth_token');
   }
 
   login(email, password) {
@@ -24,8 +29,8 @@ export class AuthService {
         { headers }
       )
       .map(res => res.json())
-      .map((res) => {      	
-        if (res.success) {       
+      .map((res) => {
+        if (res.success) {
           localStorage.setItem('auth_token', res.token);
           this.loggedIn = true;
         }
@@ -49,6 +54,7 @@ export class AuthService {
   isLoggedIn() {
     return this.loggedIn;
   }
-  
+
+
 
 }

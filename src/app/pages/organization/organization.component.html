@@ -1,11 +1,12 @@
-<h1>Organisasjoner:</h1>
-	<ul>
-		<li *ngFor="let name of namelist">
-			{{ name }}
-		</li>
-	</ul>
-<h3>Organisasjonsnummer: {{org_number}}</h3>
-<h3>Navn: {{org_name}}</h3>
-<h3>Email: {{email}}</h3>
-<h3>Telefon: {{phone}}</h3>
-<h3>Beskrivelse: {{description}}</h3>
+<div class="container">
+  <div class="row"></div> <!--  org header img-->
+  <div class="row"> <!-- org info-->
+    <org-info *ngIf="org" [org]="org"></org-info>
+  </div>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+</div>
