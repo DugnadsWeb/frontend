@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'register-org', component: RegisterOrganizationComponent },
-  { path: 'org', component: OrganizationComponent },
+  { path: 'org/:id', component: OrganizationComponent },
   { path: '**', component: NotFoundComponent },
 
 ];
