@@ -21,14 +21,24 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
-  	var token = window.localStorage.getItem('auth_token');
+    var token = localStorage.getItem('auth_token');
+		  	
+		  	
+		//DOESNT WORK, FIX IT
+  	if(token === null)
+  	{
+  		this.router.navigate(['login']);
+  	}
+  	
 		var decoded = this.jwt_decode(token);
 
 		this.first_name = decoded.first_name;
 	  this.last_name = decoded.last_name;
 		this.email = decoded.email;
 
-  	}
+
+		
+  }
 
   onSubmit(event){
   		this.authService.logout();
