@@ -7,14 +7,13 @@
 	background-color: rgb(194,229,229);
 	height: 85px;
 	font-size: 70px;
-	margin-top: 50px;	
+		
 	border-radius: 3px;
 	border-color: rgb(26,61,61);	
 }
 		
 #tittel + .row{
-	width: 100%;
-	
+	width: 100%;	
 }
 
 .row{
