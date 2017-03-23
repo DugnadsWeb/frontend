@@ -3,4 +3,26 @@ nav{
 	background-color: rgb(26,61,61);
 	
 	
+	
+	text-align: center;
+}
+
+
+li a{
+	
+	
+	color: white;
+}
+.dropdown-menu a{
+	
+	color: black;
+	
+}
+
+
+#myNavbar{
+	
+	
+	position:relative;
+	margin-top: 0px;
 }
