@@ -1,7 +1,7 @@
 nav{
 	
 	background-color: rgb(26,61,61);
-	
+	 z-index: 10000;
 	
 	
 	text-align: center;

@@ -2,13 +2,23 @@
 	background-color: rgb (194,229,229);
 	
 }
+#tittelContainer{
+	border-radius: 3px;
+	width:99%;
+	height:10vw;
+	position: relative;
+	background-color: rgb(194,229,229);
+}
 #tittel{
 	text-align: center;
-	background-color: rgb(194,229,229);
-	height: 85px;
-	font-size: 70px;
-		
-	border-radius: 3px;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	margin: 0;
+    position: absolute;
+	font-size: 3vw;
+	border-radius: 100px;
 	border-color: rgb(26,61,61);	
 }
 		
@@ -18,19 +28,23 @@
 
 .row{
 background-color:rgb(242, 241, 239);
-margin-left: 0.1%;
+
 border-radius: 3px;
 
 }
 .panel{
 	
 	border-style: none;
-	
-	
-	
+		
 }
 
 .kolonne{
 	margin-top: 4%;	
 
 	}
+	
+.container{
+	
+	width:80%;	
+	
+}
