@@ -21,6 +21,10 @@ import { SearchComponent } from './pages/search/search.component';
 // app component imports
 import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { MembersListComponent } from './components/members-list/members-list.component';
+import { UserBoxComponent } from './components/user-box/user-box.component';
+import { MembershipBtnComponent } from './components/membership-btn/membership-btn.component';
+
 
 // app services imports
 import { AuthService } from './services/auth.service';
@@ -57,6 +61,9 @@ const appRoutes: Routes = [
     DugnadOverViewComponent,
     SearchComponent,
     OrgInfoComponent,
+    MembersListComponent,
+    UserBoxComponent,
+    MembershipBtnComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,18 @@
 <div class="container">
   <div class="row"></div> <!--  org header img-->
-  <div class="row"> <!-- org info-->
-    <org-info *ngIf="org" [org]="org"></org-info>
-  </div>
-  <div class="tab-content">
+  <h1>{{ org?.orgName }}</h1>
+  <div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Aktivitet</a></li>
+      <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Meldinger</a></li>
+      <li role="presentation"><a href="#members" aria-controls="members" role="tab" data-toggle="tab">Medlemmer</a></li>
+    </ul>
+    <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="info"><org-info *ngIf="org" [org]="org"></org-info></div>
     <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+    <div role="tabpanel" class="tab-pane" id="members"><members-list *ngIf="members"[users]="members"></members-list></div>
+  </div>
   </div>
 </div>

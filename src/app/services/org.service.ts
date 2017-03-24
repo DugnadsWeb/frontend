@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import { AuthService} from './auth.service';
-import { Organization } from '../models/models';
+import { Organization, User } from '../models/models';
 
 @Injectable()
 export class OrgService {
@@ -67,6 +67,26 @@ export class OrgService {
     .map(res => res.json())
     .map(res => {
       return new Organization(res.uuid, res.org_name, res.email, res.phone, res.description);
+    })
+    .catch((err:any) => {
+      console.log(err);
+      return Observable.throw(new Error(err.status));
+    })
+  }
+
+  getMembers(uuid: string){
+    let headers = new Headers();
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    return this.http.get('http://localhost:8888/api/org/members/'+uuid, {headers: headers})
+    .map(res => res.json())
+    .map(res => {
+      let ret = [];
+      console.log(res);
+      for(let i=0;i<res.length;i++) {
+        let u = ret[i];
+        ret.push(new User(u.email, u.first_name, u.last_name, u.phone));
+      }
+      return ret;
     })
     .catch((err:any) => {
       console.log(err);
