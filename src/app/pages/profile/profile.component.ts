@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 	first_name = "";
 	last_name = "";
 	email = "";
-
+	
 
   constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
@@ -28,16 +28,13 @@ export class ProfileComponent implements OnInit {
   	if(token === null)
   	{
   		this.router.navigate(['login']);
+		
   	}
   	
 		var decoded = this.jwt_decode(token);
-
 		this.first_name = decoded.first_name;
-	  this.last_name = decoded.last_name;
+		this.last_name = decoded.last_name;
 		this.email = decoded.email;
-
-
-		
   }
 
   onSubmit(event){
