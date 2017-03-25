@@ -7,12 +7,21 @@
       <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
       <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Meldinger</a></li>
       <li role="presentation"><a href="#members" aria-controls="members" role="tab" data-toggle="tab">Medlemmer</a></li>
+      <li *ngIf="isAdmin" role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Admin Panel</a></li>
     </ul>
     <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="info"><org-info *ngIf="org" [org]="org"></org-info></div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="members"><members-list *ngIf="members"[users]="members"></members-list></div>
-  </div>
+      <div role="tabpanel" class="tab-pane active" id="home">...</div>
+      <div role="tabpanel" class="tab-pane" id="info">
+        <org-info *ngIf="org" [org]="org"></org-info>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <org-message-board *ngIf="org" [uuid]="org.uuid"></org-message-board>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="members">
+        <members-list *ngIf="admins" [users]="admins" [title]="'Administratorer'"></members-list>
+        <members-list *ngIf="admins" [users]="members" [title]="'Medlemmer'"></members-list>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="admin">Adminpanel goes here!!</div>
+    </div>
   </div>
 </div>

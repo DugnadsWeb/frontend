@@ -24,13 +24,12 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { MembersListComponent } from './components/members-list/members-list.component';
 import { UserBoxComponent } from './components/user-box/user-box.component';
 import { MembershipBtnComponent } from './components/membership-btn/membership-btn.component';
-
+import { OrgInfoComponent } from './components/org-info/org-info.component';
+import { OrgMessageBoardComponent } from './components/org-message-board/org-message-board.component';
+import { MessageSenderComponent } from './components/message-sender/message-sender.component';
 
 // app services imports
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
-import { OrgService  } from './services/org.service';
-import { OrgInfoComponent } from './components/org-info/org-info.component';
+import { AuthService, UserService, OrgService, MessageService } from './services/services';
 
 
 
@@ -64,6 +63,8 @@ const appRoutes: Routes = [
     MembersListComponent,
     UserBoxComponent,
     MembershipBtnComponent,
+    OrgMessageBoardComponent,
+    MessageSenderComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService, OrgService],
+  providers: [AuthService, UserService, OrgService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

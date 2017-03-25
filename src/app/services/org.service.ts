@@ -66,7 +66,7 @@ export class OrgService {
     return this.http.get('http://localhost:8888/api/org/'+uuid, {headers: headers})
     .map(res => res.json())
     .map(res => {
-      return new Organization(res.uuid, res.org_name, res.email, res.phone, res.description);
+      return new Organization(res.uuid, res.org_name, res.org_number, res.email, res.phone, res.description);
     })
     .catch((err:any) => {
       console.log(err);
@@ -74,6 +74,7 @@ export class OrgService {
     })
   }
 
+  // TODO refator getMember and getAdmin and possibly cache
   getMembers(uuid: string){
     let headers = new Headers();
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
@@ -81,9 +82,27 @@ export class OrgService {
     .map(res => res.json())
     .map(res => {
       let ret = [];
-      console.log(res);
-      for(let i=0;i<res.length;i++) {
-        let u = ret[i];
+      for(let i=0;i<res.members.length;i++) {
+        let u = res.members[i];
+        ret.push(new User(u.email, u.first_name, u.last_name, u.phone));
+      }
+      return ret;
+    })
+    .catch((err:any) => {
+      console.log(err);
+      return Observable.throw(new Error(err.status));
+    })
+  }
+
+  getAdmins(uuid: string){
+    let headers = new Headers();
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    return this.http.get('http://localhost:8888/api/org/members/'+uuid, {headers: headers})
+    .map(res => res.json())
+    .map(res => {
+      let ret = [];
+      for(let i=0;i<res.admins.length;i++) {
+        let u = res.admins[i];
         ret.push(new User(u.email, u.first_name, u.last_name, u.phone));
       }
       return ret;

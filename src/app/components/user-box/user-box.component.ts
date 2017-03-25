@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { User } from '../../models/models';
+
 
 @Component({
   selector: 'user-box',
@@ -9,7 +10,9 @@ import { User } from '../../models/models';
 export class UserBoxComponent implements OnInit {
 
   @Input()
-  user:User;
+  user: User;
+
+  placeholderImg = '../../../assets/img/placeholder_profile_pic.png';
 
   constructor() { }
 

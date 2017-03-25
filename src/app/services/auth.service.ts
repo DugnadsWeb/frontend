@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+const jwt_decode = require('jwt-decode');
 
 
 @Injectable()
@@ -13,8 +14,18 @@ export class AuthService {
     this.loggedIn = !!localStorage.getItem('auth_token');
   }
 
-  getToken(){
-    return localStorage.getItem('auth_token');
+  getToken():any{
+    if (this.loggedIn){
+      return localStorage.getItem('auth_token');
+    }
+    return false;
+  }
+
+  getDecodedToken(){
+    if (this.loggedIn){
+      return jwt_decode(localStorage.getItem('auth_token'));
+    }
+    return false;
   }
 
   login(email, password) {
@@ -53,6 +64,14 @@ export class AuthService {
 
   isLoggedIn() {
     return this.loggedIn;
+  }
+
+  isAdminOf(groupUuid:string): boolean{
+    let org = this.getDecodedToken().memberships;
+    for (let i=0;i<org.length;i++){
+      if (org[i].uuid == groupUuid && org[i].is_admin) {return true}
+    }
+    return false;
   }
 
 
