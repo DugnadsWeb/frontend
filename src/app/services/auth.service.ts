@@ -74,6 +74,14 @@ export class AuthService {
     return false;
   }
 
+  isMemberOf(groupUuid:string){
+    let org = this.getDecodedToken().memberships;
+    for (let i=0;i<org.length;i++){
+      if (org[i].uuid == groupUuid) {return true}
+    }
+    return false;
+  }
+
 
 
 }

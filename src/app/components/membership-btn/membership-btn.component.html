@@ -1,3 +1,9 @@
-<p>
-  membership-btn works!
-</p>
+<button
+  *ngIf="!(isMember || hasApplied)"
+  (click)="apply($event)">Bli medlem!
+</button>
+<button *ngIf="hasApplied">Venter godkjenning</button>
+<button
+  *ngIf="isMember"
+  (click)="cancleMembership($event)">Meld meg ut
+</button>

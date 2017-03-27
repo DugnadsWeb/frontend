@@ -27,6 +27,7 @@ import { MembershipBtnComponent } from './components/membership-btn/membership-b
 import { OrgInfoComponent } from './components/org-info/org-info.component';
 import { OrgMessageBoardComponent } from './components/org-message-board/org-message-board.component';
 import { MessageSenderComponent } from './components/message-sender/message-sender.component';
+import { MessageComponent } from './components/message/message.component';
 
 // app services imports
 import { AuthService, UserService, OrgService, MessageService } from './services/services';
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
     OrgMessageBoardComponent,
     MessageSenderComponent,
     SortpipePipe,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
