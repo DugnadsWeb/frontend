@@ -1,0 +1,13 @@
+<div>
+  <div>
+    <h2>Forespørsler om medlemmskap: {{applications?.length}}</h2>
+  </div>
+    <div *ngIf="applications?.length > 0" class="container">
+      <applicant-row
+        class="row"
+        *ngFor="let application of applications"
+        [application]="application">
+      </applicant-row>
+
+    </div>
+</div>

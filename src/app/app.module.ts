@@ -28,6 +28,10 @@ import { OrgInfoComponent } from './components/org-info/org-info.component';
 import { OrgMessageBoardComponent } from './components/org-message-board/org-message-board.component';
 import { MessageSenderComponent } from './components/message-sender/message-sender.component';
 import { MessageComponent } from './components/message/message.component';
+import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-panel.component';
+import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
+import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
+
 
 // app services imports
 import { AuthService, UserService, OrgService, MessageService } from './services/services';
@@ -67,6 +71,9 @@ const appRoutes: Routes = [
     OrgMessageBoardComponent,
     MessageSenderComponent,
     MessageComponent,
+    OrgAdminPanelComponent,
+    ApproveOrgApplicationComponent,
+    ApplicantRowComponent,
   ],
   imports: [
     BrowserModule,
