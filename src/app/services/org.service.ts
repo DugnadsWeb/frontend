@@ -113,5 +113,51 @@ export class OrgService {
     })
   }
 
+  applyTo(userEmail:string, orgUuid: string){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    let body = JSON.stringify({
+      user: { email: userEmail },
+      org: { uuid: orgUuid }
+      });
+    return this.http
+      .post(
+        'http://localhost:8888/api/org/apply',
+        body,
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if (res) {
+          console.log("application sent");
+        }
+        return res;
+      });
+    }
+
+    removeMember(memberEmail, orgUuid){
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('authorization', 'Bearer ' + this.authService.getToken());
+      let body = JSON.stringify({
+        user: { email: memberEmail },
+        org: { uuid: orgUuid }
+        });
+      return this.http
+        .post(
+          'http://localhost:8888/api/org/rmmember',
+          body,
+          { headers }
+        )
+        .map(res => res.json())
+        .map((res) => {
+          if (res) {
+            console.log(res);
+          }
+          return res;
+        });
+      }
+    
 
 }

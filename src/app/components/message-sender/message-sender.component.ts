@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MessageService } from '../../services/services';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MessageService, AuthService } from '../../services/services';
+import { Message } from '../../models/models';
 
 @Component({
   selector: 'message-sender',
@@ -9,21 +10,30 @@ import { MessageService } from '../../services/services';
 export class MessageSenderComponent implements OnInit {
 
   @Input()
-  sender;
-  @Input()
   receiver;
+
+  @Output()
+  messageSent = new EventEmitter<any>();
+
+  sender;
 
   message:string;
 
-  constructor(private msgService: MessageService) { }
+  constructor(private msgService: MessageService,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.sender = {type:'user',
+      id:this.authService.getDecodedToken().email};
   }
 
   sendMessage(){
-    //this.msgService.sendMessage(this.sender.type, this.sender.id,
-    //  this.receiver.type, this.receiver.id, this.message);
-    console.log(this.message);
+    this.msgService.sendMessage(this.sender.type, this.sender.id,
+      this.receiver.type, this.receiver.id, this.message)
+      .subscribe(ret => {
+        this.messageSent.emit(ret[0])
+      });
+
   }
 
 

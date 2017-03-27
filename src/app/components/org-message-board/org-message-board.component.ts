@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import { Message } from '../../models/models';
 import { MessageSenderComponent } from '../message-sender/message-sender.component';
+import { MessageService } from '../../services/services';
 
 
 @Component({
@@ -12,11 +14,25 @@ export class OrgMessageBoardComponent implements OnInit {
 
   @Input()
   uuid:string;
-  messages: Message[];
 
-  constructor() { }
+  messages: Message[];
+  receiver;
+
+
+
+  constructor(private msgService:MessageService) { }
 
   ngOnInit() {
+    this.receiver = {type:'org', id:this.uuid}
+    this.msgService.getMyMessages('org', this.uuid)
+    .subscribe(ret => {
+      this.messages = ret;
+    })
   }
+
+  updateMessages(message){
+    this.messages.unshift(message);
+  }
+
 
 }

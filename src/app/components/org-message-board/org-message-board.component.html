@@ -1,4 +1,16 @@
 <div>
-  <message-sender></message-sender>
-
+  <message-sender [receiver]="receiver"
+    (messageSent)="updateMessages($event)">
+  </message-sender>
+  <div *ngIf="messages?.length > 0">
+      <div>
+        {{ messages.length }} meldinger.
+      </div>
+      <wall-message *ngFor="let msg of messages"
+        [message]=msg>
+      </wall-message>
+  </div>
+  <div *ngIf="messages?.length == 0">
+    Ingen meldinger tilgjengelig.
+  </div>
 <div>
