@@ -1,11 +1,13 @@
-<h1>Organisasjoner:</h1>
-	<ul>
-		<li *ngFor="let name of namelist" (click)="showMore(name)">
-			{{ name }}
-		</li>
-	</ul>
-<h3>Organisasjonsnummer: {{org_number}}</h3>
-<h3>Navn: {{org_name}}</h3>
-<h3>Email: {{email}}</h3>
-<h3>Telefon: {{phone}}</h3>
-<h3>Beskrivelse: {{description}}</h3>
+<div class="container">
+	<div class="row row-centered">
+		<div class="col-md-6">
+			<h1>Organisasjoner:</h1>
+			<ul id="myUL">
+				<li *ngFor="let name of (namelist | sortpipe)" (click)="routeToOrg(name)">
+					{{ name }}
+				</li>
+			</ul>
+			<input type="text" #searchBox (keyup)="searchFunction(searchBox.value)" placeholder="Søk etter organisasjon..">
+    </div>
+	</div>
+</div>
