@@ -1,12 +1,12 @@
 
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
 <body>
-	div class="container"&gt;
+	<div class="container">
 	<div class="row row-centered">
 		<div class="col-md-3"></div>
 		<div class="col-md-6 kolonne">
@@ -20,7 +20,7 @@
 					<h4>Etternavn: {{last_name}}</h4>
 					<hr>
 					<h4>Email: {{email}}</h4>
-					<form>
+					<form (ngSubmit)="onSubmit($event)">
 						<button class="btn btn-default" type="submit">Logg ut</button>
 					</form>
 					<div class="col-md-3"></div>
@@ -28,5 +28,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

@@ -36,6 +36,9 @@ import { ApplicantRowComponent } from './components/applicant-row/applicant-row.
 // app services imports
 import { AuthService, UserService, OrgService, MessageService } from './services/services';
 
+// app models/pipes etc
+import { SortpipePipe } from './models/sortpipe.pipe';
+
 
 
 //NotFoundCompononent needs to be the last in list
@@ -70,6 +73,7 @@ const appRoutes: Routes = [
     MembershipBtnComponent,
     OrgMessageBoardComponent,
     MessageSenderComponent,
+    SortpipePipe,
     MessageComponent,
     OrgAdminPanelComponent,
     ApproveOrgApplicationComponent,

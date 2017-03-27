@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrgService } from '../../services/org.service';
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -17,7 +18,7 @@ export class SearchComponent implements OnInit {
 	phone = "";
 	description = "";
 
-  constructor(private orgService: OrgService) {
+  constructor(private orgService: OrgService, private router: Router) {
 
   }
 
@@ -41,21 +42,56 @@ export class SearchComponent implements OnInit {
 
   }
   
-  showMore(clicked){
-  	
-  	
-  	
-  	for(var i = 0; i < this.orglist.length; i++)
-  	{
-  		if(this.orglist[i].org_name == clicked)
+  fetchOrgs()
+  {
+  	this.orgService.getOrgs().subscribe((result) => {
+
+			var org_names = [];
+			var listOfOrgs = [];
+			console.log(result);
+
+  		result.forEach(function (org)
   		{
-  			this.org_number = this.orglist[i].org_number;	
-  			this.email = this.orglist[i].email;
-  			this.phone = this.orglist[i].phone;
-  			this.description = this.orglist[i].org_description;
-  		}
+  			org_names.push(org.org_name);
+  			listOfOrgs.push(org);
+  		});
+
+  		this.namelist = org_names;
+  		this.orglist = listOfOrgs;
+  	});
+  }
+  
+	searchFunction(value: string)
+	{
+		value = value.toUpperCase();
+		var org_names = [];
+		
+		for(var i = 0; i < this.namelist.length; i++){
+			var a = this.namelist[i];
+			if(a.toUpperCase().indexOf(value) > -1)
+			{
+				org_names.push(a);
+			}
+			
+		}
+		if(value == ""){
+			this.fetchOrgs();
+		}
+		this.namelist = org_names;
+	}
+  
+  routeToOrg(clicked){
+  	
+  	for(var i = 0; i < this.orglist.length; i++){
+	  	if(this.orglist[i].org_name == clicked)
+	  	{
+	  		console.log(this.orglist[i].uuid);
+	  		this.router.navigate(['org/', this.orglist[i].uuid]);
+	  	}
   	}
-  	this.org_name = clicked;
   	
   }
+  
+  
+  
 }
