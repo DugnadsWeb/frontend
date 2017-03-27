@@ -85,6 +85,7 @@ export class SearchComponent implements OnInit {
   	for(var i = 0; i < this.orglist.length; i++){
 	  	if(this.orglist[i].org_name == clicked)
 	  	{
+	  		console.log(this.orglist[i].uuid);
 	  		this.router.navigate(['org/', this.orglist[i].uuid]);
 	  	}
   	}
