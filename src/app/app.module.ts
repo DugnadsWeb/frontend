@@ -30,7 +30,7 @@ import { MessageSenderComponent } from './components/message-sender/message-send
 import { MessageComponent } from './components/message/message.component';
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
@@ -42,7 +42,7 @@ const appRoutes: Routes = [
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate : [AuthGuardService]},
   { path: 'register-org', component: RegisterOrganizationComponent },
   { path: 'org/:id', component: OrganizationComponent },
   { path: 'search', component: SearchComponent},
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService, OrgService, MessageService],
+  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
