@@ -17,6 +17,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterOrganizationComponent } from './pages/register-organization/register-organization.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { SearchComponent } from './pages/search/search.component';
+import { MakeDugnadComponent } from './pages/make-dugnad/make-dugnad.component';
+
 
 // app component imports
 import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
@@ -32,6 +34,8 @@ import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-p
 import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
 import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
 import { EditOrgComponent } from './components/edit-org/edit-org.component';
+
+
 
 
 // app services imports
@@ -51,6 +55,7 @@ const appRoutes: Routes = [
   { path: 'register-org', component: RegisterOrganizationComponent },
   { path: 'org/:id', component: OrganizationComponent },
   { path: 'search', component: SearchComponent},
+  { path: 'make-dugnad', component: MakeDugnadComponent },
   { path: '**', component: NotFoundComponent },
 
 ];
@@ -80,6 +85,7 @@ const appRoutes: Routes = [
     ApproveOrgApplicationComponent,
     ApplicantRowComponent,
     EditOrgComponent,
+    MakeDugnadComponent,
   ],
   imports: [
     BrowserModule,

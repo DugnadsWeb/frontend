@@ -1,28 +1,31 @@
 nav{
-	
 	background-color: rgb(26,61,61);
-	 z-index: 10000;
-	
-	
+	z-index: 10000;
 	text-align: center;
 }
 
 
 li a{
-	
-	
 	color: white;
 }
 .dropdown-menu a{
-	
 	color: black;
-	
 }
 
 
 #myNavbar{
-	
     position:fixed;
 	top: 0px;
 	width:100%;
+}
+#logoutBTN{
+	
+	text-align:center;
+	
+}
+
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color:rgb(242, 241, 239);
+    color: black;
 }
