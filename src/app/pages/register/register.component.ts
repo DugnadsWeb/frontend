@@ -9,8 +9,8 @@ import { UserService } from '../../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-	first_name = '';
-  last_name = '';
+	firstName = '';
+  lastName = '';
   email = '';
   password = '';
 
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
 	onSubmit(event) {
-      this.userService.register(this.first_name, this.last_name, this.email, this.password).subscribe((result) => {
+      this.userService.register(this.firstName, this.lastName, this.email, this.password).subscribe((result) => {
         if (result) {
           this.router.navigate(['']);
         }

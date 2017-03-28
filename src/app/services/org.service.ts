@@ -14,7 +14,7 @@ export class OrgService {
 	* Register a new organization.
 	*/
 
-	registerorg(org_number, org_name, email, phone, description)
+	registerorg(orgNumber, orgName, email, phone, description)
 	{
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -22,7 +22,7 @@ export class OrgService {
     {
     	description = "Ingen beskrivelse av organisasjonen";
     }
-    let body = JSON.stringify({ org_number, org_name, email, phone, description });
+    let body = JSON.stringify({ orgNumber, orgName, email, phone, description });
     console.log(body);
     return this.http
       .post(
@@ -66,7 +66,7 @@ export class OrgService {
     return this.http.get('http://localhost:8888/api/org/'+uuid, {headers: headers})
     .map(res => res.json())
     .map(res => {
-      return new Organization(res.uuid, res.org_name, res.org_number, res.email, res.phone, res.description);
+      return new Organization(res.uuid, res.orgName, res.orgNumber, res.email, res.phone, res.description);
     })
     .catch((err:any) => {
       console.log(err);
@@ -84,7 +84,7 @@ export class OrgService {
       let ret = [];
       for(let i=0;i<res.members.length;i++) {
         let u = res.members[i];
-        ret.push(new User(u.email, u.first_name, u.last_name, u.phone));
+        ret.push(new User(u.email, u.firstName, u.lastName, u.phone));
       }
       return ret;
     })
@@ -103,7 +103,7 @@ export class OrgService {
       let ret = [];
       for(let i=0;i<res.admins.length;i++) {
         let u = res.admins[i];
-        ret.push(new User(u.email, u.first_name, u.last_name, u.phone));
+        ret.push(new User(u.email, u.firstName, u.lastName, u.phone));
       }
       return ret;
     })
@@ -162,14 +162,15 @@ export class OrgService {
       getApplicants(orgUuid){
         let headers = new Headers();
         headers.append('authorization', 'Bearer ' + this.authService.getToken());
-        return this.http.get('http://localhost:8888/api/org/applicants/'+orgUuid
-        , {headers: headers})
+        return this.http.get('http://localhost:8888/api/org/applicants/'+orgUuid,
+        {headers: headers})
         .map(res => res.json())
         .map(res => {
+          console.log(res);
           let ret = [];
           for (let i=0;i<res.length;i++){
             let u = res[i].user;
-            let user = new User(u.email, u.first_name, u.last_name, u.phone);
+            let user = new User(u.email, u.firstName, u.lastName, u.phone);
             ret.push(new Application(user, res[i].applied.applied_date))
           }
           return ret;
@@ -181,7 +182,50 @@ export class OrgService {
 
       }
 
+      processApplication(userId, orgId, action){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('authorization', 'Bearer ' + this.authService.getToken());
+        let body = JSON.stringify({
+          user: { email: userId },
+          org: { uuid: orgId },
+          accept: action
+          });
+        return this.http
+          .post(
+            'http://localhost:8888/api/org/applicant',
+            body,
+            { headers }
+          )
+          .map(res => res.json())
+          .map((res) => {
+            if (res) {
+              console.log(res);
+            }
+            return res;
+          });
+      }
 
+      updateOrg(org:Organization){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('authorization', 'Bearer ' + this.authService.getToken());
+        let body = JSON.stringify({org: org});
+        console.log(body);
+        return this.http
+          .put(
+            'http://localhost:8888/api/org/',
+            body,
+            { headers }
+          )
+          .map(res => res.json())
+          .map((res) => {
+            if (res) {
+              console.log(res);
+            }
+            return res;
+          });
+      }
 
 
 }

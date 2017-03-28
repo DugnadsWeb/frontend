@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Organization } from '../../models/models';
+
 
 @Component({
   selector: 'org-admin-panel',
@@ -8,11 +10,20 @@ import { Component, OnInit, Input } from '@angular/core';
 export class OrgAdminPanelComponent implements OnInit {
 
   @Input()
-  uuid:string;
+  org:Organization;
+
+  // TODO quick fix! should be done through service. make this so during service refactoring.
+  @Output()
+  memberAdded = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addedMember(event){
+    console.log(event)
+    this.memberAdded.emit(event);
   }
 
 }

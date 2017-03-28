@@ -1,4 +1,12 @@
 <div>
+  <span>
   {{ user.firstName }} {{ user.lastName }} applied
   {{ time.d }}.{{ time.m }}.{{ time.y }}
+  </span>
+  <button (click)="handleApplicant($event, true)">
+    Godta
+  </button>
+  <button (click)="handleApplicant($event, false)">
+    Avslå
+  </button>
 </div>

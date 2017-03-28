@@ -31,6 +31,7 @@ import { MessageComponent } from './components/message/message.component';
 import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-panel.component';
 import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
 import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
+import { EditOrgComponent } from './components/edit-org/edit-org.component';
 
 
 // app services imports
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     OrgAdminPanelComponent,
     ApproveOrgApplicationComponent,
     ApplicantRowComponent,
+    EditOrgComponent,
   ],
   imports: [
     BrowserModule,

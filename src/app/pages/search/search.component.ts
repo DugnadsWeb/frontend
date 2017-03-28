@@ -12,8 +12,8 @@ export class SearchComponent implements OnInit {
 
 	namelist = [];
 	orglist = [];
-	org_number = "";
-	org_name = "";
+	orgNumber = "";
+	orgName = "";
 	email = "";
 	phone = "";
 	description = "";
@@ -27,16 +27,16 @@ export class SearchComponent implements OnInit {
 
   	this.orgService.getOrgs().subscribe((result) => {
 
-			var org_names = [];
+			var orgNames = [];
 			var listOfOrgs = [];
 
   		result.forEach(function (org)
   		{
-  			org_names.push(org.org_name);
+  			orgNames.push(org.orgName);
   			listOfOrgs.push(org);
   		});
 
-  		this.namelist = org_names;
+  		this.namelist = orgNames;
   		this.orglist = listOfOrgs;
   	});
 
@@ -46,17 +46,17 @@ export class SearchComponent implements OnInit {
   {
   	this.orgService.getOrgs().subscribe((result) => {
 
-			var org_names = [];
+			var orgNames = [];
 			var listOfOrgs = [];
 			console.log(result);
 
   		result.forEach(function (org)
   		{
-  			org_names.push(org.org_name);
+  			orgNames.push(org.orgName);
   			listOfOrgs.push(org);
   		});
 
-  		this.namelist = org_names;
+  		this.namelist = orgNames;
   		this.orglist = listOfOrgs;
   	});
   }
@@ -64,26 +64,26 @@ export class SearchComponent implements OnInit {
 	searchFunction(value: string)
 	{
 		value = value.toUpperCase();
-		var org_names = [];
+		var orgNames = [];
 		
 		for(var i = 0; i < this.namelist.length; i++){
 			var a = this.namelist[i];
 			if(a.toUpperCase().indexOf(value) > -1)
 			{
-				org_names.push(a);
+				orgNames.push(a);
 			}
 			
 		}
 		if(value == ""){
 			this.fetchOrgs();
 		}
-		this.namelist = org_names;
+		this.namelist = orgNames;
 	}
   
   routeToOrg(clicked){
   	
   	for(var i = 0; i < this.orglist.length; i++){
-	  	if(this.orglist[i].org_name == clicked)
+	  	if(this.orglist[i].orgName == clicked)
 	  	{
 	  		console.log(this.orglist[i].uuid);
 	  		this.router.navigate(['org/', this.orglist[i].uuid]);

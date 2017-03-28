@@ -31,7 +31,9 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="admin">
         <org-admin-panel
-          [uuid]="org?.uuid">
+          *ngIf="org"
+          [org]="org"
+          (memberAdded)="memberAdded($event)">
         </org-admin-panel>
       </div>
     </div>

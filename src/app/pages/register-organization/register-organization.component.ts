@@ -9,8 +9,8 @@ import { OrgService } from '../../services/org.service';
 })
 export class RegisterOrganizationComponent implements OnInit {
 
-	org_number = "";
-	org_name = "";
+	orgNumber = "";
+	orgName = "";
 	email = "";
 	phone = "";
 	description = "";
@@ -22,7 +22,7 @@ export class RegisterOrganizationComponent implements OnInit {
 
 	onSubmit(event)
 	{
-		this.orgService.registerorg(this.org_number, this.org_name, this.email, this.phone, this.description).subscribe((result)	=> {
+		this.orgService.registerorg(this.orgNumber, this.orgName, this.email, this.phone, this.description).subscribe((result)	=> {
 			if(result)
 			{
 				this.router.navigate(['']);

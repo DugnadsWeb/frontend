@@ -18,9 +18,11 @@ export class MembershipBtnComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
-    this.isMember = this.authService.isMemberOf(this.uuid);
     this.userService.hasAppliedTo(this.uuid).subscribe(ret => {
       this.hasApplied = ret;
+      this.isMember = this.authService.isMemberOf(this.uuid);
+      console.log(this.hasApplied);
+      console.log(this.isMember);
     });
   }
 
@@ -28,6 +30,7 @@ export class MembershipBtnComponent implements OnInit {
     this.orgService.applyTo(this.authService.getDecodedToken().email,
       this.uuid).subscribe(res => {
         console.log(res);
+        this.hasApplied = true;
       })
   }
 

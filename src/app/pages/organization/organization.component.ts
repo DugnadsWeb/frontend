@@ -51,4 +51,10 @@ export class OrganizationComponent implements OnInit {
 
   }
 
+  // TODO quick fix! should be done through service. make this so during service refactoring.
+  memberAdded(event){
+    console.log(event)
+    this.members.push(event)
+  }
+
 }

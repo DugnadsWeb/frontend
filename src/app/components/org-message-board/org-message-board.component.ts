@@ -31,7 +31,11 @@ export class OrgMessageBoardComponent implements OnInit {
   }
 
   updateMessages(message){
-    this.messages.unshift(message);
+    if (this.messages.length > 0){
+      this.messages.unshift(message);
+    } else {
+      this.messages.push(message);
+    }
   }
 
 
