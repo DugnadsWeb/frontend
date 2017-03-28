@@ -1,0 +1,9 @@
+<div class=container>
+  <approve-org-application
+    [uuid]=org.uuid
+    (memberAdded)="addedMember($event)">
+  </approve-org-application>
+  <edit-org
+    [org]="org">
+  </edit-org>
+</div>

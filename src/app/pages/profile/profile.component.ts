@@ -13,8 +13,8 @@ import { AuthGuardService } from '../services/auth-guard.service';
 export class ProfileComponent implements OnInit {
 
 	jwt_decode = require('jwt-decode');
-	first_name = "";
-	last_name = "";
+	firstName = "";
+	lastName = "";
 	email = "";
 	
 	
@@ -28,8 +28,8 @@ export class ProfileComponent implements OnInit {
 	private getProfileData(){
 		var token = localStorage.getItem('auth_token');
 		var decoded = this.jwt_decode(token);
-		this.first_name = decoded.first_name;
-		this.last_name = decoded.last_name;
+		this.firstName = decoded.firstName;
+		this.lastName = decoded.lastName;
 		this.email = decoded.email;
 	}
   onSubmit(event){

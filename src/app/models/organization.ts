@@ -20,4 +20,6 @@ export class Organization {
     this.phone = phone;
     this.description = description;
   }
+
+
 }

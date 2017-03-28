@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="row">
+  	<div class="col-md-3">
+
+    </div>
+  	<div class="col-md-6 kolonne">
+    	<div id="tittelContainer">
+      <h2 id="tittel">Endre organisasjonsinfo</h2>
+      </div>
+    		<div class="panel panel-primary">
+
+          <div class="panel-body" id="block1">
+
+    				<form (ngSubmit)="onSubmit($event)">
+      	       <div class="form-group">
+                 <label>Organisasjonsnummer</label>
+                 <input name="orgNumber"
+                   type="text"
+                   placeholder="Må være 9 langt"
+                   class="form-control" id="orgNumber" required
+                   [(ngModel)]="editOrg.orgNumber">
+               </div>
+               <div class="form-group">
+                 <label>Navn</label>
+                 <input name="orgName"
+                   type="text"
+                   class="form-control" id="orgName" required
+                   [(ngModel)]="editOrg.orgName">
+               </div>
+               <div class="form-group">
+                 <label>Epost</label>
+                 <input name="email"
+                   type="email"
+                   class="form-control" id="email" required
+                   [(ngModel)]="editOrg.email">
+               </div>
+               <div class="form-group">
+                 <label>Telefon</label>
+                 <input name="phone"
+                   type="text"
+                   class="form-control" id="phone" required
+                   [(ngModel)]="editOrg.phone">
+               </div>
+               <div class="form-group">
+              	 <label>Beskrivelse</label>
+              	 <input name="description"
+                   type="text" placeholder="Skriv litt om organisasjonen..."
+              	   class="form-control"
+                   id="description"
+                   [(ngModel)]="editOrg.description">
+               </div>
+               <button type="submit"class="btn btn-default">Opdater</button>
+             </form>
+           </div>
+         </div>
+       </div>
+    <div class="col-md-3">
+
+    </div>
+  </div> <!-- ROW END -->
+</div>

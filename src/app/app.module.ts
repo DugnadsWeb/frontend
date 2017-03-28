@@ -17,6 +17,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterOrganizationComponent } from './pages/register-organization/register-organization.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { SearchComponent } from './pages/search/search.component';
+import { MakeDugnadComponent } from './pages/make-dugnad/make-dugnad.component';
+
 
 // app component imports
 import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
@@ -28,6 +30,13 @@ import { OrgInfoComponent } from './components/org-info/org-info.component';
 import { OrgMessageBoardComponent } from './components/org-message-board/org-message-board.component';
 import { MessageSenderComponent } from './components/message-sender/message-sender.component';
 import { MessageComponent } from './components/message/message.component';
+import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-panel.component';
+import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
+import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
+import { EditOrgComponent } from './components/edit-org/edit-org.component';
+
+
+
 
 // app services imports
 import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
@@ -46,6 +55,7 @@ const appRoutes: Routes = [
   { path: 'register-org', component: RegisterOrganizationComponent },
   { path: 'org/:id', component: OrganizationComponent },
   { path: 'search', component: SearchComponent},
+  { path: 'make-dugnad', component: MakeDugnadComponent },
   { path: '**', component: NotFoundComponent },
 
 ];
@@ -71,6 +81,11 @@ const appRoutes: Routes = [
     MessageSenderComponent,
     SortpipePipe,
     MessageComponent,
+    OrgAdminPanelComponent,
+    ApproveOrgApplicationComponent,
+    ApplicantRowComponent,
+    EditOrgComponent,
+    MakeDugnadComponent,
   ],
   imports: [
     BrowserModule,

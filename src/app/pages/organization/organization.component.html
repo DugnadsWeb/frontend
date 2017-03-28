@@ -29,7 +29,13 @@
         <members-list *ngIf="admins" [users]="admins" [title]="'Administratorer'"></members-list>
         <members-list *ngIf="admins" [users]="members" [title]="'Medlemmer'"></members-list>
       </div>
-      <div role="tabpanel" class="tab-pane" id="admin">Adminpanel goes here!!</div>
+      <div role="tabpanel" class="tab-pane" id="admin">
+        <org-admin-panel
+          *ngIf="org"
+          [org]="org"
+          (memberAdded)="memberAdded($event)">
+        </org-admin-panel>
+      </div>
     </div>
   </div>
 </div>

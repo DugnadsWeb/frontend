@@ -11,11 +11,11 @@ export class UserService {
 		private authService:AuthService) { }
 
 
-	register(first_name, last_name, email, password)
+	register(firstName, lastName, email, password)
 	{
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let body = JSON.stringify({ first_name, last_name, email, password });
+    let body = JSON.stringify({ firstName, lastName, email, password });
     console.log(body);
     return this.http
       .post(

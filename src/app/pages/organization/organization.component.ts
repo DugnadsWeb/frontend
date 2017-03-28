@@ -7,6 +7,8 @@ import { OrgInfoComponent } from '../../components/org-info/org-info.component';
 import { MembersListComponent } from '../../components/members-list/members-list.component';
 import { OrgMessageBoardComponent } from '../../components/org-message-board/org-message-board.component';
 import { MembershipBtnComponent } from '../../components/membership-btn/membership-btn.component';
+import { OrgAdminPanelComponent } from '../../components/org-admin-panel/org-admin-panel.component';
+
 
 @Component({
   selector: 'app-organization',
@@ -47,6 +49,12 @@ export class OrganizationComponent implements OnInit {
        console.log(this.authService.isAdminOf(params['id']));
     });
 
+  }
+
+  // TODO quick fix! should be done through service. make this so during service refactoring.
+  memberAdded(event){
+    console.log(event)
+    this.members.push(event)
   }
 
 }
