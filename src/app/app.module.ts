@@ -34,7 +34,7 @@ import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-p
 import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
 import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
 import { EditOrgComponent } from './components/edit-org/edit-org.component';
-
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -86,6 +86,7 @@ const appRoutes: Routes = [
     ApplicantRowComponent,
     EditOrgComponent,
     MakeDugnadComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
