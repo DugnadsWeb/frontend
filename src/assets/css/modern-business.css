@@ -94,8 +94,14 @@ header.carousel .fill {
 
 /* Footer Styles */
 
-footer {
-    margin: 50px 0;
+.footer{
+	padding-top:20px;
+	padding-bottom:20px;
+	margin-top:50px;
+	margin-bottom:0px;
+	color:#99979c;
+	text-align:center;
+	background-color:#2a2730
 }
 
 /* Responsive Styles */
