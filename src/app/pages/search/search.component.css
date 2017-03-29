@@ -1,6 +1,7 @@
 #searchBox
 {
-	margin-left: 2px;
+	margin-left: 50%;
+	transform: translate(-50%, 0%);
 }
 
 ul {
@@ -8,7 +9,11 @@ ul {
   margin: 0;
   padding: 0;
 }
-
+#myUL{
+	
+	
+	background-color: blue;
+}
 
 li:last-child {
   
@@ -41,19 +46,17 @@ li:hover {
 
 #block1{
 
-	margin-top: 25%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -25%);
-    position: absolute;
+	margin-left: 50%;
+   margin-top: 25%;
+   transform: translate(-50%, -25%);
+   
+   position: relative;
 }
 #block2{
-
-	margin-top: 5%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -5%);
-    position: absolute;
+ margin-left: 50%;
+margin-top: 50px;
+   transform: translate(-50%, 0%);
+ 
 }
 .panel-heading {	
 	background-color: rgb (194,229,229);

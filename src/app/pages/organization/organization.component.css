@@ -1,0 +1,25 @@
+#orgTitle{
+	background-color: rgb(194,229,229);
+	border-radius: 3px;
+	margin-left: 15px;
+	font-size: 4vw;
+	
+	
+}
+#joinBtn{
+	
+	float: right;
+	margin-top: 20px;
+	margin-right: 13px;
+	
+	
+	
+}
+@media only screen and (max-width: 500px) {
+   #orgTitle{
+	
+	font-size: medium;
+	
+	
+}
+}
