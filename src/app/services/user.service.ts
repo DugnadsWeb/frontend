@@ -34,19 +34,21 @@ export class UserService {
 
 	}
 
-	hasAppliedTo(uuid){
+	hasAppliedTo(orgId, userId){
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/user/',
+        'http://localhost:8888/api/user/applications/'+userId,
         { headers }
       )
       .map(res => res.json())
       .map((res) => {
         for (let i=0;i<res.length;i++){
-					if (res[i] == uuid){
+          console.log(res[i]);
+          console.log(orgId);
+					if (res[i] == orgId){
 						return true;
 					}
 					return false;

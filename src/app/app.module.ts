@@ -34,8 +34,7 @@ import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-p
 import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
 import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
 import { EditOrgComponent } from './components/edit-org/edit-org.component';
-
-
+import { OrgAdminAssignerComponent } from './components/org-admin-assigner/org-admin-assigner.component';
 
 
 // app services imports
@@ -86,6 +85,7 @@ const appRoutes: Routes = [
     ApplicantRowComponent,
     EditOrgComponent,
     MakeDugnadComponent,
+    OrgAdminAssignerComponent,
   ],
   imports: [
     BrowserModule,
