@@ -18,6 +18,7 @@ export class OrgService {
 	{
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
     if(!description)
     {
     	description = "Ingen beskrivelse av organisasjonen";
