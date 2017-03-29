@@ -1,12 +1,24 @@
 <div>
   <div class="container">
-    <div class="col-md-4">
-      <p>Orgnr: {{org.orgNumber}}</p>
-      <p>Email: {{org.email}}</p>
-      <p>Telefon: {{org.phone}} </p>
-    </div>
-    <div class="col-md-6">
-      <p>{{org.description}}</p>
-    </div>
+  <div class ="row">
+		<div class="col col-md-1 col-sm-1">
+		</div>
+	
+			<div  id="orgInfo" class="col col-md-4 col-sm-4">
+			  <h4>Orgnr: {{org.orgNumber}}</h4>
+			  <h4>Email: {{org.email}}</h4>
+			  <h4>Telefon: {{org.phone}} </h4>
+			</div>
+	  	<div class="col col-md-1 col-sm-1">
+		</div>
+	
+		<div id="orgDesc" class="col col-md-5 col-sm-5">
+		  <p>{{org.description}} </p>
+		
+		  <img id="imgDesc"/>
+		</div>
+			<div class="col col-md-1 col-sm-1">
+		</div>
+	</div>
   </div>
 </div>

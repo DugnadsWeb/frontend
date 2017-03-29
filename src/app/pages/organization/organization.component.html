@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row"></div> <!--  org header img-->
   <div class="row">
-    <h1 class=".col-xs-6 .col-sm-6 .col-lg-6">
+
+    <h1 id="orgTitle" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       {{ org?.orgName }}
     </h1>
+	<div id="joinBtn" >
     <membership-btn
-      class=".col-xs-6 .col-lg-4"
+    
       *ngIf="org"
       [uuid]="org.uuid">
     </membership-btn>
+	
+	</div>
   </div>
   <div>
     <ul class="nav nav-tabs" role="tablist">

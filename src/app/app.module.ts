@@ -18,7 +18,8 @@ import { RegisterOrganizationComponent } from './pages/register-organization/reg
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MakeDugnadComponent } from './pages/make-dugnad/make-dugnad.component';
-
+import { InfoHubComponent } from './components/info-hub/info-hub.component';
+import { IndexComponent } from './pages/index/index.component';
 
 // app component imports
 import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
@@ -39,7 +40,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
@@ -48,7 +49,7 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 
 //NotFoundCompononent needs to be the last in list
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate : [AuthGuardService]},
@@ -56,7 +57,9 @@ const appRoutes: Routes = [
   { path: 'org/:id', component: OrganizationComponent },
   { path: 'search', component: SearchComponent},
   { path: 'make-dugnad', component: MakeDugnadComponent },
+  { path: 'info-hub', component: InfoHubComponent },
   { path: '**', component: NotFoundComponent },
+  
 
 ];
 
@@ -88,6 +91,8 @@ const appRoutes: Routes = [
     MakeDugnadComponent,
     OrgAdminAssignerComponent,
     FooterComponent,
+    InfoHubComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +103,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService],
+  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
