@@ -2,13 +2,14 @@
 	
 	background-color:rgb(242, 241, 239);
 	margin-top: 10px;
+	margin-left: -30px;
 	height:1200px;
 	 word-wrap: break-word;
 	 text-overflow: ellipsis; 
 }
 
 #orgDesc{
-	 text-overflow: ellipsis; 
+	text-overflow: ellipsis; 
 	background-color:white;
 	margin-top: 20px;
 	border-radius: 3px;
