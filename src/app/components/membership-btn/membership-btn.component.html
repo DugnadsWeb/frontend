@@ -1,9 +1,9 @@
-<button
+<button type ="button" class="btn"
   *ngIf="!(isMember || hasApplied)"
   (click)="apply($event)">Bli medlem!
 </button>
-<button *ngIf="hasApplied">Venter godkjenning</button>
-<button
+<button type ="button" class="btn" *ngIf="hasApplied">Venter godkjenning</button>
+<button type="button" class="btn"
   *ngIf="isMember"
   (click)="cancleMembership($event)">Meld meg ut
 </button>
