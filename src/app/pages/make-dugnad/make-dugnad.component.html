@@ -1,66 +1,61 @@
 <div id="container">
-		<div class="col-md-6">
-			<div class="panel panel-primary"  style="height:1000px">
-				<div class="panel-heading">
-					<h3 class="panel-title">Opprett dugnad</h3>
-				</div>
+	<div class="row row-centered">
+		<div class="col-md-3">
+				
+		</div>
+		<div class="col-md-6 kolonne">
+			<div id="tittelContainer">
+				<h1 id="tittel">Opprett dugnad</h1>
+			</div>
+			<div class="panel panel-primary">
 				<div class="panel-body" id="block1">
-					<ul>
-						<li class="list-group-item">
-							<form (ngSubmit)="onSubmit($event)">
-								<div class="form-group">
-									<label for="dugnadsnavn">Dugnadsnavn: </label>
-									<input type="text" class="form-control" id="dugnadsnavn" aria-describedby="navnHelp" placeholder="Dugnadsnavn" required [(ngModel)]="dugnad_name">
-									<small id="navnHelp" class="form-text text-muted">Dette er navnet deltagerene vil se</small>
-								</div>
-								<div class="form-group">
-									<label for="beskrivelse">Beskrivelse</label>
-									<textarea class="form-control" id="beskrivelse" rows="3" required [(ngModel)]="dugnad_beskrivelse"></textarea>
-									<small id="beskrivelseHelp" class="form-text text-muted">hva skal du ha med deg hva skal bli gjort</small>				
-								</div>
-								<div class="form-group">
-									<label for="motested">Motested: </label>
-									<input type="text" class="form-control" id="motested" aria-describedby="motestedHelp" placeholder="Møtested" required [(ngModel)]="dugnad_motested">
-									<small id="motestedHelp" class="form-text text-muted">Motested/område for dugnaden</small>
-								</div>
-								<div class="form-group">
-									<label for="dato">Dato: </label>
-									<input type="date" class="form-control" id="dato" aria-describedby="datoHelp" required [(ngModel)]="dugnad_dato">
-									<small id="datoHelp" class="form-text text-muted">dato for dugnaden</small>
-								</div>
-								<div class="form-group">
-									<label for="tid">Møtetid: </label>
-									<input type="time" class="form-control" id="tid" aria-describedby="tidHelp" required [(ngModel)]="dugnad_tid">
-									<small id="tidHelp" class="form-text text-muted">tid for dugnaden</small>
-								</div>
-								<section class="form-group">
-								<div>
-									<select id="leftValues" size="5" multiple></select>
-								</div>
-								<div>
-									<input type="button" id="btnLeft" value="&lt;&lt;" />
-									<input type="button" id="btnRight" value="&gt;&gt;" />
-								</div>
-								<div>
-									<select id="rightValues" size="5" multiple>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-										<option>8</option>
-										<option>9</option>
-									</select>
-								</div>
-							</section>
-							<button type="submit" class="btn btn-default">Opprett dugnad</button>
-							
-								</form>
-						</li>
-					</ul>
+					<form (ngSubmit)="onSubmit($event)">
+						<div class="form-group">
+							<label>Dugnadsnavn: </label>
+							<input name="dugNavn" type="text" placeholder="Dugnadsnavn" class="form-control" id="Navn" required [(ngModel)]="Navn">
+							<small id="navnHelp" class="form-text text-muted">Dette er navnet deltagerene vil se</small>
+						</div>
+						<div class="form-group">
+							<label>Beskrivelse:</label>
+							<textarea name="dugBeskrivelse" class="form-control" id="beskrivelse" rows="3" required [(ngModel)]="beskrivelse"></textarea>
+							<small id="beskrivelseHelp" class="form-text text-muted">Beskriv dugnaden for deltagerene</small>				
+						</div>
+						<div class="form-group">
+							<label>Motested: </label>
+							<input name="dugSted" type="text" class="form-control" id="motested" required [(ngModel)]="motested">
+							<small id="motestedHelp" class="form-text text-muted">Angi motested/område for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Startdato: </label>
+							<input name="dugStartDato" type="date" class="form-control" id="startDato" required [(ngModel)]="startDato">
+							<small id="startDatoHelp" class="form-text text-muted">Angi startdato for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Møtetid: </label>
+							<input name="dugStartTid" type="time" class="form-control" id="starttid" required [(ngModel)]="starttid">
+							<small id="startTidHelp" class="form-text text-muted">Angi starttid for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Sluttdato: </label>
+							<input name="dugSluttDato" type="date" class="form-control" id="sluttDato" required [(ngModel)]="sluttDato">
+							<small id="sluttDatoHelp" class="form-text text-muted">Angi avsluttningsdato for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Avsluttnings tidspunkt: </label>
+							<input name="dugSluttTid" type="time" class="form-control" id="sluttTid" required [(ngModel)]="sluttTid">
+							<small id="sluttTidHelp" class="form-text text-muted">Angi avsluttnings tidspunkt for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Maks antall deltagere: </label>
+							<input name="dugAnt" type="number" class="form-control" id="antall" required [(ngModel)]="antall">
+							<small id="antHelp" class="form-text text-muted">Angi maks antall deltagere(0 for ubegrenset)</small>
+						</div>
+						<button type="submit" class="btn btn-default">Opprett dugnad</button>
+					</form>
 				</div>
 			</div>
-	  </div>
+		</div>
+		<div class="col-md-3">		
+		</div>
+	</div> <!-- ROW END -->
 </div>

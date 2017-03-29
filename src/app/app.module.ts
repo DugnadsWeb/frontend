@@ -38,11 +38,6 @@ import { OrgAdminAssignerComponent } from './components/org-admin-assigner/org-a
 import { FooterComponent } from './components/footer/footer.component';
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
 // app services imports
 import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
 
