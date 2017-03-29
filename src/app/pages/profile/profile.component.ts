@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService} from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
-
+ 
 
 @Component({
   selector: 'dw-profile',
@@ -16,27 +16,21 @@ export class ProfileComponent implements OnInit {
 	lastName = "";
 	email = "";
 	
-
+	
   constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
-
+    
   ngOnInit() {
+  	this.getProfileData();
+  }
 
-    var token = localStorage.getItem('auth_token');
-		  	
-		  	
-		//DOESNT WORK, FIX IT
-  	if(token === null)
-  	{
-  		this.router.navigate(['login']);
-		
-  	}
-  	
+
+	private getProfileData(){
+		var token = localStorage.getItem('auth_token');
 		var decoded = this.jwt_decode(token);
 		this.firstName = decoded.firstName;
 		this.lastName = decoded.lastName;
 		this.email = decoded.email;
-  }
-
+	}
   onSubmit(event){
   		this.authService.logout();
   		this.router.navigate(['']);

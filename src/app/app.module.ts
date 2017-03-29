@@ -35,10 +35,11 @@ import { ApproveOrgApplicationComponent } from './components/approve-org-applica
 import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
 import { EditOrgComponent } from './components/edit-org/edit-org.component';
 import { OrgAdminAssignerComponent } from './components/org-admin-assigner/org-admin-assigner.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate : [AuthGuardService]},
   { path: 'register-org', component: RegisterOrganizationComponent },
   { path: 'org/:id', component: OrganizationComponent },
   { path: 'search', component: SearchComponent},
@@ -86,6 +87,7 @@ const appRoutes: Routes = [
     EditOrgComponent,
     MakeDugnadComponent,
     OrgAdminAssignerComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService, OrgService, MessageService],
+  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
