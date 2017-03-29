@@ -40,7 +40,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
@@ -103,7 +103,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService],
+  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
