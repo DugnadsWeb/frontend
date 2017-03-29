@@ -227,5 +227,28 @@ export class OrgService {
           });
       }
 
+      editAdminRights(orgId, userId, action){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('authorization', 'Bearer ' + this.authService.getToken());
+        let body = JSON.stringify({
+          user: { email: userId },
+          org: { uuid: orgId },
+          admin: action
+          });
+        return this.http
+          .post(
+            'http://localhost:8888/api/org/chadmin',
+            body,
+            { headers }
+          )
+          .map(res => res.json())
+          .map((res) => {
+            if (res) {
+              console.log(res);
+            }
+            return res;
+          });
+      }
 
 }

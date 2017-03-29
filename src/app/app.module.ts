@@ -34,11 +34,15 @@ import { OrgAdminPanelComponent } from './components/org-admin-panel/org-admin-p
 import { ApproveOrgApplicationComponent } from './components/approve-org-application/approve-org-application.component';
 import { ApplicantRowComponent } from './components/applicant-row/applicant-row.component';
 import { EditOrgComponent } from './components/edit-org/edit-org.component';
+import { OrgAdminAssignerComponent } from './components/org-admin-assigner/org-admin-assigner.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
 // app services imports
 import { AuthService, UserService, OrgService, MessageService, AuthGuardService } from './services/services';
 
@@ -89,6 +93,7 @@ const appRoutes: Routes = [
     ApplicantRowComponent,
     EditOrgComponent,
     MakeDugnadComponent,
+    OrgAdminAssignerComponent,
     FooterComponent,
     InfoHubComponent,
   ],

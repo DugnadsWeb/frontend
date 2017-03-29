@@ -6,7 +6,8 @@
     </h1>
     <membership-btn
       class=".col-xs-6 .col-lg-4"
-      [uuid]="org?.uuid">
+      *ngIf="org"
+      [uuid]="org.uuid">
     </membership-btn>
   </div>
   <div>

@@ -10,6 +10,7 @@ export class MembershipBtnComponent implements OnInit {
 
   @Input()
   uuid:string;
+  
   isMember:boolean;
   hasApplied:boolean;
 
@@ -18,7 +19,8 @@ export class MembershipBtnComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.hasAppliedTo(this.uuid).subscribe(ret => {
+    this.userService.hasAppliedTo(this.uuid,
+      this.authService.getDecodedToken().email).subscribe(ret => {
       this.hasApplied = ret;
       this.isMember = this.authService.isMemberOf(this.uuid);
       console.log(this.hasApplied);
@@ -34,7 +36,7 @@ export class MembershipBtnComponent implements OnInit {
       })
   }
 
-  canclMembership(){
+  cancleMembership(){
     this.orgService.removeMember(this.authService.getDecodedToken().email,
       this.uuid).subscribe(ret => {
         this.isMember = false;
