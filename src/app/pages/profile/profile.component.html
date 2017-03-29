@@ -20,9 +20,15 @@
 					<h4>Etternavn: {{lastName}}</h4>
 					<hr>
 					<h4>Email: {{email}}</h4>
+					
 					<form (ngSubmit)="onSubmit($event)">
 						<button class="btn btn-default" type="submit">Logg ut</button>
 					</form>
+					<form (ngSubmit)="onUpload($event)">
+						<input type="file" accept="image/*" (change)="onChange($event)">
+						<button class="btn btn-default" type="submit">Last opp profilbilde</button>
+					</form>
+					<img [src]="imgsrc">
 					<div class="col-md-3"></div>
 				</div><!-- ROW END -->
 			</div>

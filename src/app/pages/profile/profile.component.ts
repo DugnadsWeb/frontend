@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
 	firstName = "";
 	lastName = "";
 	email = "";
+	imgsrc = "";
+	image = Blob;
 	
 	
   constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
@@ -35,5 +37,32 @@ export class ProfileComponent implements OnInit {
   		this.authService.logout();
   		this.router.navigate(['']);
   }
+  
+  
+ /* onChange(event){
+  	this.image = event.srcElement.files;
+  	//console.log(this.image);
+  }*/
+  
+  onUpload(event){
+
+  	//this.imgsrc = this.image.toString();
+  	this.userService.postPicture(this.image.toString(), this.email);
+  	
+  }
+  
+  onChange($event) : void {
+  	this.readThis($event.target);
+	}
+
+	readThis(inputValue: any): void {
+	  var file:File = inputValue.files[0];
+	  var myReader:FileReader = new FileReader();
+
+	  myReader.onloadend = (e) => {
+	    this.image = myReader.result;
+	  }
+	  myReader.readAsDataURL(file);
+	}
 
 }

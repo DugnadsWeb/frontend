@@ -56,29 +56,34 @@ export class UserService {
       });
 	}
 
-
-	//Calls database with autchentication token, returns payload of token.
-	//DEPRECATED
-	/*getData(token)
+	postPicture(pictureString, email)
 	{
-
-    let headers = new Headers();
+		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let body = JSON.stringify({ token : token });
+		headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    let body = JSON.stringify({ base64: pictureString, user: {email: email} });
     return this.http
       .post(
-        'http://localhost:8888/api/user/me',
+        'http://localhost:8888/api/user/picture',
         body,
         { headers }
       )
       .map(res => res.json())
       .map((res) => {
+        if (res.success) {
+          console.log("picture saved");
+        }
 
-        return res;
+        return res.success;
       })
       .catch((error:any) => {
+      	if(error)
+      	{
+      		console.log("SOMETHING WENT WRONG");
       		return Observable.throw(new Error(error.status));
+      	}
       });
-	}*/
+		
+	}
 
 }
