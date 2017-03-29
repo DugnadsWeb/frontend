@@ -62,6 +62,7 @@ export class UserService {
     headers.append('Content-Type', 'application/json');
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     let body = JSON.stringify({ base64: pictureString, user: {email: email} });
+    console.log(body);
     return this.http
       .post(
         'http://localhost:8888/api/user/picture',
@@ -77,7 +78,7 @@ export class UserService {
         return res.success;
       })
       .catch((error:any) => {
-      	if(error)
+      	if(error.status == 400)
       	{
       		console.log("SOMETHING WENT WRONG");
       		return Observable.throw(new Error(error.status));

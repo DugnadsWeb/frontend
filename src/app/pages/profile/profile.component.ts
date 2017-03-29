@@ -46,8 +46,12 @@ export class ProfileComponent implements OnInit {
   
   onUpload(event){
 
-  	//this.imgsrc = this.image.toString();
-  	this.userService.postPicture(this.image.toString(), this.email);
+  	this.imgsrc = this.image.toString();
+  	var base64 = this.image.toString();
+  	this.userService.postPicture(base64, this.email).subscribe((result) => {
+  		if(result)
+  			console.log("YAAAY");
+  	});
   	
   }
   
