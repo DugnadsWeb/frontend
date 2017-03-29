@@ -19,6 +19,7 @@ import { OrganizationComponent } from './pages/organization/organization.compone
 import { SearchComponent } from './pages/search/search.component';
 import { MakeDugnadComponent } from './pages/make-dugnad/make-dugnad.component';
 import { InfoHubComponent } from './components/info-hub/info-hub.component';
+import { IndexComponent } from './pages/index/index.component';
 
 // app component imports
 import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
@@ -48,7 +49,7 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 
 //NotFoundCompononent needs to be the last in list
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate : [AuthGuardService]},
@@ -91,6 +92,7 @@ const appRoutes: Routes = [
     OrgAdminAssignerComponent,
     FooterComponent,
     InfoHubComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
