@@ -7,23 +7,28 @@
     </h1>
 	<div id="joinBtn" >
     <membership-btn
-    
+
       *ngIf="org"
       [uuid]="org.uuid">
     </membership-btn>
-	
+
 	</div>
   </div>
   <div>
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Aktivitet</a></li>
       <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
-      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Meldinger</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Beskjeder</a></li>
       <li role="presentation"><a href="#members" aria-controls="members" role="tab" data-toggle="tab">Medlemmer</a></li>
       <li *ngIf="isAdmin" role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Admin Panel</a></li>
     </ul>
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">...</div>
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <app-dugnad-list
+        *ngIf="org"
+          [uuid]="org.uuid">
+        </app-dugnad-list>
+      </div>
       <div role="tabpanel" class="tab-pane" id="info">
         <org-info *ngIf="org" [org]="org"></org-info>
       </div>

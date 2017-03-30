@@ -37,6 +37,9 @@ import { ApplicantRowComponent } from './components/applicant-row/applicant-row.
 import { EditOrgComponent } from './components/edit-org/edit-org.component';
 import { OrgAdminAssignerComponent } from './components/org-admin-assigner/org-admin-assigner.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DugnadListComponent } from './components/dugnad-list/dugnad-list.component';
+import { DugnadViewComponent } from './components/dugnad-view/dugnad-view.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 // app services imports
@@ -59,7 +62,7 @@ const appRoutes: Routes = [
   { path: 'make-dugnad', component: MakeDugnadComponent },
   { path: 'info-hub', component: InfoHubComponent },
   { path: '**', component: NotFoundComponent },
-  
+
 
 ];
 
@@ -93,6 +96,9 @@ const appRoutes: Routes = [
     FooterComponent,
     InfoHubComponent,
     IndexComponent,
+    DugnadListComponent,
+    DugnadViewComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
