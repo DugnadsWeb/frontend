@@ -21,23 +21,28 @@
 					<hr>
 					<h4>Email: {{email}}</h4>
 					
-				
+					<hr>
 					<form (ngSubmit)="onUpload($event)">
-						<input type="file" accept="image/*" (change)="onChange($event)">
-						<button class="btn btn-info" type="submit">Last opp profilbilde</button>
+						<input id="inpFile" type="file" accept="image/*" (change)="onChange($event)">
+						<button id="btnFile" class="btn btn-default" type="submit">Last opp profilbilde</button>
 					</form>
-					<img [src]="imgsrc" width="200" heigth="200">
-					
-				</div>
-					<form (ngSubmit)="onSubmit($event)">
+				
+					<div id="pImgDiv">
+					<img id="pImg" [src]="imgsrc" width="200" heigth="200">
+					</div>
+						<hr>
+					<form id="loggOffF" (ngSubmit)="onSubmit($event)">
 						<button class="btn btn-default" type="submit">Logg ut</button>
-					</form>
+			</form>
+				</div><!-- ROW END -->
+			<div id="loggOffDiv">
+			
+
+			</div>
 			</div>
 			
 		</div>
-		
 		<div class="col-md-3"></div>
-		
 	</div>
 </div>
 </body>
