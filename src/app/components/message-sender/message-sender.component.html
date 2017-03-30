@@ -1,4 +1,6 @@
-<div>
-  <textarea [(ngModel)]="message"></textarea>
+<div class="form-group">
+	<label for="comment">Skriv</label>
+  <textarea class="form-control" rows="5" id="comment" [(ngModel)]="message"></textarea>
   <button (click)="sendMessage()">Send</button>
 </div>
+
