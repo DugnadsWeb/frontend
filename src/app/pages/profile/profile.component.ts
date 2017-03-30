@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService} from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'angular2-modal';
  
 
 @Component({
@@ -19,7 +21,10 @@ export class ProfileComponent implements OnInit {
 	image = Blob;
 	
 	
-  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router, public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef)
+   {
+   	 overlay.defaultViewContainer = vcRef;
+   }
     
   ngOnInit() {
   	this.getProfileData();
@@ -32,26 +37,40 @@ export class ProfileComponent implements OnInit {
 		this.firstName = decoded.firstName;
 		this.lastName = decoded.lastName;
 		this.email = decoded.email;
+		this.userService.getPicture(this.email).subscribe((result) =>{
+			if(result)
+			{
+				if(result.records == 0)
+				{
+					this.imgsrc = '../../../assets/img/placeholder_profile_pic.png';	
+				}
+				else{
+					this.imgsrc = result.records[0]._fields[0].properties.base64;
+				}
+			}
+		});
 	}
   onSubmit(event){
   		this.authService.logout();
   		this.router.navigate(['']);
   }
   
-  
- /* onChange(event){
-  	this.image = event.srcElement.files;
-  	//console.log(this.image);
-  }*/
-  
   onUpload(event){
 
-  	this.imgsrc = this.image.toString();
   	var base64 = this.image.toString();
-  	this.userService.postPicture(base64, this.email).subscribe((result) => {
-  		if(result)
-  			console.log("YAAAY");
+  	if(base64 === "function Blob() { [native code] }")
+  	{
+  		this.modal.alert()
+  		.title('Error')
+  		.body('Du har ikke valgt et bilde, velg ett og prøv igjen')
+  		.open();
+  	}
+  	else
+  	{
+  		this.userService.postPicture(base64, this.email).subscribe((result) => {
+  			this.imgsrc = this.image.toString();
   	});
+  	}
   	
   }
   

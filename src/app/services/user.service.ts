@@ -86,5 +86,26 @@ export class UserService {
       });
 		
 	}
+	
+	getPicture(email)
+	{
+		let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('authorization', 'Bearer ' + this.authService.getToken());
+		let body = JSON.stringify({user: {email: email}});
+		return this.http
+			.get(
+				'http://localhost:8888/api/user/picture/'+email,
+				{headers}
+			)
+			.map(res => res.json())
+			.map((res) => {
+				if(res)
+				{
+					console.log(res);
+				}
+				return res;
+			});
+	}
 
 }

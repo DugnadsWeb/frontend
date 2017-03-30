@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { User } from '../../models/models';
+import { UserService } from '../../services/services';
 
 
 @Component({
@@ -14,9 +15,10 @@ export class UserBoxComponent implements OnInit {
 
   placeholderImg = '../../../assets/img/placeholder_profile_pic.png';
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+  	
   }
 
 }
