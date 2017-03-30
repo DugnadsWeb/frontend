@@ -1,4 +1,7 @@
 <div class=container>
+  <app-make-dugnad
+    [orgUuid]="org.uuid">
+  </app-make-dugnad>
   <approve-org-application
     [uuid]=org.uuid
     (memberAdded)="addedMember($event)">
