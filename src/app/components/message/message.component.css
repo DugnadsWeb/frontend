@@ -1,0 +1,26 @@
+#messageRow{
+	
+	background-color:rgb(242, 241, 239);
+	height: 100px;
+	
+	
+}
+
+#something{
+	
+	
+	padding: 10px;
+	margin-top: 10px;
+}
+.messageSender{
+	background-color: white;
+
+	margin-left: 10px;
+	
+	
+}
+.messageBy{background-color: white;
+
+	margin-left: 10px;}
+
+
