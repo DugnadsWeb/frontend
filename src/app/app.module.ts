@@ -44,6 +44,7 @@ import { AuthService, UserService, OrgService, MessageService, AuthGuardService,
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 
@@ -93,6 +94,7 @@ const appRoutes: Routes = [
     FooterComponent,
     InfoHubComponent,
     IndexComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
