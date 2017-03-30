@@ -11,6 +11,7 @@ import { OrgService } from '../../services/org.service';
 export class SearchComponent implements OnInit {
 
 	namelist = [];
+	tmpNamelist = [];
 	orglist = [];
 	orgNumber = "";
 	orgName = "";
@@ -21,7 +22,13 @@ export class SearchComponent implements OnInit {
   constructor(private orgService: OrgService, private router: Router) {
 
   }
-
+	
+	
+	//////////////////////////////////
+	/////////////TODO/////////////////
+	/////////////TODO/////////////////
+	//////////////////////////////////
+	/*GJØR DETTE PENERE, HÅPLØS SPAGETTI KODE*/
 
   ngOnInit() {
 
@@ -36,48 +43,55 @@ export class SearchComponent implements OnInit {
   			listOfOrgs.push(org);
   		});
 
+			this.tmpNamelist = orgNames;
   		this.namelist = orgNames;
   		this.orglist = listOfOrgs;
   	});
 
   }
   
-  fetchOrgs()
+  getList()
   {
-  	this.orgService.getOrgs().subscribe((result) => {
-
-			var orgNames = [];
-			var listOfOrgs = [];
-			console.log(result);
-
-  		result.forEach(function (org)
-  		{
-  			orgNames.push(org.orgName);
-  			listOfOrgs.push(org);
-  		});
-
-  		this.namelist = orgNames;
-  		this.orglist = listOfOrgs;
-  	});
+  	var orgNames = [];
+  	for(var i = 0; i < this.tmpNamelist.length; i++)
+  	{
+			var a = this.tmpNamelist[i];
+			orgNames.push(a);	
+		}
+		this.namelist = orgNames;
   }
   
-	searchFunction(value: string)
+	searchFunction(event: any, value: string)
 	{
 		value = value.toUpperCase();
-		var orgNames = [];
+		var tmpNameList = this.tmpNamelist;
+		var tmpNames = [];
 		
 		for(var i = 0; i < this.namelist.length; i++){
 			var a = this.namelist[i];
-			if(a.toUpperCase().indexOf(value) > -1)
-			{
-				orgNames.push(a);
-			}
 			
+			if(event.keyCode == 8)
+			{
+				for(var i = 0; i < this.tmpNamelist.length; i++)
+				{
+					var b = tmpNameList[i];
+					if(b.toUpperCase().indexOf(value) > -1)
+					{
+						tmpNames.push(b);	
+					}
+				}	
+			}
+			else if(a.toUpperCase().indexOf(value) > -1)
+			{
+				tmpNames.push(a);
+			}
 		}
+		this.namelist = tmpNames;
+		
 		if(value == ""){
-			this.fetchOrgs();
+			this.getList();
 		}
-		this.namelist = orgNames;
+		
 	}
   
   routeToOrg(clicked){
