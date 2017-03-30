@@ -39,6 +39,7 @@ import { OrgAdminAssignerComponent } from './components/org-admin-assigner/org-a
 import { FooterComponent } from './components/footer/footer.component';
 import { DugnadListComponent } from './components/dugnad-list/dugnad-list.component';
 import { DugnadViewComponent } from './components/dugnad-view/dugnad-view.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 // app services imports
@@ -97,6 +98,7 @@ const appRoutes: Routes = [
     IndexComponent,
     DugnadListComponent,
     DugnadViewComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

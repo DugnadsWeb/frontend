@@ -1,13 +1,15 @@
 <div id="container">
-	<div class="row row-centered">
+	<div class="row">
 		<div class="col-md-3">
 
 		</div>
-		<div class="col-md-6 kolonne">
-			<div id="tittelContainer">
+		<div class="col-md-12 kolonne">
+		<!--	<div id="tittelContainer">
 				<h1 id="tittel">Opprett dugnad</h1>
-			</div>
-			<div class="panel panel-primary">
+			</div> -->
+			 <a href="#demo2" class="btn btn-link" data-toggle="collapse">Ny dugnad</a>
+				  <div id="demo2" class="collapse">
+						<div class="panel panel-primary">
 				<div class="panel-body" id="block1">
 					<form (ngSubmit)="onSubmit($event)">
 						<div class="form-group">
@@ -54,6 +56,8 @@
 					</form>
 				</div>
 			</div>
+				  </div>
+		
 		</div>
 		<div class="col-md-3">
 		</div>

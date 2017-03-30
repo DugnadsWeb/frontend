@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
-  	<div class="col-md-3">
-
-    </div>
-  	<div class="col-md-6 kolonne">
-    	<div id="tittelContainer">
+  
+  	<div class="col-md-12 kolonne">
+    	<!--<div id="tittelContainer">
       <h2 id="tittel">Endre organisasjonsinfo</h2>
-      </div>
-    		<div class="panel panel-primary">
+      </div> -->
+	  	 <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo">Endre organisasjonsinfo</button>
+			<div id="demo" class="collapse">
+   <div class="panel panel-primary">
 
           <div class="panel-body" id="block1">
 
@@ -16,7 +16,7 @@
                  <label>Organisasjonsnummer</label>
                  <input name="orgNumber"
                    type="text"
-                   placeholder="MÃ¥ vÃ¦re 9 langt"
+                   placeholder="Må være 9 langt"
                    class="form-control" id="orgNumber" required
                    [(ngModel)]="editOrg.orgNumber">
                </div>
@@ -54,8 +54,9 @@
            </div>
          </div>
        </div>
-    <div class="col-md-3">
-
-    </div>
+  </div>
+    		
+  
   </div> <!-- ROW END -->
 </div>
+

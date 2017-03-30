@@ -2,6 +2,36 @@
 	background-color: rgb (194,229,229);
 	
 }
+#inpFile{
+	
+	float:left;
+	
+}
+#btnFile{
+	
+	float:right;
+}
+
+form{
+	
+	margin-top: 30px;
+}
+#pImg{
+	width: 200px;
+
+	
+}
+#pImgDiv{
+	
+	margin-top: 100px;
+	
+}
+#loggOffDiv{
+	
+	
+ float:left;
+	
+}
 #tittelContainer{
 	border-radius: 3px;
 	width:99%;
