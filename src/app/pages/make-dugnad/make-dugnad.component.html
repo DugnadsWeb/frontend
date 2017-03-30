@@ -1,7 +1,7 @@
 <div id="container">
 	<div class="row row-centered">
 		<div class="col-md-3">
-				
+
 		</div>
 		<div class="col-md-6 kolonne">
 			<div id="tittelContainer">
@@ -12,37 +12,37 @@
 					<form (ngSubmit)="onSubmit($event)">
 						<div class="form-group">
 							<label>Dugnadsnavn: </label>
-							<input name="dugNavn" type="text" placeholder="Dugnadsnavn" class="form-control" id="dugNavn" required [(ngModel)]="dugNavn">
+							<input name="dugNavn" type="text" placeholder="Dugnadsnavn" class="form-control" id="dugNave" required [(ngModel)]="dugName">
 							<small id="navnHelp" class="form-text text-muted">Dette er navnet deltagerene vil se</small>
 						</div>
 						<div class="form-group">
 							<label>Beskrivelse:</label>
-							<textarea name="dugBeskrivelse" class="form-control" id="dugBeskrivelse" rows="3" required [(ngModel)]="dugBeskrivelse"></textarea>
-							<small id="beskrivelseHelp" class="form-text text-muted">Beskriv dugnaden for deltagerene</small>				
+							<textarea name="dugBeskrivelse" class="form-control" id="dugBeskrivelse" rows="3" required [(ngModel)]="dugDescription"></textarea>
+							<small id="beskrivelseHelp" class="form-text text-muted">Beskriv dugnaden for deltagerene</small>
 						</div>
 						<div class="form-group">
 							<label>Motested: </label>
-							<input name="dugSted" type="text" class="form-control" id="dugSted" required [(ngModel)]="dugSted">
+							<input name="dugSted" type="text" class="form-control" id="dugSted" required [(ngModel)]="dugLocation">
 							<small id="motestedHelp" class="form-text text-muted">Angi motested/område for dugnaden</small>
 						</div>
 						<div class="form-group">
 							<label>Startdato: </label>
-							<input name="dugStartDato" type="date" class="form-control" id="dugStartDato" required [(ngModel)]="dugStartDato">
+							<input name="dugStartDato" type="date" class="form-control" id="dugStartDato" required [(ngModel)]="dugStartDate">
 							<small id="startDatoHelp" class="form-text text-muted">Angi startdato for dugnaden</small>
 						</div>
 						<div class="form-group">
 							<label>Møtetid: </label>
-							<input name="dugStartTid" type="time" class="form-control" id="dugStarttid" required [(ngModel)]="dugStarttid">
+							<input name="dugStartTid" type="time" class="form-control" id="dugStarttid" required [(ngModel)]="dugStartTime">
 							<small id="startTidHelp" class="form-text text-muted">Angi starttid for dugnaden</small>
 						</div>
 						<div class="form-group">
 							<label>Sluttdato: </label>
-							<input name="dugSluttDato" type="date" class="form-control" id="dugSluttDato" required [(ngModel)]="dugSluttDato">
+							<input name="dugSluttDato" type="date" class="form-control" id="dugSluttDato" required [(ngModel)]="dugEndDate">
 							<small id="sluttDatoHelp" class="form-text text-muted">Angi avsluttningsdato for dugnaden</small>
 						</div>
 						<div class="form-group">
 							<label>Avsluttnings tidspunkt: </label>
-							<input name="dugSluttTid" type="time" class="form-control" id="dugSluttTid" required [(ngModel)]="dugSluttTid">
+							<input name="dugSluttTid" type="time" class="form-control" id="dugSluttTid" required [(ngModel)]="dugEndTime">
 							<small id="sluttTidHelp" class="form-text text-muted">Angi avsluttnings tidspunkt for dugnaden</small>
 						</div>
 						<div class="form-group">
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">		
+		<div class="col-md-3">
 		</div>
 	</div> <!-- ROW END -->
 </div>
