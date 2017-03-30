@@ -36,13 +36,12 @@ export class DugnadService {
 	/*
 	* Registrer a new dugnad
 	*/
-	
-	registrerdug(dugNavn, dugBeskrivelse, dugSted, dugStartDato, dugStartTid, dugSluttDato, dugSluttTid, dugAnt)
-	{
+
+	registrerdug(dugnad: Dugnad, orgId){
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
-    let body = JSON.stringify({ dugNavn, dugBeskrivelse, dugSted, dugStartDato, dugStartTid, dugSluttDato, dugSluttTid, dugAnt});
+    let body = JSON.stringify({dugnad:dugnad, org: {uuid:orgId}});
 	console.log(body);
 	return this.http
 	  .post(
@@ -54,12 +53,12 @@ export class DugnadService {
 	  .map((res) => {
 		if (res) {
 			console.log("Dugnad created succesfully");
-		} 
+		}
 		return res;
 	  });
-	  
+
 	}
-	
+
 	getDugnads()
 	{
 		return this.http
@@ -79,4 +78,4 @@ export class DugnadService {
       		return Observable.throw(new Error(error.status));
       });
 	}
-}	
+}

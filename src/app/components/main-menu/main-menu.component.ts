@@ -20,12 +20,29 @@ export class MainMenuComponent implements OnInit {
 
 
   ngOnInit() {
+	  
 	  var token = localStorage.getItem('auth_token');
+	  var btn = document.getElementById("logoutBTN2");
+	  
+	  if(!token || token === null){
+		  btn.innerHTML="Logg in";  
+	  }
+	  else if(token){
+		  btn.innerHTML="Logg ut";  
+	  }
 	  
   }
   onSubmit(event){
+	    var btn = document.getElementById("logoutBTN2");
+	  if(btn.innerHTML=="Logg in"){
+		  
+		  this.router.navigate(['/login']);
+		  
+	  }  
+	  else if(btn.innerHTML=="Logg ut"){
   		this.authService.logout();
   		this.router.navigate(['']);
+		}
   }
 
 }
