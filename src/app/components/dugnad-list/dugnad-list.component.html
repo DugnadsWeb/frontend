@@ -1,0 +1,9 @@
+<div class="container">
+  <ng-container *ngIf="dugnads">
+    <dugnad-view
+      class="row"
+      *ngFor="let dugnad of dugnads"
+      [dugnad]="dugnad">
+    </dugnad-view>
+  </ng-container>
+</div>

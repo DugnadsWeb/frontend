@@ -44,7 +44,7 @@ export class MakeDugnadComponent implements OnInit {
     .subscribe((result)	=> {
 			if(result)
 			{
-				this.router.navigate(['org/'+this.orgUuid]);
+				//this.router.navigate(['org/'+this.orgUuid]);
 			}
 		});
 

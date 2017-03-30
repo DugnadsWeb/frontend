@@ -38,6 +38,7 @@ export class DugnadService {
 	*/
 
 	registrerdug(dugnad: Dugnad, orgId){
+    delete dugnad.uuid;
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());

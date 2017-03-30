@@ -46,7 +46,7 @@ export class OrganizationComponent implements OnInit {
 
     this.route.params.subscribe(params => {
        this.isAdmin = this.authService.isAdminOf(params['id']);
-       console.log(this.authService.isAdminOf(params['id']));
+       console.log('im admin: ' + this.isAdmin);
     });
 
   }

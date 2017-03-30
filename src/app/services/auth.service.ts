@@ -69,7 +69,8 @@ export class AuthService {
   isAdminOf(groupUuid:string): boolean{
     let org = this.getDecodedToken().memberships;
     for (let i=0;i<org.length;i++){
-      if (org[i].uuid == groupUuid && org[i].is_admin) {return true}
+      if (org[i].uuid == groupUuid && org[i].is_admin == 'true') {
+        return true}
     }
     return false;
   }

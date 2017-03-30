@@ -252,4 +252,27 @@ export class OrgService {
           });
       }
 
+      getDugnads(orgId){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('authorization', 'Bearer ' + this.authService.getToken());
+        return this.http
+    			.get(
+    				'http://localhost:8888/api/org/dugnads/'+orgId,
+            { headers }
+    			)
+    			.map(res => res.json())
+    			.map((res) => {
+    				if(res)
+    				{
+    					console.log("dugnads fetched for " + orgId);
+    				}
+
+    				return res;
+    			})
+    			.catch((error:any) => {
+          		return Observable.throw(new Error(error.status));
+          });
+      }
+
 }

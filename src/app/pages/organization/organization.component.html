@@ -7,11 +7,11 @@
     </h1>
 	<div id="joinBtn" >
     <membership-btn
-    
+
       *ngIf="org"
       [uuid]="org.uuid">
     </membership-btn>
-	
+
 	</div>
   </div>
   <div>
@@ -23,7 +23,12 @@
       <li *ngIf="isAdmin" role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Admin Panel</a></li>
     </ul>
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">...</div>
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <app-dugnad-list
+        *ngIf="org"
+          [uuid]="org.uuid">
+        </app-dugnad-list>
+      </div>
       <div role="tabpanel" class="tab-pane" id="info">
         <org-info *ngIf="org" [org]="org"></org-info>
       </div>
