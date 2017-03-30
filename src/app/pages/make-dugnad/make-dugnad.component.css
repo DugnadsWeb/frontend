@@ -3,7 +3,7 @@
 	
 }
 #tittelContainer{
-	border-radius: 3px;
+	border-top-radius: 3px;
 	width:99%;
 	height:10vw;
 	position: relative;
@@ -29,7 +29,7 @@
 .row{
 background-color:rgb(242, 241, 239);
 
-border-radius: 3px;
+border-radius:3px 3px 0px 0px;
 
 }
 .panel{
@@ -46,5 +46,13 @@ border-radius: 3px;
 .container{
 	
 	width:80%;	
+	
+}
+a.btn btn-link{
+	background-color: red;
+	
+}
+.col-md-12 kolonne{
+	margin-top: 1px;
 	
 }
