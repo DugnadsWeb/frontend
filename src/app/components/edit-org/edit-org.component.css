@@ -31,6 +31,7 @@ background-color:rgb(242, 241, 239);
 
 border-radius: 0px 0px 3px 3px;
 
+
 }
 .panel{
 	
@@ -48,5 +49,15 @@ border-radius: 0px 0px 3px 3px;
 	width:100%;	
 	padding: 0;
 	margin: 0%;
+	
+}
+.btn btn-link:link{
+	text-decoration: none;
+	background-color: RED;
+	
+}
+#besteknappen{
+	text-decoration: none;
+	color: black;
 	
 }
