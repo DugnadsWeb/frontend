@@ -8,6 +8,7 @@
 	height:10vw;
 	position: relative;
 	background-color: rgb(194,229,229);
+	width:100%;
 }
 #tittel{
 	text-align: center;
@@ -30,9 +31,7 @@
 background-color:rgb(242, 241, 239);
 
 border-radius: 3px;
-	-webkit-box-shadow: 0 8px 6px -6px black;
-	   -moz-box-shadow: 0 8px 6px -6px black;
-	        box-shadow: 0 10px 20px -6px black;
+
 			
 			
 			padding-bottom: 50px;
@@ -41,6 +40,7 @@ border-radius: 3px;
 	
 	border-style: none;
 	height: 100%;
+	width:100%;
 }
 
 .kolonne{
