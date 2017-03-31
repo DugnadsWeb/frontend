@@ -9,7 +9,7 @@
 	        box-shadow: 0 10px 20px -6px black;
 			
 			
-			padding-bottom: 50px;
+			
 			
 			
 			margin-top: 40px;
@@ -41,8 +41,10 @@
 .row{
 background-color:rgb(242, 241, 239);
 
-border-radius:3px 3px 0px 0px;
 
+
+ padding-bottom: 10px;
+ padding-top: 10px;
 }
 .panel{
 	
@@ -70,5 +72,12 @@ a.btn btn-link:link{
 }
 #besteknappen a{
 	color: black;
+	border-radius: 3px;
+}
+
+
+
+span{
+	font-family: 'Roboto', sans-serif;
 	
 }
