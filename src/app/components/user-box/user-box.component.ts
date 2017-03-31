@@ -13,12 +13,18 @@ export class UserBoxComponent implements OnInit {
   @Input()
   user: User;
 
-  placeholderImg = '../../../assets/img/placeholder_profile_pic.png';
+  profilePic = '../../../assets/img/placeholder_profile_pic.png';
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-  	
+  	var ptags = document.getElementsByClassName("UserPTag").length;
+  	for(var i = 0; i < ptags; i++)
+  	{
+  		this.userService.getPicture(this.user.email).subscribe((result) => {
+  				this.profilePic = result.records[0]._fields[0].properties.base64; 
+  		});
+  	}
   }
 
 }

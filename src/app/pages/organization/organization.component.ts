@@ -22,6 +22,7 @@ export class OrganizationComponent implements OnInit {
   members: User[];
   admins: User[];
   isAdmin: boolean;
+  memberPic: Array<any>;
 
   constructor(private orgService: OrgService,
               private authService: AuthService,
@@ -48,6 +49,7 @@ export class OrganizationComponent implements OnInit {
        this.isAdmin = this.authService.isAdminOf(params['id']);
        console.log('im admin: ' + this.isAdmin);
     });
+    
 
   }
 

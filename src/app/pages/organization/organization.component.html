@@ -40,7 +40,7 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="members">
         <members-list *ngIf="admins" [users]="admins" [title]="'Administratorer'"></members-list>
-        <members-list *ngIf="admins" [users]="members" [title]="'Medlemmer'"></members-list>
+        <members-list *ngIf="members" [users]="members" [title]="'Medlemmer'"></members-list>
       </div>
       <div role="tabpanel" class="tab-pane" id="admin">
         <org-admin-panel

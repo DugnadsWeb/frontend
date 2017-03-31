@@ -1,0 +1,81 @@
+.panel-heading {	
+	background-color: rgb (194,229,229);
+	
+}
+#tittelContainer{
+	border-radius: 3px;
+	width:99%;
+	height:10vw;
+	position: relative;
+	background-color: rgb(194,229,229);
+	border-radius: 3px;
+}
+#tittel{
+	text-align: center;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	margin: 0;
+    position: absolute;
+	font-size: 3vw;
+	border-radius: 100px;
+	border-color: rgb(26,61,61);	
+}
+		
+#tittel + .row{
+	width: 100%;	
+}
+
+.row{
+background-color:rgb(242, 241, 239);
+
+border-radius: 3px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 10px 20px -6px black;
+			
+			
+			padding-bottom: 50px;
+}
+.panel{
+	
+	border-style: none;
+	height: 100%;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 10px 20px -6px black;
+}
+
+.kolonne{
+	margin-top: 40px;
+
+	}
+	
+.container{
+	
+	width:80%;	
+	
+}
+h2{
+	text-align: center;
+}
+#block1{
+	padding-top: 100px;
+	
+}
+.panel panel-primary{
+	padding-top: 50px;
+	
+}
+p{
+	font-size: 16px;
+	  font-family: "Arial", Sans-serif;
+}
+h3{
+	text-align: center;
+	color: #555;
+	font-size: 22px;
+	
+}

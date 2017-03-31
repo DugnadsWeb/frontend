@@ -5,7 +5,7 @@
     	<!--<div id="tittelContainer">
       <h2 id="tittel">Endre organisasjonsinfo</h2>
       </div> -->
-	  	 <button id="besteknappen" type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo">Endre organisasjonsinfo</button>
+	  	 <button id="besteknappen" style="background-color:white;" type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo"><img style="width:10px;"src="https://media.scattergroundstudios.com:444/MicroManager/Icons/110912-Font-Awesome/png/angle-arrow-down.png">Endre organisasjonsinfo</button>
 			<div id="demo" class="collapse">
    <div class="panel panel-primary">
 
@@ -16,9 +16,10 @@
                  <label>Organisasjonsnummer</label>
                  <input name="orgNumber"
                    type="text"
-                   placeholder="Må være 9 langt"
+                   placeholder="xxxxxxxxx"
                    class="form-control" id="orgNumber" required
                    [(ngModel)]="editOrg.orgNumber">
+				   <small id="orgNrHelp" class="form-text text-muted">Må være 9 tegn langt</small>
                </div>
                <div class="form-group">
                  <label>Navn</label>
@@ -49,7 +50,7 @@
                    id="description"
                    [(ngModel)]="editOrg.description">
                </div>
-               <button type="submit"class="btn btn-default">Opdater</button>
+               <button type="submit"class="btn btn-default">Oppdater</button>
              </form>
            </div>
          </div>
