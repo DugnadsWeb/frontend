@@ -3,7 +3,18 @@
 	margin-left: 50%;
 	transform: translate(-50%, 0%);
 }
-
+.row{
+		border-radius: 3px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 10px 20px -6px black;
+			
+			
+			padding-bottom: 50px;
+			
+			
+			margin-top: 40px;
+	}
 ul {
   list-style-type: none;
   margin: 0;
@@ -64,7 +75,7 @@ margin-top: 50px;
 }
 .panel{
 	border-style: none;
-	height: 100vw;
+
 }
 #tittelContainer{
 	border-radius: 3px;
