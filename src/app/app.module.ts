@@ -20,6 +20,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { MakeDugnadComponent } from './pages/make-dugnad/make-dugnad.component';
 import { InfoHubComponent } from './components/info-hub/info-hub.component';
 import { IndexComponent } from './pages/index/index.component';
+import { DugnadComponent } from './pages/dugnad/dugnad.component';
+
 
 // app component imports
 import { DugnadOverViewComponent } from './components/dugnad-over-view/dugnad-over-view.component';
@@ -61,6 +63,7 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'make-dugnad', component: MakeDugnadComponent },
   { path: 'info-hub', component: InfoHubComponent },
+  { path: 'dugnad/:id', component: DugnadComponent },
   { path: '**', component: NotFoundComponent },
 
 
@@ -99,6 +102,7 @@ const appRoutes: Routes = [
     DugnadListComponent,
     DugnadViewComponent,
     EditUserComponent,
+    DugnadComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +113,12 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService],
+  providers: [AuthService,
+    UserService,
+    OrgService,
+    MessageService,
+    AuthGuardService,
+    DugnadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
