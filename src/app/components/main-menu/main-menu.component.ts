@@ -35,9 +35,7 @@ export class MainMenuComponent implements OnInit {
   onSubmit(event){
 	    var btn = document.getElementById("logoutBTN2");
 	  if(btn.innerHTML=="Logg in"){
-		  
-		  this.router.navigate(['/login']);
-		  
+		  this.router.navigate(['/login']);		  
 	  }  
 	  else if(btn.innerHTML=="Logg ut"){
   		this.authService.logout();
