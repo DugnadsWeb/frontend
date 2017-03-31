@@ -17,9 +17,10 @@
 												<form (ngSubmit)="onSubmit($event)">
   	<div class="form-group">
       <label>Organisasjonsnummer</label>
-      <input name="orgNumber" type="text" placeholder="Må være 9 langt"
+      <input name="orgNumber" type="text" placeholder="xxxxxxxxx"
       class="form-control" id="orgNumber" required
       [(ngModel)]="orgNumber">
+	  <small id="orgNrHelp" class="form-text text-muted">Må være 9 tegn langt</small>
     </div>
     <div class="form-group">
       <label>Navn</label>

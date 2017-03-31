@@ -16,9 +16,10 @@
                  <label>Organisasjonsnummer</label>
                  <input name="orgNumber"
                    type="text"
-                   placeholder="Må være 9 langt"
+                   placeholder="xxxxxxxxx"
                    class="form-control" id="orgNumber" required
                    [(ngModel)]="editOrg.orgNumber">
+				   <small id="orgNrHelp" class="form-text text-muted">Må være 9 tegn langt</small>
                </div>
                <div class="form-group">
                  <label>Navn</label>
@@ -49,7 +50,7 @@
                    id="description"
                    [(ngModel)]="editOrg.description">
                </div>
-               <button type="submit"class="btn btn-default">Opdater</button>
+               <button type="submit"class="btn btn-default">Oppdater</button>
              </form>
            </div>
          </div>
