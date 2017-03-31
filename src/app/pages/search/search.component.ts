@@ -9,45 +9,37 @@ import { OrgService } from '../../services/org.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+	
 	namelist = [];
 	tmpNamelist = [];
 	orglist = [];
-	orgNumber = "";
 	orgName = "";
-	email = "";
-	phone = "";
-	description = "";
 
   constructor(private orgService: OrgService, private router: Router) {
 
   }
-	
-	
-	//////////////////////////////////
-	/////////////TODO/////////////////
-	/////////////TODO/////////////////
-	//////////////////////////////////
-	/*GJØR DETTE PENERE, HÅPLØS SPAGETTI KODE*/
 
   ngOnInit() {
-
-  	this.orgService.getOrgs().subscribe((result) => {
+		this.getOrgs();
+  }
+  
+  getOrgs()
+  {
+  		this.orgService.getOrgs().subscribe((result) => {
 
 			var orgNames = [];
 			var listOfOrgs = [];
-
   		result.forEach(function (org)
   		{
+  			
   			orgNames.push(org.orgName);
   			listOfOrgs.push(org);
   		});
-
+			
 			this.tmpNamelist = orgNames;
   		this.namelist = orgNames;
   		this.orglist = listOfOrgs;
   	});
-
   }
   
   getList()
@@ -64,17 +56,17 @@ export class SearchComponent implements OnInit {
 	searchFunction(event: any, value: string)
 	{
 		value = value.toUpperCase();
-		var tmpNameList = this.tmpNamelist;
+		var searchList = this.tmpNamelist;
 		var tmpNames = [];
 		
-		for(var i = 0; i < this.namelist.length; i++){
-			var a = this.namelist[i];
+		for(var i = 0; i < searchList.length; i++){
+			var a = searchList[i];
 			
 			if(event.keyCode == 8)
 			{
 				for(var i = 0; i < this.tmpNamelist.length; i++)
 				{
-					var b = tmpNameList[i];
+					var b = searchList[i];
 					if(b.toUpperCase().indexOf(value) > -1)
 					{
 						tmpNames.push(b);	
@@ -89,7 +81,7 @@ export class SearchComponent implements OnInit {
 		this.namelist = tmpNames;
 		
 		if(value == ""){
-			this.getList();
+			this.namelist = searchList;
 		}
 		
 	}
