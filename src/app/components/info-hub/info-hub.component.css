@@ -27,3 +27,77 @@
 .panel-body{
 	overflow: auto;
 }
+
+
+
+.panel-heading {	
+	background-color: rgb (194,229,229);
+	
+}
+#block1{
+	background-color: rgb(194,229,229);
+	margin-top: 30px;
+}
+#block2{
+	margin-top: 30px;
+	background-color: rgb(194,229,229);
+	
+}
+.row{
+		border-radius: 3px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 10px 20px -6px black;
+			
+			
+			padding-bottom: 50px;
+			
+			
+			margin-top: 40px;
+	}
+#tittelContainer{
+	border-radius: 3px;
+	width:99%;
+	height:10vw;
+	position: relative;
+	background-color: rgb(194,229,229);
+}
+#tittel{
+	text-align: center;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	margin: 0;
+    position: absolute;
+	font-size: 3vw;
+	border-radius: 100px;
+	border-color: rgb(26,61,61);	
+}
+		
+#tittel + .row{
+	width: 100%;	
+}
+
+.row{
+background-color:rgb(242, 241, 239);
+
+border-radius: 3px;
+
+}
+.panel{
+	
+	border-style: none;
+	height: 100%;
+}
+
+.kolonne{
+	margin-top: 4%;	
+
+	}
+	
+.container{
+	
+	width:80%;	
+	
+}
