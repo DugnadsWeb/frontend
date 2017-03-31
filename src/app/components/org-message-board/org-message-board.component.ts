@@ -15,6 +15,9 @@ export class OrgMessageBoardComponent implements OnInit {
   @Input()
   uuid:string;
 
+  @Input()
+  type:string;
+
   messages: Message[];
   receiver;
 
@@ -23,8 +26,8 @@ export class OrgMessageBoardComponent implements OnInit {
   constructor(private msgService:MessageService) { }
 
   ngOnInit() {
-    this.receiver = {type:'org', id:this.uuid}
-    this.msgService.getMyMessages('org', this.uuid)
+    this.receiver = {type:this.type, id:this.uuid}
+    this.msgService.getMyMessages(this.type, this.uuid)
     .subscribe(ret => {
       this.messages = ret;
     })

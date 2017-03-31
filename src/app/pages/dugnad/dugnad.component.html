@@ -1,3 +1,37 @@
-<p>
-  dugnad works!
-</p>
+<div *ngIf="dugnad"
+  class="container">
+  <div class="row"></div> <!--  org header img-->
+  <div class="row">
+
+    <h1 id="orgTitle" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      {{ dugnad.title }}
+    </h1>
+  </div>
+  <div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Aktiviteter</a></li>
+      <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Beskjeder</a></li>
+      <li *ngIf="isAdmin" role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Admin Panel</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <!-- aktivitetsliste  TBA -->
+      </div>
+      <div role="tabpanel" class="tab-pane" id="info">
+        <dugnad-info [dugnad]="dugnad">
+        </dugnad-info>
+        <!--<dugnad-info *ngIf="org" [org]="org"></dugnad-info> componnet does not exist yet -->
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <org-message-board *ngIf="dugnad"
+          [uuid]="dugnad.uuid"
+          [type]="'dugnad'">
+        </org-message-board> 
+      </div>
+      <div role="tabpanel" class="tab-pane" id="admin">
+
+      </div>
+    </div>
+  </div>
+</div>

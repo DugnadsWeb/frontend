@@ -42,6 +42,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DugnadListComponent } from './components/dugnad-list/dugnad-list.component';
 import { DugnadViewComponent } from './components/dugnad-view/dugnad-view.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { DugnadInfoComponent } from './components/dugnad-info/dugnad-info.component';
 
 
 // app services imports
@@ -103,6 +104,7 @@ const appRoutes: Routes = [
     DugnadViewComponent,
     EditUserComponent,
     DugnadComponent,
+    DugnadInfoComponent,
   ],
   imports: [
     BrowserModule,

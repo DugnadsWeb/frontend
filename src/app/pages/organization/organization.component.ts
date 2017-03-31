@@ -38,7 +38,7 @@ export class OrganizationComponent implements OnInit {
 
     this.route.params
     .switchMap((params: Params) => this.orgService.getMembers(params['id']))
-    .subscribe((members: User[]) => this.members = members);
+    .subscribe((members: User[]) => {this.members = members; console.log(members)});
 
     this.route.params
     .switchMap((params: Params) => this.orgService.getAdmins(params['id']))

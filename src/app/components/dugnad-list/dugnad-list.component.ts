@@ -19,6 +19,7 @@ export class DugnadListComponent implements OnInit {
   ngOnInit() {
     this.orgService.getDugnads(this.uuid)
     .subscribe(res => {
+      console.log(res);
       this.dugnads = res;
     })
 

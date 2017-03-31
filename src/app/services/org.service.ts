@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import { AuthService} from './auth.service';
-import { Organization, User, Application } from '../models/models';
+import { Organization, User, Application, Dugnad } from '../models/models';
 
 @Injectable()
 export class OrgService {
@@ -267,8 +267,13 @@ export class OrgService {
     				{
     					console.log("dugnads fetched for " + orgId);
     				}
-
-    				return res;
+            let ret = [];
+            for (let i=0;i<res.length;i++){
+              let d = res[i];
+              ret.push(new  Dugnad(d.uuid, d.orgUuid, d.title, d.description,
+                d.location, d.startTime, d.endTime, d.maxPartisipants));
+            }
+            return ret;
     			})
     			.catch((error:any) => {
           		return Observable.throw(new Error(error.status));

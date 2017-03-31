@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Dugnad } from '../../models/models';
+import { Dugnad } from '../../models/models';
 
 @Component({
-  selector: 'dugnad-view',
-  templateUrl: './dugnad-view.component.html',
-  styleUrls: ['./dugnad-view.component.css']
+  selector: 'dugnad-info',
+  templateUrl: './dugnad-info.component.html',
+  styleUrls: ['./dugnad-info.component.css']
 })
-export class DugnadViewComponent implements OnInit {
+export class DugnadInfoComponent implements OnInit {
 
   @Input()
   dugnad: Dugnad;
@@ -20,7 +20,6 @@ export class DugnadViewComponent implements OnInit {
     let time = this.dugnad.getTimesAsObeject();
     this.startTime = time[0]
     this.endTime = time[1]
-
   }
 
 }

@@ -33,7 +33,10 @@
         <org-info *ngIf="org" [org]="org"></org-info>
       </div>
       <div role="tabpanel" class="tab-pane" id="messages">
-        <org-message-board *ngIf="org" [uuid]="org.uuid"></org-message-board>
+        <org-message-board *ngIf="org"
+          [uuid]="org.uuid"
+          [type]="'org'">
+        </org-message-board>
       </div>
       <div role="tabpanel" class="tab-pane" id="members">
         <members-list *ngIf="admins" [users]="admins" [title]="'Administratorer'"></members-list>

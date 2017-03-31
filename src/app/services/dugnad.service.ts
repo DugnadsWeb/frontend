@@ -22,13 +22,9 @@ export class DugnadService {
       )
       .map(res => res.json())
       .map((res) => {
-        let ret = []
-        for (let i=0;i<res.length;i++){
-          let d = res[i];
-          ret.push(new  Dugnad(d.uuid, d.title, d.description,
-            d.location, d.startTime, d.endTime, d.maxPartisipants));
-        }
-        return ret;
+          return new  Dugnad(res.uuid, res.orgUuid, res.title, res.description,
+            res.location, res.startTime, res.endTime, res.maxPartisipants);
+
       });
   }
 
@@ -72,8 +68,12 @@ export class DugnadService {
 				{
 					console.log("dugnads fetched");
 				}
-
-				return res;
+        let ret = []
+        for (let i=0;i<res.length;i++){
+          let d = res[i];
+          ret.push(new  Dugnad(res.uuid, res.orgUuid, res.title, res.description,
+            res.location, res.startTime, res.endTime, res.maxPartisipants));
+        }
 			})
 			.catch((error:any) => {
       		return Observable.throw(new Error(error.status));
