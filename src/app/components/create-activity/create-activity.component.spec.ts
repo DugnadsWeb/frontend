@@ -1,22 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoHubComponent } from './info-hub.component';
+import { CreateActivityComponent } from './create-activity.component';
 
-
-
-describe('InfoHubComponent', () => {
-  let component: InfoHubComponent;
-  let fixture: ComponentFixture<InfoHubComponent>;
+describe('CreateActivityComponent', () => {
+  let component: CreateActivityComponent;
+  let fixture: ComponentFixture<CreateActivityComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoHubComponent ]
+      declarations: [ CreateActivityComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoHubComponent);
+    fixture = TestBed.createComponent(CreateActivityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

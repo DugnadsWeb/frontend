@@ -43,6 +43,9 @@ import { DugnadListComponent } from './components/dugnad-list/dugnad-list.compon
 import { DugnadViewComponent } from './components/dugnad-view/dugnad-view.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { DugnadInfoComponent } from './components/dugnad-info/dugnad-info.component';
+import { ActivityListComponent } from './components/activity-list/activity-list.component';
+import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
+import { CreateActivityComponent } from './components/create-activity/create-activity.component';
 
 
 // app services imports
@@ -50,6 +53,9 @@ import { AuthService, UserService, OrgService, MessageService, AuthGuardService,
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
+
+// directives
+import { DialogWindowDirective } from './directives/dialog-window.directive';
 
 
 
@@ -105,6 +111,10 @@ const appRoutes: Routes = [
     EditUserComponent,
     DugnadComponent,
     DugnadInfoComponent,
+    ActivityListComponent,
+    DialogWindowDirective,
+    DialogContainerComponent,
+    CreateActivityComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,6 +131,8 @@ const appRoutes: Routes = [
     MessageService,
     AuthGuardService,
     DugnadService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ CreateActivityComponent ]
 })
+
 export class AppModule { }

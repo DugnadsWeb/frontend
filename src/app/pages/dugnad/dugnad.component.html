@@ -16,7 +16,9 @@
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="home">
-        <!-- aktivitetsliste  TBA -->
+        <activity-list [dugnadUuid]="dugnad.uuid"
+          [orgUuid]="dugnad.orgUuid">
+        </activity-list>
       </div>
       <div role="tabpanel" class="tab-pane" id="info">
         <dugnad-info [dugnad]="dugnad">
@@ -27,7 +29,7 @@
         <org-message-board *ngIf="dugnad"
           [uuid]="dugnad.uuid"
           [type]="'dugnad'">
-        </org-message-board> 
+        </org-message-board>
       </div>
       <div role="tabpanel" class="tab-pane" id="admin">
 
