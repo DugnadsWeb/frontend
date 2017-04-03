@@ -52,16 +52,12 @@ padding-bottom: 10px;
 	width:100%;	
 	padding: 0;
 	margin: 0%;
-	
-}
-.btn btn-link:link{
-	text-decoration: none;
-	background-color: RED;
-	
+
 }
 #besteknappen{
 	text-decoration: none;
 	color: black;
 	border-radius: 3px;
+	background-color: white;
 	
 }

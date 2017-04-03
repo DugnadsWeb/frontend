@@ -73,9 +73,14 @@ a.btn btn-link:link{
 #besteknappen a{
 	color: black;
 	border-radius: 3px;
+	text-decoration: none;
 }
-
-
+#besteknappen{
+	text-decoration: none;
+	color: black;
+	border-radius: 3px;
+	background-color: white;
+}
 
 span{
 	font-family: 'Roboto', sans-serif;
