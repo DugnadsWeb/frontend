@@ -4,11 +4,15 @@
 }
 #tittelContainer{
 	border-radius: 3px;
-	width:99%;
+	 
 	height:10vw;
 	position: relative;
 	background-color: rgb(194,229,229);
 	border-radius: 3px;
+	border-radius: 3px;
+	
+
+	
 }
 #tittel{
 	text-align: center;
@@ -21,6 +25,7 @@
 	font-size: 3vw;
 	border-radius: 100px;
 	border-color: rgb(26,61,61);	
+	
 }
 		
 #tittel + .row{
@@ -30,29 +35,29 @@
 .row{
 background-color:rgb(242, 241, 239);
 
-border-radius: 3px;
-	-webkit-box-shadow: 0 8px 6px -6px black;
-	   -moz-box-shadow: 0 8px 6px -6px black;
-	        box-shadow: 0 10px 20px -6px black;
-			
-			
-			padding-bottom: 50px;
+
 }
 .panel{
 	
 	border-style: none;
 	height: 100%;
-	border-radius: 3px;
-	-webkit-box-shadow: 0 8px 6px -6px black;
-	   -moz-box-shadow: 0 8px 6px -6px black;
-	        box-shadow: 0 10px 20px -6px black;
+	
 }
 
 .kolonne{
 	margin-top: 40px;
-
-	}
 	
+	}
+#shadowMain{
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 10px 20px -6px black;
+		
+	
+}
+.col-md-8{
+
+}
 .container{
 	
 	width:80%;	
