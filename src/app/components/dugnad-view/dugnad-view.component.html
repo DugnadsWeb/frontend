@@ -1,7 +1,18 @@
-<div>
-  <h2>
-    {{dugnad.title}}
-  </h2>
+<div (click)="onClick($event)"
+  class="clickbox">
+  <div class="row">
+    <h2 class="col-md-8">
+      {{dugnad.title}}
+    </h2>
+    <div class="active-dugnad dugnad-status .col-md-4"
+      *ngIf="dugnad.status" >
+      Åpen for påmelding
+    </div>
+    <div class="locked-dugnad dugnad-status .col-md-4"
+      *ngIf="!dugnad.status">
+      Påmelding er stengt
+    </div>
+  </div>
   <div>
     Starter: {{ startTime.hour }}:{{ startTime.min }} - {{ startTime.day }}.{{ startTime.month }}.{{ startTime.year }}
   </div>

@@ -23,7 +23,7 @@ export class DugnadService {
       .map(res => res.json())
       .map((res) => {
           return new  Dugnad(res.uuid, res.orgUuid, res.title, res.description,
-            res.location, res.startTime, res.endTime, res.maxPartisipants);
+            res.location, res.startTime, res.endTime, res.maxPartisipants, res.status);
 
       });
   }
@@ -72,7 +72,7 @@ export class DugnadService {
         for (let i=0;i<res.length;i++){
           let d = res[i];
           ret.push(new  Dugnad(res.uuid, res.orgUuid, res.title, res.description,
-            res.location, res.startTime, res.endTime, res.maxPartisipants));
+            res.location, res.startTime, res.endTime, res.maxPartisipants, res.status));
         }
 			})
 			.catch((error:any) => {

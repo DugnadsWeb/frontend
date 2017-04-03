@@ -37,7 +37,7 @@ export class MakeDugnadComponent implements OnInit {
     let dugnad = new Dugnad(null, this.orgUuid, this.dugName, this.dugDescription,
       this.dugLocation, new Date(+sd[0], +sd[1], +sd[2], +st[0], +st[1]).getTime(),
       new Date(+ed[0], +ed[1], +ed[2], +et[0], +et[1]).getTime(),
-      this.dugAnt);
+      this.dugAnt, true);
 
 
 		this.dugnadService.registrerdug(dugnad, this.orgUuid)

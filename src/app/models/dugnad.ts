@@ -1,5 +1,6 @@
 export class Dugnad{
 
+  public status:boolean;
 
   constructor(public uuid,
     public orgUuid,
@@ -8,7 +9,9 @@ export class Dugnad{
     public location,
     public startTime,
     public endTime,
-    public maxPartisipants){
+    public maxPartisipants,
+    status){
+      this.status = true?status=='true':false
     }
 
     getTimesAsObeject(){

@@ -1,0 +1,30 @@
+
+.clickbox:hover {
+  cursor: pointer;
+  box-shadow: 0px 1px 5px 0px gray;
+  top:2px;
+  position: relative;
+}
+
+.clickbox {
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding-left: 2em;
+  padding-bottom: 1em;
+  box-shadow: 0px 2px 5px 2px gray;
+  max-width: 50%;
+}
+
+.active-dugnad {
+    color:green;
+}
+
+.locked-dugnad {
+  color:red;
+}
+
+.dugnad-status {
+  margin-top: 1em;
+  text-align: right;
+  margin-right: 3em;
+}

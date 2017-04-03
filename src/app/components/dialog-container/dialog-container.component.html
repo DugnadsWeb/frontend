@@ -1,0 +1,11 @@
+<div>
+    <div *ngIf="isActive"
+    class="overlay"
+    (click)="closeDialog()">
+    </div>
+    <template appDialogWindow></template>
+    <button *ngIf="!isActive" 
+      (click)="openDialog()">
+      {{btnText}}
+    </button>
+</div>

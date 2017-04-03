@@ -271,7 +271,7 @@ export class OrgService {
             for (let i=0;i<res.length;i++){
               let d = res[i];
               ret.push(new  Dugnad(d.uuid, d.orgUuid, d.title, d.description,
-                d.location, d.startTime, d.endTime, d.maxPartisipants));
+                d.location, d.startTime, d.endTime, d.maxPartisipants, d.status));
             }
             return ret;
     			})

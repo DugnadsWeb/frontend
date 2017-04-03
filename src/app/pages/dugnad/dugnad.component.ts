@@ -4,7 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import { Dugnad } from '../../models/models';
 import { DugnadService, AuthService } from '../../services/services';
 import { DugnadInfoComponent } from '../../components/dugnad-info/dugnad-info.component';
-
+import { ActivityListComponent } from '../../components/activity-list/activity-list.component';
 
 @Component({
   selector: 'app-dugnad',
