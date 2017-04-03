@@ -105,7 +105,14 @@ export class UserService {
 					
 				}
 				return res;
-			});
+			})
+			.catch((error:any) => {
+      	if(error.status == 400)
+      	{
+      		console.log("No picture");
+      		return Observable.throw(new Error(error.status));
+      	}
+      });
 	}
 
 }
