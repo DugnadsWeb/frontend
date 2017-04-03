@@ -46,6 +46,7 @@ import { DugnadInfoComponent } from './components/dugnad-info/dugnad-info.compon
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
 import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
+import { TableOfContentComponent } from './components/table-of-content/table-of-content.component';
 
 
 // app services imports
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
   { path: 'make-dugnad', component: MakeDugnadComponent },
   { path: 'info-hub', component: InfoHubComponent },
   { path: 'dugnad/:id', component: DugnadComponent },
+  { path: 'toc', component: TableOfContentComponent},
   { path: '**', component: NotFoundComponent },
 
 
@@ -115,6 +117,7 @@ const appRoutes: Routes = [
     DialogWindowDirective,
     DialogContainerComponent,
     CreateActivityComponent,
+    TableOfContentComponent,
   ],
   imports: [
     BrowserModule,
