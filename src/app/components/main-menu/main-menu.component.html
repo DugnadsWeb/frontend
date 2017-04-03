@@ -17,13 +17,19 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul id="navRight"class="nav navbar-nav">
                 		<li *ngFor="let elem of navBarElements"><a (click)="routerHelper(elem)">{{elem}}</a></li>
+					
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul id="navLeft" class="nav navbar-nav navbar-right">
+					<li>
+							<div class="form-group">
+							<input type="text" class="form-control" id="usr">
+						</div>
+						</li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Min profil <b class="caret"></b></a>
-                        <ul class="dropdown-menu dropdown-dw">
+                        <ul id="dropwDown"class="dropdown-menu dropdown-dw">
                             <li id="white" *ngFor="let item of dropdownElements"><a (click)="routerHelper(item)">{{item}}</a></li>  
 														<li class="divider"></li>							
                             <li>

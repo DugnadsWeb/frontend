@@ -16,7 +16,21 @@ li :hover{
 	text-align: center;
 }
 
-
+#usr{
+	margin-top: 8px;
+	width: 80%;
+	
+	
+	
+}
+#navRight{
+	margin-top:8px;
+}
+#navLeft{
+	
+	margin-top: 8px;
+	
+}
 #myNavbar{
   position:fixed;
 	top: 0px;
@@ -28,15 +42,15 @@ li :hover{
 	
 	
 }
-#white{
+#dropwDown{
 	
+	margin-top: 10px;
 	
-	color:white;
 }
 #white a{
 	
 	
-	color: white;
+
 }
 .dropdown-dw li{
 	
