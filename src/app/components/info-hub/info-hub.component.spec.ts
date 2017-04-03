@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoHubComponent } from './info-hub.component';
 
+
+
 describe('InfoHubComponent', () => {
   let component: InfoHubComponent;
   let fixture: ComponentFixture<InfoHubComponent>;
