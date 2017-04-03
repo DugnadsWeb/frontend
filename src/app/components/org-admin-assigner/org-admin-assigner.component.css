@@ -1,6 +1,15 @@
+#button1{
+	float: right;
+}
+.box1{
+	height: 30px;
+	margin-right: 35px;
+	border-color: gray;
+	border-width: 2px;
+	border-bottom-style: solid;
+	list-style: none;
+	margin-left: -26px;
+}
 h4{
-	
-	margin-top: 40px;
-	
-	
+	padding-left: 10px;
 }

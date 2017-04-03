@@ -1,16 +1,12 @@
-<div class=container>
+<div class="container">
  <approve-org-application
     [uuid]=org.uuid
     (memberAdded)="addedMember($event)">
   </approve-org-application> 
- <app-make-dugnad
-    [orgUuid]="org.uuid">
-  </app-make-dugnad>
- 
-  <edit-org
-    [org]="org">
-  </edit-org>
   <org-admin-assigner
     [uuid]="org.uuid">
   </org-admin-assigner>
+  <edit-org
+    [org]="org">
+  </edit-org>
 </div>

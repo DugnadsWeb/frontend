@@ -1,24 +1,39 @@
 <div>
   <div class="container">
-  <div class ="row">
-		<div class="col col-md-1 col-sm-1">
-		</div>
-	
-			<div  id="orgInfo" class="col col-md-4 col-sm-4">
-			  <h4>Orgnr: {{org.orgNumber}}</h4>
-			  <h4>Email: {{org.email}}</h4>
-			  <h4>Telefon: {{org.phone}} </h4>
+ <div class="row">
+	<div class="col-md-6">
+			<div class="panel panel-primary" id="block1">
+            <div class="panel-heading">
+              
+            </div>
+            <div class="panel-body" >
+				<ul>
+					<li class="list-group-item">
+						<h4>Orgnr: {{org.orgNumber}}</h4>
+						<h4>Email: {{org.email}}</h4>
+						<h4>Telefon: {{org.phone}} </h4>
+					</li>
+				</ul>
 			</div>
-	  	<div class="col col-md-1 col-sm-1">
-		</div>
-	
-		<div id="orgDesc" class="col col-md-5 col-sm-5">
-		  <p>{{org.description}} </p>
+        </div>
+    </div>
+	<div class="col-md-6">
+		<div class="panel panel-primary"  id="block2">
+            <div class="panel-heading">
+				
+            </div>
+            <div class="panel-body">
+				<ul>
+					<li class="list-group-item">
+						  <p>{{org.description}} </p>
 		
-		  <img id="imgDesc"/>
-		</div>
-			<div class="col col-md-1 col-sm-1">
-		</div>
-	</div>
+						<img id="imgDesc" src="../../assets/img/orgIMG.jpg"/>
+					</li>
+					
+				</ul>
+			</div>
+        </div>
+    </div>
+    </div>
   </div>
 </div>

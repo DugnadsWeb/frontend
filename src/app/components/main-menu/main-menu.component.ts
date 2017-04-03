@@ -19,13 +19,15 @@ export class MainMenuComponent implements OnInit {
 
   constructor(private authService: AuthService, private userService: UserService, private router: Router) 
   {
-  	this.navBarElements = ["Login","Registrer Bruker", "Registrer Org", "Organisasjoner", "Oversikt"];
-  	this.routerElements = ["login", "register", "register-org", "search", "info-hub"];
+  	this.routerElements = ["login", "register"];
+  	this.navBarElements = ["Login","Registrer Bruker"];
   	this.dropdownElements = ["Min Side"];
   	this.dropdownRoutes = ["profile"];
   	
 	  if(this.authService.getToken()){
-		  this.atagsrc ="Logg ut";  
+		  this.atagsrc ="Logg ut";
+	this.routerElements = ["login", "register", "register-org", "search", "info-hub"];
+  	this.navBarElements = ["Login","Registrer Bruker", "Registrer Org", "Organisasjoner", "Oversikt"];		  
 	  }
 	  else{
 		  this.atagsrc ="Logg inn";  
@@ -43,10 +45,13 @@ export class MainMenuComponent implements OnInit {
   	
   	if(btn.innerHTML === "Logg inn")
   	{
+		
   		this.router.navigate(['/login']);	
+		
   	}
   	else if(btn.innerHTML === "Logg ut")
   	{
+		
   		this.authService.logout();
   		this.router.navigate(['']);
   	}

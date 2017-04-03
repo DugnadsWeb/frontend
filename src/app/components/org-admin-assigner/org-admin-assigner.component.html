@@ -1,10 +1,10 @@
-<div>
-  <h4>Gi adminrettigheter:</h4>
+<div class="panel panel-primary">
+  <h4>   Gi adminrettigheter:</h4>
   <ul *ngIf="members">
-    <li
+    <li class="box1"
       *ngFor="let member of members">
       {{member.firstName}} {{member.lastName}}
-      <button
+      <button id="button1"
         (click)="assignAdmin($event, member)">
         Set som admin
       </button>
