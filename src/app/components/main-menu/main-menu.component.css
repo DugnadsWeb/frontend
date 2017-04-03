@@ -26,8 +26,23 @@ li :hover{
 	
 	text-align:center;
 	
+	
 }
-
+#white{
+	
+	
+	color:white;
+}
+#white a{
+	
+	
+	color: white;
+}
+.dropdown-dw li{
+	
+	color:white;
+	
+}
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color:rgb(242, 241, 239);

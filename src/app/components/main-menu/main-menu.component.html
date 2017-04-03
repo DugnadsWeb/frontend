@@ -23,8 +23,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Min profil <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li *ngFor="let item of dropdownElements"><a (click)="routerHelper(item)">{{item}}</a></li>  
+                        <ul class="dropdown-menu dropdown-dw">
+                            <li id="white" *ngFor="let item of dropdownElements"><a (click)="routerHelper(item)">{{item}}</a></li>  
 														<li class="divider"></li>							
                             <li>
                             	<a #logBtn [text]="atagsrc" id="logoutBTN" class="btn btn-default" (click)="loginOrOut(event)"></a>
