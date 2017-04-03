@@ -22,7 +22,7 @@ export class UserBoxComponent implements OnInit {
   	for(var i = 0; i < ptags; i++)
   	{
   		this.userService.getPicture(this.user.email).subscribe((result) => {
-  				this.profilePic = result.records[0]._fields[0].properties.base64; 
+  				this.profilePic = result[0]; 
   		});
   	}
   }

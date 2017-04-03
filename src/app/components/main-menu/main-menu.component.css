@@ -8,13 +8,17 @@ nav{
 li a{
 	color: white;
 }
+li :hover{
+	cursor: pointer;		
+}
 .dropdown-menu a{
 	color: black;
+	text-align: center;
 }
 
 
 #myNavbar{
-    position:fixed;
+  position:fixed;
 	top: 0px;
 	width:100%;
 }

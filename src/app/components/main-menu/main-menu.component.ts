@@ -10,37 +10,70 @@ import { UserService } from '../../services/user.service';
 })
 export class MainMenuComponent implements OnInit {
 	
-	jwt_decode = require('jwt-decode');
-	first_name = "";
-	last_name = "";
-	email = "";
+	navBarElements = [];
+	dropdownElements = [];
+	dropdownRoutes = [];
+	routerElements = [];
+	atagsrc = "";
 	
 
-  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) 
+  {
+  	this.navBarElements = ["Login","Registrer Bruker", "Registrer Org", "Organisasjoner", "Oversikt"];
+  	this.routerElements = ["login", "register", "register-org", "search", "info-hub"];
+  	this.dropdownElements = ["Min Side"];
+  	this.dropdownRoutes = ["profile"];
+  	
+	  if(this.authService.getToken()){
+		  this.atagsrc ="Logg ut";  
+	  }
+	  else{
+		  this.atagsrc ="Logg inn";  
+	  }
+  }
 
 
   ngOnInit() {
 	  
-	  var token = localStorage.getItem('auth_token');
-	  var btn = document.getElementById("logoutBTN2");
-	  
-	  if(!token || token === null){
-		  btn.innerHTML="Logg in";  
-	  }
-	  else if(token){
-		  btn.innerHTML="Logg ut";  
-	  }
-	  
   }
-  onSubmit(event){
-	    var btn = document.getElementById("logoutBTN2");
-	  if(btn.innerHTML=="Logg in"){
-		  this.router.navigate(['/login']);		  
-	  }  
-	  else if(btn.innerHTML=="Logg ut"){
+  
+  loginOrOut(event)
+  {
+  	var btn = document.getElementById("logoutBTN");
+  	
+  	if(btn.innerHTML === "Logg inn")
+  	{
+  		this.router.navigate(['/login']);	
+  	}
+  	else if(btn.innerHTML === "Logg ut")
+  	{
   		this.authService.logout();
   		this.router.navigate(['']);
-		}
+  	}
+  }
+  
+  routerHelper(clicked)
+  {
+  	var route = "";
+
+  	if(clicked === this.dropdownElements[0])
+  	{
+  		route = this.dropdownRoutes[0];
+  		this.router.navigate(["/" + route + ""]);	
+  	}
+  	for(var i=0; i < this.navBarElements.length; i++)
+  	{
+  		if(clicked === this.navBarElements[i])
+  		{
+  			route = this.routerElements[i];	
+  		}	
+  	}
+  	this.router.navigate(["/" + route + ""]);
+  }
+  
+  takeMeHome(event)
+  {
+  	this.router.navigate(['']);	
   }
 
 }

@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
 					this.imgsrc = '../../../assets/img/placeholder_profile_pic.png';	
 				}
 				else{
-					this.imgsrc = result.records[0]._fields[0].properties.base64;
+					this.imgsrc = result[0];
 				}
 			}
 		});
