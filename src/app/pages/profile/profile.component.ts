@@ -40,14 +40,13 @@ export class ProfileComponent implements OnInit {
 		this.userService.getPicture(this.email).subscribe((result) =>{
 			if(result)
 			{
-				if(result.records == 0)
-				{
-					this.imgsrc = '../../../assets/img/placeholder_profile_pic.png';	
-				}
-				else{
-					this.imgsrc = result[0];
-				}
+				this.imgsrc = result[0];
 			}
+		},(error) => {
+			if(error)
+			{
+				this.imgsrc = '../../../assets/img/placeholder_profile_pic.png';
+			}	
 		});
 	}
   onSubmit(event){

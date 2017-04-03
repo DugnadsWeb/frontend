@@ -11,6 +11,7 @@ li a{
 li :hover{
 	cursor: pointer;		
 }
+
 .dropdown-menu a{
 	color: black;
 	text-align: center;
