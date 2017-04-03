@@ -1,0 +1,7 @@
+.container{
+	margin-top: 5px;
+			-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 10px 20px -6px black;
+padding-bottom: 10px;
+}
