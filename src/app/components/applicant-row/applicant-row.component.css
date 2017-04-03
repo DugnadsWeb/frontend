@@ -1,5 +1,7 @@
 #button1{
 	float: right;
+	width: 70px;
+	margin-left: 10px;
 }
 .box1{
 	height: 30px;
