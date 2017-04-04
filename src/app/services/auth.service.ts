@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import {Observable, Observer} from 'rxjs/Rx';
 const jwt_decode = require('jwt-decode');
 
 
 @Injectable()
 export class AuthService {
   private loggedIn = false;
-  private loginFailed = false;
+
+  status: Observable<boolean>;
+  private observer: Observer<boolean>;
 
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
+    this.status = new Observable(observer =>
+      this.observer = observer
+    ).share();
+  }
+
+  changeState(newState: boolean){
+    if(this.observer !== undefined) {
+      this.observer.next(newState);
+    }
   }
 
   getToken():any{
@@ -44,6 +55,7 @@ export class AuthService {
         if (res.success) {
           localStorage.setItem('auth_token', res.token);
           this.loggedIn = true;
+          this.changeState(true);
         }
 
         return res.success;
@@ -52,6 +64,7 @@ export class AuthService {
       	if(error.status == 400)
       	{
       		this.loggedIn = false;
+      		this.changeState(false);
       		return Observable.throw(new Error(error.status));
       	}
       });
@@ -60,10 +73,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth_token');
     this.loggedIn = false;
-  }
-
-  isLoggedIn() {
-    return this.loggedIn;
+    this.changeState(false);
   }
 
   isAdminOf(groupUuid:string): boolean{

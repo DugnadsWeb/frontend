@@ -8,13 +8,32 @@ nav{
 li a{
 	color: white;
 }
-.dropdown-menu a{
-	color: black;
+li :hover{
+	cursor: pointer;		
 }
 
+.dropdown-menu a{
+	color: black;
+	text-align: center;
+}
 
+#usr{
+	margin-top: 8px;
+	width: 80%;
+	
+	
+	
+}
+#navRight{
+	margin-top:8px;
+}
+#navLeft{
+	
+	margin-top: 8px;
+	
+}
 #myNavbar{
-    position:fixed;
+  position:fixed;
 	top: 0px;
 	width:100%;
 }
@@ -22,8 +41,23 @@ li a{
 	
 	text-align:center;
 	
+	
 }
+#dropwDown{
+	
+	margin-top: 10px;
+	
+}
+#white a{
+	
+	
 
+}
+.dropdown-dw li{
+	
+	color:white;
+	
+}
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color:rgb(242, 241, 239);

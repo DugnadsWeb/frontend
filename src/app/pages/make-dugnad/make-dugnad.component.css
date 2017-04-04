@@ -3,16 +3,8 @@
 	
 }
 .row{
-		border-radius: 3px;
-	-webkit-box-shadow: 0 8px 6px -6px black;
-	   -moz-box-shadow: 0 8px 6px -6px black;
-	        box-shadow: 0 10px 20px -6px black;
-			
-			
-			
-			
-			
-			margin-top: 40px;
+	border-radius: 3px;
+	margin-top: 40px;
 	}
 #tittelContainer{
 	border-top-radius: 3px;
@@ -73,9 +65,14 @@ a.btn btn-link:link{
 #besteknappen a{
 	color: black;
 	border-radius: 3px;
+	text-decoration: none;
 }
-
-
+#besteknappen{
+	text-decoration: none;
+	color: black;
+	border-radius: 3px;
+	background-color: white;
+}
 
 span{
 	font-family: 'Roboto', sans-serif;

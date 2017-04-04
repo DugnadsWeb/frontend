@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { User } from '../../models/models';
 import { UserService } from '../../services/services';
+import {count} from "rxjs/operator/count";
 
 
 @Component({
@@ -18,13 +19,11 @@ export class UserBoxComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-  	var ptags = document.getElementsByClassName("UserPTag").length;
-  	for(var i = 0; i < ptags; i++)
-  	{
-  		this.userService.getPicture(this.user.email).subscribe((result) => {
-  				this.profilePic = result.records[0]._fields[0].properties.base64; 
-  		});
-  	}
+      if(this.user){
+        this.userService.getPicture(this.user.email).subscribe((result) => {
+            this.profilePic = result[0];
+        });
+      }
   }
 
 }

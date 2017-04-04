@@ -56,6 +56,28 @@ export class DugnadService {
 
 	}
 
+	getDugnadsForOrg(id){
+    let dugnads = [];
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    return this.http
+      .get(
+        'http://localhost:8888/api/dugnad/organization/'+id,
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        for(let i = 0; i < res.length; i++){
+
+          dugnads.push(new  Dugnad(res[i].uuid, id, res[i].title, res[i].description,
+            res[i].location, res[i].startTime, res[i].endTime, res[i].maxPartisipants, res[i].status));
+
+        }
+        return dugnads;
+      });
+  }
+
 	getDugnads()
 	{
 		return this.http
