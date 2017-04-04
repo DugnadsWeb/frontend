@@ -11,15 +11,22 @@ import {Organization} from "../../models/organization";
   templateUrl: './info-hub.component.html',
   styleUrls: ['./info-hub.component.css']
 })
+
+/**/
+
 export class InfoHubComponent implements OnInit {
 
   jwt_decode = require('jwt-decode');
   email = "";
   orgUUID = "";
 
-  dugnader : Dugnad[];
 
-  orgs: string[];
+  org: { orgName: string; uuid: string;};
+
+  dugnader : Dugnad[];
+  orgs: OrgDug[];
+
+  //orgs: string[];
   uuids: string[];
 
 
@@ -45,16 +52,11 @@ export class InfoHubComponent implements OnInit {
       if(result){
 
         console.log(result);
-        for(let i=0; i<result.length;i++){
-          if(i%2==0){
-            orgs.push(result[i]);
-          }else{
-            uuids.push(result[i]);
-          }
+        for(var i=0; i < result.length; i += 2){
+              orgs.push(new OrgDug(result[i],result[i+1]));
         }
 
         this.orgs = orgs;
-        this.uuids = uuids;
 
         this.orgUUID = result[1];
         this.getDugnads(this.orgUUID);
@@ -88,4 +90,13 @@ export class InfoHubComponent implements OnInit {
     });
   }
 
+}
+class OrgDug {
+  orgName: string;
+  uuid: string;
+
+  constructor(orgName:string, uuid:string){
+    this.orgName = orgName;
+    this.uuid = uuid;
+  }
 }

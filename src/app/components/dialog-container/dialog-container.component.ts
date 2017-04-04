@@ -40,7 +40,7 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
     vcRef.clear();
 
     let cr = vcRef.createComponent(cf);
-    cr.instance.data = this.componentData;
+    //cr.instance.data = this.componentData;
   }
 
   ngOnDestroy(){
