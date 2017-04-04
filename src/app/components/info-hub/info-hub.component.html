@@ -7,41 +7,52 @@
             <div class="panel-heading">
               <h3 class="panel-title">Dugnadsoversikt</h3>
             </div>
-            <div class="panel-body" >
-				<ul>
-
-				</ul>
-				<ul>
-          <h4 class="list-group-item-heading">{{orgName}}</h4>
-						<p class="list-group-item-text">Rolle: Leder</p>
-					<li class="list-group-item">
-              <ul>
-              <p class="list-group-item-text">Påmeldte dugnader:</p>
+        <div class="panel-body" >
+          <ul>
+            <ul class="list-group-item-heading" *ngFor="let org of orgs">
+              <h3 class="list-group-item-heading">{{org}}</h3>
                 <li class="list-group-item">
-                  <h4 class="list-group-item-heading">{{dugTitle}}</h4>
-                  <p class="list-group-item-text">{{dugStartTime | date:'d/M/y H:m' }}</p>
-                  <p class="list-group-item-text">{{dugEndTime | date:'d/M/y H:m'}}</p>
-                  <p class="list-group-item-text">{{dugLocation}}</p>
-                  <p class="list-group-item-text">{{dugDescription}}</p>
-                </li>
-            <hr>
-              </ul>
-              <ul>
-                <p class="list-group-item-text">Kommende dugnader:</p>
-                <li class="list-group-item">
-                    <h4 class="list-group-item-heading">Selge Tørkepapir</h4>
-                    <p class="list-group-item-text">Tid</p>
-                    <p class="list-group-item-text">Sted</p>
-                    <p class="list-group-item-text">Generell informasjon</p>
-                </li>
-              </ul>
-					</li>
-				</ul>
+                  <ul>
+                  <p class="list-group-item-text">Påmeldte dugnader:</p>
+                    <li class="list-group-item" *ngFor="let dug of dugnader">
+                      <ng-container *ngIf="dug.status">
+                        <h4 class="list-group-item-heading">{{dug.title}}</h4>
+                        <p class="list-group-item-text">{{dug.startTime | date:'d/M/y H:m' }}</p>
+                        <p class="list-group-item-text">{{dug.endTime | date:'d/M/y H:m'}}</p>
+                        <p class="list-group-item-text">{{dug.location}}</p>
+                        <p class="list-group-item-text">{{dug.description}}</p>
+                      </ng-container>
+                    </li>
+                  </ul>
+                <hr>
+                  <ul>
+                  <p class="list-group-item-text">Ferdige dugnader:</p>
+                    <li class="list-group-item" *ngFor="let dug of dugnader">
+                      <ng-container *ngIf="!dug.status">
+                        <h4 class="list-group-item-heading">{{dug.title}}</h4>
+                        <p class="list-group-item-text">{{dug.startTime | date:'d/M/y H:m' }}</p>
+                        <p class="list-group-item-text">{{dug.endTime | date:'d/M/y H:m'}}</p>
+                        <p class="list-group-item-text">{{dug.location}}</p>
+                        <p class="list-group-item-text">{{dug.description}}</p>
+                      </ng-container>
+                    </li>
+                <hr>
+                  </ul>
+                  <ul>
+                    <p class="list-group-item-text">Kommende dugnader:</p>
+                    <li class="list-group-item">
 
-			</div>
+                    </li>
+                  </ul>
+                </li>
+
+            </ul>
+				  </ul>
+
+			  </div>
       </div>
     </div>
 	<div class="col-md-2">
 	</div>
-    </div>
+</div>
 </div>
