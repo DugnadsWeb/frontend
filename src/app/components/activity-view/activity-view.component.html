@@ -1,0 +1,20 @@
+<div class="container activity-box">
+  <button (click)="applyTo()">Bli med</button>
+  <div class="row">
+    <h2 class="col-md-8">
+      {{activity.title}}
+    </h2>
+    <div class="col-md-4">
+      Åpen for påmelding
+    </div>
+  </div>
+  <div>
+    Starter: {{ startTime.hour }}:{{ startTime.min }} - {{ startTime.day }}.{{ startTime.month }}.{{ startTime.year }}
+  </div>
+  <div>
+    Ferdig: {{ endTime.hour }}:{{ endTime.min }} - {{ endTime.day }}.{{ endTime.month }}.{{ endTime.year }}
+  </div>
+  <div>
+    Beskrivelse: {{ activity.description }}
+  </div>
+</div>

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { CreateActivityComponent } from '../create-activity/create-activity.component';
+import { Activity } from '../../models/models';
+import { DugnadService } from '../../services/services';
+import { ActivityViewComponent } from '../activity-view/activity-view.component';
 
 @Component({
   selector: 'activity-list',
@@ -14,15 +17,20 @@ export class ActivityListComponent implements OnInit {
   @Input()
   dugnadUuid: string;
 
+  activities: Activity[];
   component = CreateActivityComponent;
-
+  // TODO replace with auth service
   isAdmin = true;
 
-  constructor() {
+  constructor(private dugnadService: DugnadService) {
 
   }
 
   ngOnInit() {
+    this.dugnadService.getActivities(this.dugnadUuid).subscribe(res => {
+      this.activities = res;
+      console.log(res);
+    });
   }
 
   makeDugnad(){

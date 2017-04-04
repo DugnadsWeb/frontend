@@ -49,13 +49,14 @@ import { CreateActivityComponent } from './components/create-activity/create-act
 
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService, ActivityService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
 
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
+import { ActivityViewComponent } from './components/activity-view/activity-view.component';
 
 
 
@@ -115,6 +116,7 @@ const appRoutes: Routes = [
     DialogWindowDirective,
     DialogContainerComponent,
     CreateActivityComponent,
+    ActivityViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +132,9 @@ const appRoutes: Routes = [
     OrgService,
     MessageService,
     AuthGuardService,
-    DugnadService],
+    DugnadService,
+    ActivityService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ CreateActivityComponent ]
 })
