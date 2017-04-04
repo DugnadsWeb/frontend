@@ -20,13 +20,11 @@ export class MainMenuComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router)
   {
-    this.routerElements = ["login", "register", "register-org", "search", "info-hub"];
-    this.navBarElements = ["Login","Registrer Bruker", "Registrer Org", "Organisasjoner", "Oversikt"];
 
     this.dropdownElements = ["Min Side"];
   	this.dropdownRoutes = ["profile"];
 
-	  if(this.authService.getToken()){
+	  if(this.authService.status){
 		  this.atagsrc ="Logg ut";
       this.routerElements = ["profile", "register-org", "search", "info-hub"];
       this.navBarElements = ["Profil","Registrer Org", "Organisasjoner", "Oversikt"];
@@ -40,6 +38,11 @@ export class MainMenuComponent implements OnInit {
 
 
   ngOnInit() {
+    this.makeNavBar();
+  }
+
+  makeNavBar()
+  {
     this.authService.status.subscribe(status => {
       if(status == true) {
         this.atagsrc = "Logg ut";

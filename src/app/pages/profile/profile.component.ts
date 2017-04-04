@@ -4,7 +4,7 @@ import { AuthService} from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 import { Overlay } from 'angular2-modal';
- 
+
 
 @Component({
   selector: 'dw-profile',
@@ -19,13 +19,13 @@ export class ProfileComponent implements OnInit {
 	email = "";
 	imgsrc = "";
 	image = Blob;
-	
-	
+
+
   constructor(private authService: AuthService, private userService: UserService, private router: Router, public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef)
    {
    	 overlay.defaultViewContainer = vcRef;
    }
-    
+
   ngOnInit() {
   	this.getProfileData();
   }
@@ -46,14 +46,15 @@ export class ProfileComponent implements OnInit {
 			if(error)
 			{
 				this.imgsrc = '../../../assets/img/placeholder_profile_pic.png';
-			}	
+			}
 		});
+
 	}
   onSubmit(event){
   		this.authService.logout();
   		this.router.navigate(['']);
   }
-  
+
   onUpload(event){
 
   	var base64 = this.image.toString();
@@ -70,9 +71,9 @@ export class ProfileComponent implements OnInit {
   			this.imgsrc = this.image.toString();
   	});
   	}
-  	
+
   }
-  
+
   onChange($event) : void {
   	this.readThis($event.target);
 	}
