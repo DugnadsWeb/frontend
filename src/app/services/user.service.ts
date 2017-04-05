@@ -84,9 +84,9 @@ export class UserService {
       		return Observable.throw(new Error(error.status));
       	}
       });
-		
+
 	}
-	
+
 	getPicture(email)
 	{
 		let headers = new Headers();
@@ -102,17 +102,42 @@ export class UserService {
 			.map((res) => {
 				if(res)
 				{
-					
+
 				}
 				return res;
 			})
 			.catch((error:any) => {
       	if(error.status == 400)
       	{
-      		console.log("No picture");
       		return Observable.throw(new Error(error.status));
       	}
       });
 	}
+
+	getOrganizations(email){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    let body = JSON.stringify({user: {email: email}});
+    return this.http
+      .get(
+        'http://localhost:8888/api/user/organizations/'+email,
+        {headers}
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if(res)
+        {
+          console.log(res);
+        }
+        return res;
+      })
+      .catch((error:any) => {
+        if(error.status == 400)
+        {
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
 
 }

@@ -1,6 +1,9 @@
-<p>
-  activity-list works!
-</p>
-<dialog-container [component]="component"
-  [btnText]="'Ny Dugnad'">
+<div *ngIf="activities">
+  <activity-view *ngFor="let activity of activities"
+    [activity]="activity">
+  </activity-view>
+</div>
+<dialog-container [componentData]="{dugnadUuid: dugnadUuid}"
+  [component]="component"
+  [btnText]="'Ny Aktivitet'">
 </dialog-container>

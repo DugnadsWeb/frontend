@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import { AuthService} from './auth.service';
-import { Organization, User, Application, Dugnad } from '../models/models';
+import { Organization, User, Application, Dugnad, Activity } from '../models/models';
 
 @Injectable()
 export class DugnadService {
@@ -56,6 +56,28 @@ export class DugnadService {
 
 	}
 
+	getDugnadsForOrg(id){
+    let dugnads = [];
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    return this.http
+      .get(
+        'http://localhost:8888/api/dugnad/organization/'+id,
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        for(let i = 0; i < res.length; i++){
+
+          dugnads.push(new  Dugnad(res[i].uuid, id, res[i].title, res[i].description,
+            res[i].location, res[i].startTime, res[i].endTime, res[i].maxPartisipants, res[i].status));
+
+        }
+        return dugnads;
+      });
+  }
+
 	getDugnads()
 	{
 		return this.http
@@ -79,4 +101,29 @@ export class DugnadService {
       		return Observable.throw(new Error(error.status));
       });
 	}
+
+  getActivities(dugnadId){
+    return this.http
+      .get(
+        'http://localhost:8888/api/dugnad/activities/' + dugnadId
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if(res)
+        {
+          console.log("dugnads fetched");
+        }
+        let ret = []
+        for (let i=0;i<res.length;i++){
+          let d = res[i];
+          console.log(res);
+          ret.push(new Activity(d.uuid, d.title, d.startTime,
+            d.endTime, d.description, d.maxPartisipants));
+        }
+        return ret;
+      })
+      .catch((error:any) => {
+          return Observable.throw(new Error(error.status));
+      });
+    }
 }

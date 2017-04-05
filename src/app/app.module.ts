@@ -46,16 +46,18 @@ import { DugnadInfoComponent } from './components/dugnad-info/dugnad-info.compon
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
 import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
+import { TableOfContentComponent } from './components/table-of-content/table-of-content.component';
 
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService, ActivityService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
 
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
+import { ActivityViewComponent } from './components/activity-view/activity-view.component';
 
 
 
@@ -71,6 +73,7 @@ const appRoutes: Routes = [
   { path: 'make-dugnad', component: MakeDugnadComponent },
   { path: 'info-hub', component: InfoHubComponent },
   { path: 'dugnad/:id', component: DugnadComponent },
+  { path: 'toc', component: TableOfContentComponent},
   { path: '**', component: NotFoundComponent },
 
 
@@ -115,6 +118,8 @@ const appRoutes: Routes = [
     DialogWindowDirective,
     DialogContainerComponent,
     CreateActivityComponent,
+    ActivityViewComponent,
+    TableOfContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +135,9 @@ const appRoutes: Routes = [
     OrgService,
     MessageService,
     AuthGuardService,
-    DugnadService],
+    DugnadService,
+    ActivityService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ CreateActivityComponent ]
 })

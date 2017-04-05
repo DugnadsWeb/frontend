@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService} from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'main-menu',
@@ -11,36 +10,56 @@ import { UserService } from '../../services/user.service';
 export class MainMenuComponent implements OnInit {
 
 	navBarElements = [];
+  routerElements = [];
+
 	dropdownElements = [];
 	dropdownRoutes = [];
-	routerElements = [];
+
 	atagsrc = "";
 
 
-  constructor(private authService: AuthService, private userService: UserService, private router: Router)
+  constructor(private authService: AuthService, private router: Router)
   {
-  	this.routerElements = ["login", "register", "register-org", "search", "info-hub"];
-  	this.navBarElements = ["Login","Registrer Bruker", "Registrer Org", "Organisasjoner", "Oversikt"];
-  	this.dropdownElements = ["Min Side"];
+
+    this.dropdownElements = ["Min Side"];
   	this.dropdownRoutes = ["profile"];
 
-	  if(this.authService.getToken())
-    {
-      this.atagsrc = "Logg ut";
-    }
-	  else
-    {
+	  if(this.authService.status){
+		  this.atagsrc ="Logg ut";
+      this.routerElements = ["profile", "register-org", "search", "info-hub"];
+      this.navBarElements = ["Profil","Registrer Org", "Organisasjoner", "Oversikt"];
+	  }
+	  else{
 		  this.atagsrc ="Logg inn";
+      this.navBarElements = ["Login", "Registrer Bruker"];
+      this.routerElements = ["login", "register"];
 	  }
   }
 
   ngOnInit() {
+    this.makeNavBar();
+  }
+
+  makeNavBar()
+  {
+    this.authService.status.subscribe(status => {
+      if(status == true) {
+        this.atagsrc = "Logg ut";
+        this.routerElements = ["profile", "register-org", "search", "info-hub"];
+        this.navBarElements = ["Profil", "Registrer Org", "Organisasjoner", "Oversikt"];
+      }
+      else{
+        this.atagsrc = "Logg inn";
+        this.navBarElements = ["Login", "Registrer Bruker"];
+        this.routerElements = ["login", "register"];
+      }
 
   }
 
   loginOrOut(event)
   {
   	let btn = document.getElementById("logoutBTN");
+
 
   	if(btn.innerHTML === "Logg inn")
   	{

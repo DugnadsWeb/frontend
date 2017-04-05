@@ -1,0 +1,24 @@
+.dialog-overlay {
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  weight: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1000;
+}
+
+.dialog-window {
+  z-index: 1001;
+  position:absolute;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 1em;
+  left: 50%;
+  top: 4em;
+  width: 50em;
+  transform: translate(-50%, 0);
+  background-color: rgb(255, 200, 50);
+}

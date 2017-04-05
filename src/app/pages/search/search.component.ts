@@ -9,7 +9,7 @@ import { OrgService } from '../../services/org.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-	
+
 	namelist = [];
 	tmpNamelist = [];
 	orglist = [];
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
 		this.getOrgs();
   }
-  
+
   getOrgs()
   {
   		this.orgService.getOrgs().subscribe((result) => {
@@ -31,37 +31,37 @@ export class SearchComponent implements OnInit {
 			var listOfOrgs = [];
   		result.forEach(function (org)
   		{
-  			
+
   			orgNames.push(org.orgName);
   			listOfOrgs.push(org);
   		});
-			
+
 			this.tmpNamelist = orgNames;
   		this.namelist = orgNames;
   		this.orglist = listOfOrgs;
   	});
   }
-  
+
   getList()
   {
   	var orgNames = [];
   	for(var i = 0; i < this.tmpNamelist.length; i++)
   	{
 			var a = this.tmpNamelist[i];
-			orgNames.push(a);	
+			orgNames.push(a);
 		}
 		this.namelist = orgNames;
   }
-  
+
 	searchFunction(event: any, value: string)
 	{
 		value = value.toUpperCase();
 		var searchList = this.tmpNamelist;
 		var tmpNames = [];
-		
+
 		for(var i = 0; i < searchList.length; i++){
 			var a = searchList[i];
-			
+
 			if(event.keyCode == 8)
 			{
 				for(var i = 0; i < this.tmpNamelist.length; i++)
@@ -69,9 +69,9 @@ export class SearchComponent implements OnInit {
 					var b = searchList[i];
 					if(b.toUpperCase().indexOf(value) > -1)
 					{
-						tmpNames.push(b);	
+						tmpNames.push(b);
 					}
-				}	
+				}
 			}
 			else if(a.toUpperCase().indexOf(value) > -1)
 			{
@@ -79,15 +79,15 @@ export class SearchComponent implements OnInit {
 			}
 		}
 		this.namelist = tmpNames;
-		
+
 		if(value == ""){
 			this.namelist = searchList;
 		}
-		
+
 	}
-  
+
   routeToOrg(clicked){
-  	
+
   	for(var i = 0; i < this.orglist.length; i++){
 	  	if(this.orglist[i].orgName == clicked)
 	  	{
@@ -95,9 +95,9 @@ export class SearchComponent implements OnInit {
 	  		this.router.navigate(['org/', this.orglist[i].uuid]);
 	  	}
   	}
-  	
+
   }
-  
-  
-  
+
+
+
 }

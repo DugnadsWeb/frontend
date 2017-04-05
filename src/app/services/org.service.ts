@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import { AuthService} from './auth.service';
-import { Organization, User, Application, Dugnad } from '../models/models';
+import { Organization, User, Application, Dugnad, Activity } from '../models/models';
 
 @Injectable()
 export class OrgService {
@@ -53,7 +53,12 @@ export class OrgService {
 				{
 					console.log("organizations fetched");
 				}
-
+        let ret = [];
+        for (let i=0;i<res.length;i++){
+          let a = res[i];
+          ret.push(a.uuid, a.title, a.startTime, a.endTime,
+            a.description, a.maxPartisipants);
+        }
 				return res;
 			})
 			.catch((error:any) => {

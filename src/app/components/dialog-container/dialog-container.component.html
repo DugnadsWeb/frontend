@@ -1,10 +1,25 @@
 <div>
     <div *ngIf="isActive"
-    class="overlay"
+    class="dialog-overlay"
     (click)="closeDialog()">
     </div>
-    <template appDialogWindow></template>
-    <button *ngIf="!isActive" 
+    <div [ngClass]="{'dialog-window': isActive }"
+      class="dialog-window container">
+      <!-- To be continued
+      <div *ngIf="isActive" class="row dialog-header">
+        <span class="col-md-10">
+          {{title}}
+        </span>
+        <img class="col-md-2"
+          [src]="'../../../assets/img/close_icon.png'"/>
+      </div>
+    -->
+      <div class="row">
+        <template appDialogWindow>
+        </template>
+      </div>
+    </div>
+    <button *ngIf="!isActive"
       (click)="openDialog()">
       {{btnText}}
     </button>

@@ -1,0 +1,10 @@
+.activity-box {
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  margin: 1em;
+}
+
+.activity-box h2 {
+  margin: 0;
+}

@@ -15,6 +15,12 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
   @Input()
   btnText;
 
+  @Input()
+  title: string;
+
+  @Input()
+  componentData:any;
+
   isActive: boolean = false;
 
   @ViewChild(DialogWindowDirective) dialogWindow: DialogWindowDirective;
@@ -34,7 +40,7 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
     vcRef.clear();
 
     let cr = vcRef.createComponent(cf);
-
+    //cr.instance.data = this.componentData;
   }
 
   ngOnDestroy(){
