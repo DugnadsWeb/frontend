@@ -26,9 +26,6 @@ export class InfoHubComponent implements OnInit {
   dugnader : Dugnad[];
   orgs: OrgDug[];
 
-  //orgs: string[];
-  uuids: string[];
-
 
   constructor(private authService: AuthService,
               private userService: UserService,
@@ -42,8 +39,8 @@ export class InfoHubComponent implements OnInit {
   }
 
   getOrganizations(){
-    var token = localStorage.getItem('auth_token');
-    var decoded = this.jwt_decode(token);
+    let token = localStorage.getItem('auth_token');
+    let decoded = this.jwt_decode(token);
     let orgs = [];
     let uuids = [];
 
@@ -51,16 +48,17 @@ export class InfoHubComponent implements OnInit {
     this.userService.getOrganizations(this.email).subscribe((result) => {
       if(result){
 
-        console.log(result);
-        for(var i=0; i < result.length; i += 2){
+        for(let i=0; i < result.length; i += 2){
               orgs.push(new OrgDug(result[i],result[i+1]));
         }
 
         this.orgs = orgs;
 
-        this.orgUUID = result[1];
-        this.getDugnads(this.orgUUID);
+        for(let i=0; i < orgs.length; i++) {
+          uuids.push(orgs[i].uuid);
+        }
 
+        this.getDugnads.apply(this, uuids);
       }
     },(error) => {
       if(error){
@@ -69,25 +67,27 @@ export class InfoHubComponent implements OnInit {
     });
   }
 
-  getDugnads(id)
+  getDugnads(...uuidList: any[])
   {
-    this.dugnadService.getDugnadsForOrg(id).subscribe((result) => {
-      if (result) {
 
-        let dugnadsList = [];
+    console.log(uuidList);
+    let dugnadsList = [];
 
-        result.forEach(function (dug){
-          dugnadsList.push(dug);
+    for(let i = 0; i < uuidList.length; i++){
+      this.dugnadService.getDugnadsForOrg(uuidList[i]).subscribe((result) => {
+        if(result){
+          result.forEach(function (dug){
+            dugnadsList.push(dug);
+          });
+        }
+
+        }, (error) => {
+          if (error) {
+            console.log(error);
+          }
         });
-
-        this.dugnader = dugnadsList;
-        console.log(this.dugnader);
-      }
-    }, (error) => {
-      if (error) {
-        console.log(error);
-      }
-    });
+    }
+    this.dugnader = dugnadsList;
   }
 
 }

@@ -54,6 +54,7 @@ export class MainMenuComponent implements OnInit {
         this.routerElements = ["login", "register"];
       }
 
+    });
   }
 
   loginOrOut(event)
