@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 	onSubmit(event) {
       this.userService.register(this.firstName, this.lastName, this.email, this.password).subscribe((result) => {
         if (result) {
-          this.router.navigate(['']);
+          this.router.navigate(['login']);
         }
       });
     }
