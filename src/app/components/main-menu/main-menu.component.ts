@@ -24,7 +24,9 @@ export class MainMenuComponent implements OnInit {
     this.dropdownElements = ["Min Side"];
   	this.dropdownRoutes = ["profile"];
 
-	  if(this.authService.status){
+  	let token = window.localStorage.getItem('auth_token');
+
+	  if(token){
 		  this.atagsrc ="Logg ut";
       this.routerElements = ["profile", "register-org", "search", "info-hub"];
       this.navBarElements = ["Profil","Registrer Org", "Organisasjoner", "Oversikt"];
