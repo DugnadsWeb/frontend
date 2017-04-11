@@ -98,6 +98,7 @@ export class OrgService {
   addDugnad(dugnad:Dugnad){
     return new Promise((res, rej) => {
       this.registrerDug(dugnad).subscribe(dugnad => {
+        console.log(dugnad);
         this.dugnads.push(dugnad);
         this.dugnadsSubject.next(Object.assign([], this.dugnads));
         res();
@@ -686,7 +687,9 @@ export class OrgService {
       		if (res) {
       			console.log("Dugnad created succesfully");
       		}
-      		return res;
+      		return new Dugnad(res.uuid, res.orgUuid, res.title,
+            res.description, res.loction, res.startTime, res.endTime,
+            res.maxPartisipants, res.status);
       	  });
 
     	}

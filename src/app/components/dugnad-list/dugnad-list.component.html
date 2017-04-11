@@ -1,5 +1,6 @@
 <div class="container" *ngIf="dugnads">
-  <dialog-container [component]="makeDugnadComponent"
+  <dialog-container *ngIf="isAdmin" 
+    [component]="makeDugnadComponent"
     [btnText]="'Opprett dugnad'">
   </dialog-container>
   <dugnad-view
