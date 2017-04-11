@@ -397,7 +397,7 @@ export class OrgService {
 	* Register a new organization.
 	*/
 
-	private registerOrg(orgNumber, orgName, email, phone, description){
+	registerOrg(orgNumber, orgName, email, phone, description){
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());

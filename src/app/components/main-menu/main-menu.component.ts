@@ -24,7 +24,9 @@ export class MainMenuComponent implements OnInit {
     this.dropdownElements = ["Min Side"];
   	this.dropdownRoutes = ["profile"];
 
-	  if(this.authService.status){
+  	let token = window.localStorage.getItem('auth_token');
+
+	  if(token){
 		  this.atagsrc ="Logg ut";
       this.routerElements = ["profile", "register-org", "search", "info-hub"];
       this.navBarElements = ["Profil","Registrer Org", "Organisasjoner", "Oversikt"];
@@ -35,7 +37,6 @@ export class MainMenuComponent implements OnInit {
       this.routerElements = ["login", "register"];
 	  }
   }
-
 
   ngOnInit() {
     this.makeNavBar();
@@ -54,12 +55,14 @@ export class MainMenuComponent implements OnInit {
         this.navBarElements = ["Login", "Registrer Bruker"];
         this.routerElements = ["login", "register"];
       }
+
     });
   }
 
   loginOrOut(event)
   {
-  	var btn = document.getElementById("logoutBTN");
+  	let btn = document.getElementById("logoutBTN");
+
 
   	if(btn.innerHTML === "Logg inn")
   	{
@@ -77,14 +80,14 @@ export class MainMenuComponent implements OnInit {
 
   routerHelper(clicked)
   {
-  	var route = "";
+  	let route = "";
 
   	if(clicked === this.dropdownElements[0])
   	{
   		route = this.dropdownRoutes[0];
   		this.router.navigate(["/" + route + ""]);
   	}
-  	for(var i=0; i < this.navBarElements.length; i++)
+  	for(let i=0; i < this.navBarElements.length; i++)
   	{
   		if(clicked === this.navBarElements[i])
   		{

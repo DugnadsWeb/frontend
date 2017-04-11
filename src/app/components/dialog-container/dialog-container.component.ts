@@ -56,6 +56,7 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
       if(event.type == 'close') { this.closeDialog()}
       this.events.emit(event);
     });
+    //cr.instance.data = this.componentData;
   }
 
   ngOnDestroy(){

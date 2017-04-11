@@ -22,7 +22,7 @@ export class RegisterOrganizationComponent implements OnInit {
 
 	onSubmit(event)
 	{
-		this.orgService.registerorg(this.orgNumber, this.orgName, this.email, this.phone, this.description).subscribe((result)	=> {
+		this.orgService.registerOrg(this.orgNumber, this.orgName, this.email, this.phone, this.description).subscribe((result)	=> {
 			if(result)
 			{
 				this.router.navigate(['']);

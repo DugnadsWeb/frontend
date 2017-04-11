@@ -11,16 +11,20 @@ import {Organization} from "../../models/organization";
   templateUrl: './info-hub.component.html',
   styleUrls: ['./info-hub.component.css']
 })
+
+/**/
+
 export class InfoHubComponent implements OnInit {
 
   jwt_decode = require('jwt-decode');
   email = "";
   orgUUID = "";
 
-  dugnader : Dugnad[];
 
-  orgs: string[];
-  uuids: string[];
+  org: { orgName: string; uuid: string;};
+
+  dugnader : Dugnad[];
+  orgs: OrgDug[];
 
 
   constructor(private authService: AuthService,
@@ -35,8 +39,8 @@ export class InfoHubComponent implements OnInit {
   }
 
   getOrganizations(){
-    var token = localStorage.getItem('auth_token');
-    var decoded = this.jwt_decode(token);
+    let token = localStorage.getItem('auth_token');
+    let decoded = this.jwt_decode(token);
     let orgs = [];
     let uuids = [];
 
@@ -44,21 +48,17 @@ export class InfoHubComponent implements OnInit {
     this.userService.getOrganizations(this.email).subscribe((result) => {
       if(result){
 
-        console.log(result);
-        for(let i=0; i<result.length;i++){
-          if(i%2==0){
-            orgs.push(result[i]);
-          }else{
-            uuids.push(result[i]);
-          }
+        for(let i=0; i < result.length; i += 2){
+              orgs.push(new OrgDug(result[i],result[i+1]));
         }
 
         this.orgs = orgs;
-        this.uuids = uuids;
 
-        this.orgUUID = result[1];
-        this.getDugnads(this.orgUUID);
+        for(let i=0; i < orgs.length; i++) {
+          uuids.push(orgs[i].uuid);
+        }
 
+        this.getDugnads.apply(this, uuids);
       }
     },(error) => {
       if(error){
@@ -67,25 +67,36 @@ export class InfoHubComponent implements OnInit {
     });
   }
 
-  getDugnads(id)
+  getDugnads(...uuidList: any[])
   {
-    this.dugnadService.getDugnadsForOrg(id).subscribe((result) => {
-      if (result) {
 
-        let dugnadsList = [];
+    console.log(uuidList);
+    let dugnadsList = [];
 
-        result.forEach(function (dug){
-          dugnadsList.push(dug);
+    for(let i = 0; i < uuidList.length; i++){
+      this.dugnadService.getDugnadsForOrg(uuidList[i]).subscribe((result) => {
+        if(result){
+          result.forEach(function (dug){
+            dugnadsList.push(dug);
+          });
+        }
+
+        }, (error) => {
+          if (error) {
+            console.log(error);
+          }
         });
-
-        this.dugnader = dugnadsList;
-        console.log(this.dugnader);
-      }
-    }, (error) => {
-      if (error) {
-        console.log(error);
-      }
-    });
+    }
+    this.dugnader = dugnadsList;
   }
 
+}
+class OrgDug {
+  orgName: string;
+  uuid: string;
+
+  constructor(orgName:string, uuid:string){
+    this.orgName = orgName;
+    this.uuid = uuid;
+  }
 }

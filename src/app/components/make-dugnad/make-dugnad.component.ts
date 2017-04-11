@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class MakeDugnadComponent implements OnInit {
 
-
+  data:any;
   events: EventEmitter<{}> = new EventEmitter()
 
 	dugName = "";

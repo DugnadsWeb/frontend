@@ -70,11 +70,9 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
-        if (res.success) {
           console.log("user created succesfully");
-        }
 
-        return res.success;
+        return res;
       });
 	}
 
