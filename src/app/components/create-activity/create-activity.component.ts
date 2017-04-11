@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Activity } from '../../models/models';
-import { ActivityService } from '../../services/services';
+import { DugnadService } from '../../services/services';
 
 @Component({
   selector: 'app-create-activity',
@@ -11,6 +11,10 @@ export class CreateActivityComponent implements OnInit {
 
   data:any;
 
+
+  events = new EventEmitter();
+
+
   title;
   description;
   maxPartisipants
@@ -19,7 +23,7 @@ export class CreateActivityComponent implements OnInit {
   endTime;
   endDate;
 
-  constructor(private activityService: ActivityService) { }
+  constructor(private dugnadService: DugnadService) { }
 
   ngOnInit() {
 
@@ -42,9 +46,9 @@ export class CreateActivityComponent implements OnInit {
       endTime,
       this.description, this.maxPartisipants);
 
-    this.activityService.postActivity(activity, this.data.dugnadUuid)
-      .subscribe();
-
+    this.dugnadService.addActivity(activity);
+    this.events.emit({type:"created"});
+    this.events.emit({type:"close"});
   }
 
 }

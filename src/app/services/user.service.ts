@@ -1,15 +1,60 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Observable} from 'rxjs/Rx';
-import { AuthService} from './auth.service';
+import { Observable, BehaviorSubject } from 'rxjs/Rx';
+import { AuthService } from './auth.service';
+import { User } from '../models/models';
 
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http,
-		private authService:AuthService) { }
+  private user: BehaviorSubject<User>;
 
+  constructor(private http: Http,
+		private authService:AuthService) {
+      this.getUserDataOnLogin();
+    }
+  // ###########
+  // Getters ###
+  // ###########
+
+  public getUser():User{
+    if (!this.user) { throw "No user present"}
+    return this.user.getValue();
+  }
+
+  public getUserObservable():Observable<User>{
+    if (!this.user) { throw "No user present"}
+    return this.user.asObservable();
+  }
+
+  // ###################
+  // Private methods ###
+  // ###################
+
+  /*
+  * Subscribes to loginstatus in AuthService.
+  * Gets user data of loged in user on login.
+  * Removes user data on logout
+  */
+  private getUserDataOnLogin(){
+    this.authService.status.subscribe(status => {
+      if (status){
+        this.user = new BehaviorSubject(null);
+        let subscription = this.getUserHttp(this.authService.getDecodedToken().email)
+        .subscribe(res => {
+          this.user.next(res);
+          subscription.unsubscribe;
+        })
+      } else {
+        this.user = null;
+      }
+    })
+  }
+
+  // #############
+  // HTTP calls ##
+  // #############
 
 	register(firstName, lastName, email, password)
 	{
@@ -31,8 +76,27 @@ export class UserService {
 
         return res.success;
       });
-
 	}
+
+  getUserHttp(userId){
+    let headers = new Headers();
+		headers.append('authorization', 'Bearer ' + this.authService.getToken());
+		return this.http
+			.get(
+				'http://localhost:8888/api/user/'+userId,
+				{headers}
+			)
+			.map(res => res.json())
+			.map((res) => {
+				return new User(res.email, res.firstName, res.lastName, res.phone);
+			})
+			.catch((error:any) => {
+      	if(error.status == 400)
+      	{
+      		return Observable.throw(new Error(error.status));
+      	}
+      });
+  }
 
 	hasAppliedTo(orgId, userId){
 		let headers = new Headers();

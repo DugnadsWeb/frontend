@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Organization } from '../../models/models';
 import { OrgService } from '../../services/services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'edit-org',
@@ -9,24 +10,21 @@ import { OrgService } from '../../services/services';
 })
 export class EditOrgComponent implements OnInit {
 
-  @Input()
-  org: Organization;
 
-  editOrg: Organization;
+  org: Organization;
+  orgSubscription: Subscription;
 
   constructor(private orgService: OrgService) { }
 
   ngOnInit() {
-    this.editOrg = Object.assign({}, this.org);
-    console.log(this.org);
-    console.log(this.editOrg)
+    this.orgService.getOrgObservable().then(observer => {
+      this.orgSubscription = observer.subscribe(org => {
+        this.org = org;
+      })
+    })
   }
 
   onSubmit(event){
-    this.orgService.updateOrg(this.editOrg).subscribe(res => {
-      console.log("am i called?");
-      this.org = this.editOrg;
-    });
+    this.orgService.editOrg(this.org);
   }
-
 }

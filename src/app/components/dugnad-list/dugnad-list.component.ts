@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OrgService } from '../../services/services';
 import { Dugnad } from '../../models/models';
+import { Subscription } from 'rxjs';
+import { MakeDugnadComponent } from '../../components/make-dugnad/make-dugnad.component'
 
 @Component({
   selector: 'app-dugnad-list',
@@ -9,21 +11,19 @@ import { Dugnad } from '../../models/models';
 })
 export class DugnadListComponent implements OnInit {
 
-  @Input()
-  uuid: string;
+  makeDugnadComponent = MakeDugnadComponent;
 
   dugnads: Dugnad[];
+  dugnadsSubscription: Subscription;
 
   constructor(private orgService: OrgService) { }
 
   ngOnInit() {
-    this.orgService.getDugnads(this.uuid)
-    .subscribe(res => {
-      console.log(res);
-      this.dugnads = res;
+    this.orgService.getDugnadsObservable().then(observable => {
+      this.dugnadsSubscription = observable.subscribe(dugnads => {
+        this.dugnads = dugnads;
+      })
     })
-
-
   }
 
 }

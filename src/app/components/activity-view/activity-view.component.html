@@ -1,5 +1,14 @@
 <div class="container activity-box">
-  <button (click)="applyTo()">Bli med</button>
+  <ng-container *ngIf="attendants">
+    <button *ngIf="isUserApplied === false"
+      (click)="applyTo()">
+      Bli med
+    </button>
+    <button *ngIf="isUserApplied === true"
+      (click)="unapplyTo()">
+      Meld av
+    </button>
+  </ng-container>
   <div class="row">
     <h2 class="col-md-8">
       {{activity.title}}

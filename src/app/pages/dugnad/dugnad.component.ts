@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import { Observable, Subscription} from 'rxjs';
 import { Dugnad } from '../../models/models';
-import { DugnadService, AuthService } from '../../services/services';
+import { DugnadService, OrgService } from '../../services/services';
 import { DugnadInfoComponent } from '../../components/dugnad-info/dugnad-info.component';
 import { ActivityListComponent } from '../../components/activity-list/activity-list.component';
 
@@ -14,22 +15,31 @@ import { ActivityListComponent } from '../../components/activity-list/activity-l
 export class DugnadComponent implements OnInit {
 
   dugnad: Dugnad;
+  dugnadSubscription: Subscription;
 
   isAdmin: boolean;
+  isAdminSubscription: Subscription;
 
   constructor(private route: ActivatedRoute,
     private dugnadService: DugnadService,
-    private authService: AuthService) { }
+    private orgService: OrgService) { }
 
   ngOnInit() {
-    this.route.params
-    .switchMap((params: Params) => this.dugnadService.getDugnad(params['id']))
-    .subscribe((dugnad: Dugnad) => {
-      this.dugnad = dugnad;
-      this.isAdmin = this.authService.isAdminOf(dugnad.orgUuid);
-    });
+    this.route.params.subscribe(params => {
+      this.dugnadService.init(params['id']).then(() => {
+        this.dugnadService.getDugnad().then(observable => {
+          observable.subscribe(dugnad => {
+          this.dugnad = dugnad;
 
-
+          })
+        })
+        this.orgService.isUserAdminObservable().then(observable => {
+          this.isAdminSubscription = observable.subscribe(isAdmin => {
+            this.isAdmin = isAdmin;
+          })
+        })
+      })
+    })
 
   }
 

@@ -14,7 +14,7 @@ export class OrgInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.org.orgName);
+    
   }
 
 }

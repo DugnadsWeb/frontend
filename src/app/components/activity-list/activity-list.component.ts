@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { CreateActivityComponent } from '../create-activity/create-activity.component';
 import { Activity } from '../../models/models';
-import { DugnadService } from '../../services/services';
+import { OrgService, DugnadService, ActivityService } from '../../services/services';
 import { ActivityViewComponent } from '../activity-view/activity-view.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'activity-list',
@@ -11,30 +12,31 @@ import { ActivityViewComponent } from '../activity-view/activity-view.component'
 })
 export class ActivityListComponent implements OnInit {
 
-  @Input()
-  orgUuid: string;
-
-  @Input()
-  dugnadUuid: string;
 
   activities: Activity[];
+  activitiesSubscription: Subscription;
   component = CreateActivityComponent;
   // TODO replace with auth service
   isAdmin = true;
+  isAdminSubscription: Subscription;
 
-  constructor(private dugnadService: DugnadService) {
+  isOrgServiceInitSubscription: Subscription;
+
+  constructor(private dugnadService: DugnadService,
+    private orgService: OrgService) {
 
   }
 
   ngOnInit() {
-    this.dugnadService.getActivities(this.dugnadUuid).subscribe(res => {
-      this.activities = res;
-      console.log(res);
-    });
+    this.isOrgServiceInitSubscription = this.orgService.getIsInitObservable().subscribe(observable => {
+      this.dugnadService.getActivities().then(observable => {
+        this.activitiesSubscription = observable.subscribe(activities => this.activities = activities);
+      });
+      this.orgService.isUserAdminObservable().then(observable => {
+        this.isAdminSubscription = observable.subscribe(isAdmin => this.isAdmin = isAdmin);
+      });
+    })
   }
 
-  makeDugnad(){
-
-  }
 
 }

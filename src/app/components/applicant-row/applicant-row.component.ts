@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Application, User } from '../../models/models';
+import { User } from '../../models/models';
+import { OrgService } from '../../services/services';
 
 @Component({
   selector: 'applicant-row',
@@ -9,26 +10,22 @@ import { Application, User } from '../../models/models';
 export class ApplicantRowComponent implements OnInit {
 
   @Input()
-  application: Application;
+  applicant: User;
 
-  @Output()
-  handle = new EventEmitter();
 
-  user: User;
-  time:any = {};
 
-  constructor() { }
+  constructor(private orgService:OrgService) { }
 
   ngOnInit() {
-    this.user = this.application.user;
-    let time = new Date(+this.application.appliedTime);
-    this.time.d = time.getDate();
-    this.time.m = time.getMonth()+1;
-    this.time.y = time.getFullYear();
   }
 
-  handleApplicant(event, action){
-    this.handle.emit({application:this.application, action:action})
+  acceptApplication(){
+    this.orgService.acceptApplication(this.applicant);
   }
+
+  rejectApplication(){
+    this.orgService.rejectApplication(this.applicant);
+  }
+
 
 }

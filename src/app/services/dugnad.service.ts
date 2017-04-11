@@ -1,17 +1,82 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Observable} from 'rxjs/Rx';
-import { AuthService} from './auth.service';
+import { Observable, BehaviorSubject} from 'rxjs/Rx';
+import { AuthService } from './auth.service';
+import { OrgService } from './org.service';
 import { Organization, User, Application, Dugnad, Activity } from '../models/models';
 
 @Injectable()
 export class DugnadService {
 
+
+
+  private dugnad: Dugnad;
+  private dugnadSubject: BehaviorSubject<Dugnad>;
+
+  private activities: Activity[];
+  private activitiesSubject: BehaviorSubject<Activity[]>;
+
   constructor(private http: Http,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private orgService: OrgService) { }
 
 
-  getDugnad(id){
+  init(dugnadId){
+    return new Promise((res, rej) => {
+      let subscription = this.getDugnadHttp(dugnadId).subscribe(dugnad => {
+        this.dugnad = dugnad;
+        this.dugnadSubject = new BehaviorSubject(dugnad);
+        subscription.unsubscribe();
+
+        if (!this.orgService.isInit){
+          // TODO remove orgUuid for dugnad and replace with /api/dugnad/org/:dugnad_id
+          this.orgService.init(this.dugnad.orgUuid);
+        } else {
+          this.orgService.subscribeToDugnad(this.dugnadSubject.asObservable());
+        }
+
+
+        res();
+      });
+    });
+  }
+
+  getDugnad(){
+    return new Promise<Observable<Dugnad>>((res, rej) => {
+      res(this.dugnadSubject.asObservable());
+    });
+  }
+
+  getActivities(){
+    return new Promise<Observable<Activity[]>>((res, rej) => {
+      if (!this.dugnad) {rej({type:"state error", message:"dugnad is not instantiated, call init first."})}
+      if (!this.activities){
+        let subscription = this.getActivitiesHttp().subscribe(activities => {
+          this.activities = activities;
+          this.activitiesSubject = new BehaviorSubject(activities);
+          subscription.unsubscribe;
+          res(this.activitiesSubject.asObservable());
+        })
+      } else {
+        res(this.activitiesSubject.asObservable());
+      }
+    })
+  }
+
+  addActivity(activity:Activity){
+    if (!this.activities) {throw {type:"state error", message:"activities is not instantiated, call getActivities first."}}
+    let subscription = this.addActivityHttp(activity).subscribe(activity => {
+      this.activities.push(activity);
+      this.activitiesSubject.next(this.activities);
+      subscription.unsubscribe();
+    });
+  }
+
+  // #############
+  // HTTP calls ##
+  // #############
+
+  getDugnadHttp(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
@@ -33,7 +98,7 @@ export class DugnadService {
 	* Registrer a new dugnad
 	*/
 
-	registrerdug(dugnad: Dugnad, orgId){
+	registrerDug(dugnad: Dugnad, orgId){
     delete dugnad.uuid;
 		let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -55,6 +120,32 @@ export class DugnadService {
 	  });
 
 	}
+
+  addActivityHttp(activity: Activity){
+    delete activity.uuid;
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    let body = JSON.stringify({activity:activity,
+       dugnad: {uuid:this.dugnad.uuid}});
+    return this.http
+      .post(
+      'http://localhost:8888/api/activity/',
+      body,
+      { headers }
+    )
+    .map(res => res.json())
+    .map((res) => {
+      if (res) {
+        console.log("Activity created succesfully");
+      }
+      return new Activity(res.uuid, res.title, res.startTime, res.endTime,
+        res.description, res.maxPartisipants);
+      }).catch((error:any) => {
+        console.log(error);
+        return Observable.throw(new Error(error));
+      });
+  }
 
 	getDugnadsForOrg(id){
     let dugnads = [];
@@ -102,10 +193,10 @@ export class DugnadService {
       });
 	}
 
-  getActivities(dugnadId){
+  getActivitiesHttp(){
     return this.http
       .get(
-        'http://localhost:8888/api/dugnad/activities/' + dugnadId
+        'http://localhost:8888/api/dugnad/activities/' + this.dugnad.uuid
       )
       .map(res => res.json())
       .map((res) => {

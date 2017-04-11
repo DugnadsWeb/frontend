@@ -1,17 +1,17 @@
 .dialog-overlay {
-  position:absolute;
+  position:fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   height: 100%;
   weight: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  z-index: 1000;
+  background-color: rgba(255, 200, 50, 0.7);
+  z-index: 10000;
 }
 
 .dialog-window {
-  z-index: 1001;
+  z-index: 10001;
   position:absolute;
   border: 1px solid gray;
   border-radius: 5px;
@@ -20,5 +20,6 @@
   top: 4em;
   width: 50em;
   transform: translate(-50%, 0);
-  background-color: rgb(255, 200, 50);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 5px 2px rgb(125, 100, 25);
 }

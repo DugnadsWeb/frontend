@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrgService, AuthService } from '../../services/services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+import { Observable, Subscription } from 'rxjs/Rx';
 import { Organization, User } from '../../models/models';
 import { OrgInfoComponent } from '../../components/org-info/org-info.component';
 import { MembersListComponent } from '../../components/members-list/members-list.component';
@@ -13,16 +13,21 @@ import { OrgAdminPanelComponent } from '../../components/org-admin-panel/org-adm
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.css']
+  styleUrls: ['./organization.component.css'],
+  providers: [OrgService]
 })
 export class OrganizationComponent implements OnInit {
 
 
   org: Organization;
+  orgSubscription: Subscription;
   members: User[];
+  membersSubscription: Subscription;
   admins: User[];
+  adminsSubscription: Subscription;
   isAdmin: boolean;
   memberPic: Array<any>;
+
 
   constructor(private orgService: OrgService,
               private authService: AuthService,
@@ -33,23 +38,18 @@ export class OrganizationComponent implements OnInit {
 
 
   ngOnInit() {
-    this.route.params
-    .switchMap((params: Params) => this.orgService.getOrg(params['id']))
-    .subscribe((org: Organization) => this.org = org);
-
-    this.route.params
-    .switchMap((params: Params) => this.orgService.getMembers(params['id']))
-    .subscribe((members: User[]) => {this.members = members; console.log(members)});
-
-    this.route.params
-    .switchMap((params: Params) => this.orgService.getAdmins(params['id']))
-    .subscribe((admins: User[]) => this.admins = admins);
-
     this.route.params.subscribe(params => {
-       this.isAdmin = this.authService.isAdminOf(params['id']);
-       console.log('im admin: ' + this.isAdmin);
-    });
-    
+      this.orgService.init(params['id']).then(() => {
+        this.orgService.getOrgObservable().then(observ => this.orgSubscription = observ.subscribe(org => {this.org = org; console.log("org has changes") }));
+        this.orgService.getMembersObservable().then(ret => this.membersSubscription = ret.subscribe(members => {
+          this.members = members
+        }, err => console.log(err)));
+        this.orgService.getAdminsObservable().then(ret => this.adminsSubscription = ret.subscribe(admins => {
+          this.admins = admins;
+        }, err => console.log(err)));
+        this.orgService.isUserAdminObservable().then(ret => ret.subscribe(isUserAdmin => this.isAdmin = isUserAdmin));
+      })
+    })
 
   }
 

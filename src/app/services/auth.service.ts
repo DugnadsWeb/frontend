@@ -14,9 +14,11 @@ export class AuthService {
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
-    this.status = new Observable(observer =>
+    this.status = new Observable(observer => {
       this.observer = observer
-    ).share();
+      this.observer.next(!!this.getToken);  
+    }).share();
+
   }
 
   changeState(newState: boolean){

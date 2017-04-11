@@ -9,6 +9,7 @@ import { OrgService } from '../../services/services';
 })
 export class OrgAdminAssignerComponent implements OnInit {
 
+  // TODO remove, its replaced by service
   @Input()
   uuid: string;
 
@@ -17,17 +18,13 @@ export class OrgAdminAssignerComponent implements OnInit {
   constructor(private orgService: OrgService) { }
 
   ngOnInit() {
-    this.orgService.getMembers(this.uuid).subscribe(res => {
-      this.members = res;
-    });
+    this.orgService.getMembersObservable().then(observable => observable.subscribe(members => {
+      this.members = members;
+    }));
   }
 
   assignAdmin(event, member){
-    this.orgService.editAdminRights(this.uuid, member.email, true).subscribe(res => {
-      let index = this.members.indexOf(member);
-      this.members.splice(index,1);
-      console.log(this.members);
-    })
+    this.orgService.promoteMemberToAdmin(member);
   }
 
 }

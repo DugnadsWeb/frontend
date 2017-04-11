@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrgService } from '../../services/services';
-import { Application } from '../../models/models';
+import { User } from '../../models/models';
 
 @Component({
   selector: 'approve-org-application',
@@ -9,6 +9,7 @@ import { Application } from '../../models/models';
 })
 export class ApproveOrgApplicationComponent implements OnInit {
 
+  // TODO remove, replaced in org service
   @Input()
   uuid:string;
 
@@ -16,24 +17,22 @@ export class ApproveOrgApplicationComponent implements OnInit {
   @Output()
   memberAdded = new EventEmitter();
 
-  applications: Application[];
+  applicants: User[];
 
   constructor(private orgService: OrgService) { }
 
   ngOnInit() {
-    this.orgService.getApplicants(this.uuid).subscribe(res => {
-      this.applications = res;
-    })
+    this.orgService.getApplicantsObersvable().then(observable => observable.subscribe(applicants => {
+      this.applicants = applicants
+    }))
   }
 
   handleApplication(event){
-    this.orgService.processApplication(event.application.user.email,
-      this.uuid, event.action).subscribe(res => {
-        console.log(res);
-        let index = this.applications.indexOf(event.application);
-        this.applications = this.applications.splice(index, 0);
-        this.memberAdded.emit(event.application.user);
-      })
+      if (event.action){
+        this.orgService.acceptApplication(event.user);
+      } else {
+        this.orgService.rejectApplication(event.user);
+      }
   }
 
 }

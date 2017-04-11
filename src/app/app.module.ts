@@ -17,7 +17,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterOrganizationComponent } from './pages/register-organization/register-organization.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { SearchComponent } from './pages/search/search.component';
-import { MakeDugnadComponent } from './pages/make-dugnad/make-dugnad.component';
+import { MakeDugnadComponent } from './components/make-dugnad/make-dugnad.component';
 import { InfoHubComponent } from './components/info-hub/info-hub.component';
 import { IndexComponent } from './pages/index/index.component';
 import { DugnadComponent } from './pages/dugnad/dugnad.component';
@@ -139,7 +139,7 @@ const appRoutes: Routes = [
     ActivityService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ CreateActivityComponent ]
+  entryComponents: [ CreateActivityComponent, MakeDugnadComponent ]
 })
 
 export class AppModule { }

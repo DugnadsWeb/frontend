@@ -1,6 +1,6 @@
-<div class="container">
+<div *ngIf="org" class="container">
 	<div class="row">
-  
+
   	<div class="col-md-12 kolonne" style="margin-top: 1px;">
     	<!--<div id="tittelContainer">
       <h2 id="tittel">Endre organisasjonsinfo</h2>
@@ -16,7 +16,7 @@
                    type="text"
                    placeholder="xxxxxxxxx"
                    class="form-control" id="orgNumber" required
-                   [(ngModel)]="editOrg.orgNumber">
+                   [(ngModel)]="org.orgNumber">
 				   <small id="orgNrHelp" class="form-text text-muted">Må være 9 tegn langt</small>
                </div>
                <div class="form-group">
@@ -24,21 +24,21 @@
                  <input name="orgName"
                    type="text"
                    class="form-control" id="orgName" required
-                   [(ngModel)]="editOrg.orgName">
+                   [(ngModel)]="org.orgName">
                </div>
                <div class="form-group">
                  <label>Epost</label>
                  <input name="email"
                    type="email"
                    class="form-control" id="email" required
-                   [(ngModel)]="editOrg.email">
+                   [(ngModel)]="org.email">
                </div>
                <div class="form-group">
                  <label>Telefon</label>
                  <input name="phone"
                    type="text"
                    class="form-control" id="phone" required
-                   [(ngModel)]="editOrg.phone">
+                   [(ngModel)]="org.phone">
                </div>
                <div class="form-group">
               	 <label>Beskrivelse</label>
@@ -46,7 +46,7 @@
                    type="text" placeholder="Skriv litt om organisasjonen..."
               	   class="form-control"
                    id="description"
-                   [(ngModel)]="editOrg.description">
+                   [(ngModel)]="org.description">
                </div>
                <button type="submit"class="btn btn-default">Oppdater</button>
              </form>
@@ -55,4 +55,3 @@
        </div>
   </div>
 </div> <!-- ROW END -->
-
