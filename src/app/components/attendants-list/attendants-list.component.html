@@ -1,0 +1,10 @@
+<div *ngIf="attendants">
+  <ng-container *ngIf="attendants.length > 0">
+    <user-box *ngFor="let attendant of attendants"
+      [user]="attendant">
+    </user-box>
+  </ng-container>
+  <span *ngIf="attendants.length == 0">
+    Ingen påmelte
+  </span>
+</div>

@@ -62,6 +62,12 @@ export class OrgService {
   // public methods ##
   // #################
 
+  isInitObservable(){
+    return new Promise<Observable<boolean>>((res, rej) => {
+      res(this.isInitSubject.asObservable());
+    })
+  }
+
   getOrgObservable(){
     return new Promise<Observable<Organization>>((res, rej) => {
       if (!this.org) {throw ("Organization not instantiated. Call init() first.")}

@@ -1,6 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Activity, User } from '../../models/models';
 import { ActivityService, UserService } from '../../services/services';
+import { DialogContainerComponent } from '../dialog-container/dialog-container.component';
+import { MembersListComponent } from '../members-list/members-list.component';
+import { Subscription } from 'rxjs';
+import { AttendantsListComponent } from '../attendants-list/attendants-list.component';
+import { EditActivityComponent } from '../edit-activity/edit-activity.component';
+import { AddMemberToActivityComponent } from '../add-member-to-activity/add-member-to-activity.component';
 
 
 @Component({
@@ -9,17 +15,25 @@ import { ActivityService, UserService } from '../../services/services';
   styleUrls: ['./activity-view.component.css'],
   providers: [ActivityService]
 })
-export class ActivityViewComponent implements OnInit {
+export class ActivityViewComponent implements OnInit, OnDestroy {
 
   @Input()
   activity: Activity;
-
-  attendants: User[];
-
-  isUserApplied:boolean;
+  activitySubscription: Subscription;
+  activityServiceInitSubscription: Subscription;
 
   startTime;
   endTime;
+
+  attendants: User[];
+  attendantsSubscription: Subscription;
+
+  isUserApplied:boolean;
+
+  // dialog components
+  attendantsListComponent = AttendantsListComponent;
+  editActivityComponent = EditActivityComponent;
+  addMemberToActivityComponent = AddMemberToActivityComponent;
 
   constructor(private activityService: ActivityService,
     private userService: UserService) { }
@@ -31,15 +45,32 @@ export class ActivityViewComponent implements OnInit {
 
     this.activityService.init(this.activity.uuid);
 
-    // subscribe to activities attendants
-    this.activityService.getAttendants().then(res => {
-      res.subscribe(res => {
-        this.attendants = res;
-        this.checkIfUserApplied();
+    this.activityService.isInitObservable().then(observable => {
+      this.activityServiceInitSubscription = observable.subscribe(isInit => {
+        if (isInit){
+
+          // subscribe to activities attendants
+          this.activityService.getAttendants().then(res => {
+            this.attendantsSubscription = res.subscribe(res => {
+              this.attendants = res;
+              this.checkIfUserApplied();
+            })
+          })
+          // subscribe to activity
+          this.activityService.getActivityObservable().then(observable => {
+            this.activitySubscription = observable.subscribe(activity => {
+              this.activity = activity;
+            })
+          }).catch(err => console.log(err));
+          this.activityServiceInitSubscription.unsubscribe();
+        }
       })
     })
 
+  }
 
+  ngOnDestroy(){
+    this.attendantsSubscription.unsubscribe();
   }
 
   checkIfUserApplied(){

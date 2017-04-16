@@ -44,14 +44,9 @@ export class MakeDugnadComponent implements OnInit {
   }
 
 	onSubmit(event){
-    let sd = this.dugStartDate.split('-');
-    let st = this.dugStartTime.split(':');
-    let ed = this.dugEndDate.split('-');
-    let et = this.dugEndTime.split(':');
     let dugnad = new Dugnad(null, this.org.uuid, this.dugName, this.dugDescription,
-      this.dugLocation, new Date(+sd[0], +sd[1], +sd[2], +st[0], +st[1]).getTime(),
-      new Date(+ed[0], +ed[1], +ed[2], +et[0], +et[1]).getTime(),
-      this.dugAnt, true);
+      this.dugLocation, Dugnad.fromStringToTime(this.dugStartTime, this.dugStartDate),
+      Dugnad.fromStringToTime(this.dugEndTime, this.dugEndDate), this.dugAnt, true);
 
 
 		this.orgService.addDugnad(dugnad).then(() => {
