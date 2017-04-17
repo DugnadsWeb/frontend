@@ -9,6 +9,9 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 export class ActivityService {
 
   private activityId: string;
+  private activity: Activity;
+  private activitySubject: BehaviorSubject<Activity>;
+  private isInitSubject = new BehaviorSubject<boolean>(false);
 
   private attendantsSource: BehaviorSubject<User[]>;
   public attendants: User[];
@@ -22,6 +25,34 @@ export class ActivityService {
   // needs to be called before other usage
   init(activityId: string){
     this.activityId = activityId;
+    this.getActivity().subscribe(activity => {
+      this.activity = activity;
+      this.activitySubject = new BehaviorSubject<Activity>(Object.assign(new Activity('','','','','',''), this. activity));
+      this.isInitSubject.next(true);
+    })
+  }
+
+  // observable to see if activity is loaded
+  isInitObservable(){
+    return new Promise<Observable<boolean>>((res, rej) => {
+      res(this.isInitSubject.asObservable());
+    });
+  }
+
+  getActivityObservable(){
+    return new Promise<Observable<Activity>>((res, rej) => {
+      if (!this.activity) { rej("ActivityService is not initiated") }
+      res(this.activitySubject.asObservable());
+    });
+  }
+
+  updateActivity(activity: Activity){
+    // TODO implement!
+    // and notifiy dugnad;
+    this.putApplication(activity).subscribe(() => {
+      this.activity = Object.assign(new Activity('','','','','',''), activity);
+      this.activitySubject.next(this.activity);
+    })
   }
 
   // initializes the attendants list
@@ -96,12 +127,38 @@ export class ActivityService {
       });
   }
 
-  getActivity(activityId){
+
+  putApplication(activity: Activity){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+		headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    let body = JSON.stringify({
+      activity: activity
+    });
+    return this.http
+      .put(
+      'http://localhost:8888/api/activity/',
+      body,
+      { headers }
+    )
+    .map(res => res.json())
+    .map((res) => {
+      if (res) {
+        console.log(res);
+      }
+      return res;
+      }).catch((error:any) => {
+        console.log(error);
+      	return Observable.throw(new Error(error));
+      });
+  }
+
+  getActivity(){
     let headers = new Headers();
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/activity/'+activityId,
+        'http://localhost:8888/api/activity/'+this.activityId,
         { headers }
       )
       .map(res => res.json())
@@ -121,11 +178,10 @@ export class ActivityService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log("http-ret: " + res);
         let ret = [];
         for (let i=0;i<res.length;i++){
-          ret.push(new User(res.email, res.firstName,
-            res.lastName, res.phone));
+          ret.push(new User(res[i].email, res[i].firstName,
+            res[i].lastName, res[i].phone));
         }
         return ret;
       });

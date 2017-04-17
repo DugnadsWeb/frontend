@@ -30,20 +30,9 @@ export class CreateActivityComponent implements OnInit {
   }
 
   onSubmit(){
-
-
-    let st = this.startTime.split(':');
-    let sd = this.startDate.split('-');
-    let et = this.endTime.split(':');
-    let ed = this.endDate.split('-');
-
-    let startTime = new Date(+sd[0], +sd[1], +sd[2], +st[0], +st[1]).getTime();
-    let endTime = new Date(+ed[0], +ed[1], +ed[2], +et[0], +et[1]).getTime();
-
-
     let activity = new Activity(null, this.title,
-      startTime,
-      endTime,
+      Activity.fromStringToTime(this.startTime, this.startDate),
+      Activity.fromStringToTime(this.endTime, this.endDate),
       this.description, this.maxPartisipants);
 
     this.dugnadService.addActivity(activity);

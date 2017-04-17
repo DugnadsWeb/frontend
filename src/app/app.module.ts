@@ -47,6 +47,10 @@ import { ActivityListComponent } from './components/activity-list/activity-list.
 import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
 import { TableOfContentComponent } from './components/table-of-content/table-of-content.component';
+import { AttendantsListComponent } from './components/attendants-list/attendants-list.component';
+import { ActivityViewComponent } from './components/activity-view/activity-view.component';
+import { EditActivityComponent } from './components/edit-activity/edit-activity.component';
+import { AddMemberToActivityComponent } from './components/add-member-to-activity/add-member-to-activity.component';
 
 
 // app services imports
@@ -57,7 +61,6 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
-import { ActivityViewComponent } from './components/activity-view/activity-view.component';
 
 
 
@@ -120,6 +123,9 @@ const appRoutes: Routes = [
     CreateActivityComponent,
     ActivityViewComponent,
     TableOfContentComponent,
+    AttendantsListComponent,
+    EditActivityComponent,
+    AddMemberToActivityComponent,
   ],
   imports: [
     BrowserModule,
@@ -139,7 +145,11 @@ const appRoutes: Routes = [
     ActivityService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ CreateActivityComponent, MakeDugnadComponent ]
+  entryComponents: [ CreateActivityComponent,
+    MakeDugnadComponent,
+    EditActivityComponent,
+    AttendantsListComponent,
+    AddMemberToActivityComponent]
 })
 
 export class AppModule { }

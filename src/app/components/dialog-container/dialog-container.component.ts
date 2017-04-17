@@ -1,12 +1,17 @@
 import { Component, Input, Output, EventEmitter, AfterViewInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { DialogWindowDirective } from '../../directives/dialog-window.directive';
 
+
+export interface Dialogable {
+  events: EventEmitter<any>;
+  data:any;
+}
+
 @Component({
   selector: 'dialog-container',
   templateUrl: './dialog-container.component.html',
   styleUrls: ['./dialog-container.component.css']
 })
-
 
 /*
 * This is the dialog component. It is used as a host for other components.
