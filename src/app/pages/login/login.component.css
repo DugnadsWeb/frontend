@@ -26,7 +26,21 @@
 #tittel + .row{
 	width: 100%;	
 }
+#left{
+	
+	float: left;
+}
+#linkLeft{
+	  color: black;
+    text-decoration: none;
 
+}
+#linkLeft:hover 
+{
+     color:black;
+     text-decoration:none; 
+     cursor:pointer;  
+}
 .row{
 background-color:rgb(242, 241, 239);
 
