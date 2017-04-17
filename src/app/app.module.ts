@@ -58,7 +58,6 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
 import { ActivityViewComponent } from './components/activity-view/activity-view.component';
-import { KontaktComponent } from './components/kontakt/kontakt.component';
 
 
 
@@ -121,7 +120,6 @@ const appRoutes: Routes = [
     CreateActivityComponent,
     ActivityViewComponent,
     TableOfContentComponent,
-    KontaktComponent,
   ],
   imports: [
     BrowserModule,

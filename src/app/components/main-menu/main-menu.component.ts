@@ -33,8 +33,8 @@ export class MainMenuComponent implements OnInit {
 	  }
 	  else{
 		  this.atagsrc ="Logg inn";
-      this.navBarElements = ["Login"];
-      this.routerElements = ["login"];
+      this.navBarElements = ["Login", "Registrer Bruker"];
+      this.routerElements = ["login", "register"];
 	  }
   }
 
@@ -52,8 +52,8 @@ export class MainMenuComponent implements OnInit {
       }
       else{
         this.atagsrc = "Logg inn";
-        this.navBarElements = ["Login", "Kontakt"];
-        this.routerElements = ["login", "kontakt"];
+        this.navBarElements = ["Login", "Registrer Bruker"];
+        this.routerElements = ["login", "register"];
       }
 
     });
