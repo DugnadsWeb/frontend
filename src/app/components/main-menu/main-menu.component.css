@@ -16,13 +16,14 @@ li :hover{
 	color: black;
 	text-align: center;
 }
-
+#navbar-name{
+	
+	margin-left: -75px;
+	margin-top: 7px;
+}
 #usr{
 	margin-top: 8px;
 	width: 80%;
-	
-	
-	
 }
 #navRight{
 	margin-top:8px;

@@ -33,8 +33,8 @@ export class MainMenuComponent implements OnInit {
 	  }
 	  else{
 		  this.atagsrc ="Logg inn";
-      this.navBarElements = ["Login", "Registrer Bruker"];
-      this.routerElements = ["login", "register"];
+      this.navBarElements = ["Login"];
+      this.routerElements = ["login"];
 	  }
   }
 

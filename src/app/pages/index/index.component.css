@@ -4,15 +4,11 @@
 }
 #tittelContainer{
 	border-radius: 3px;
-	 
 	height:10vw;
 	position: relative;
 	background-color: rgb(194,229,229);
 	border-radius: 3px;
 	border-radius: 3px;
-	
-
-	
 }
 #tittel{
 	text-align: center;
@@ -67,7 +63,7 @@ h2{
 	text-align: center;
 }
 #block1{
-	padding-top: 100px;
+	padding-top: 50px;
 	
 }
 .panel panel-primary{
