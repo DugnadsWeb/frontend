@@ -8,7 +8,7 @@ import { Organization, User, Application, Dugnad, Activity } from '../models/mod
 @Injectable()
 export class DugnadService {
 
-
+  private isInitSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   private dugnad: Dugnad;
   private dugnadSubject: BehaviorSubject<Dugnad>;
@@ -26,7 +26,7 @@ export class DugnadService {
       let subscription = this.getDugnadHttp(dugnadId).subscribe(dugnad => {
         this.dugnad = dugnad;
         this.dugnadSubject = new BehaviorSubject(dugnad);
-        subscription.unsubscribe();
+        this.isInitSubject.next(true);
 
         if (!this.orgService.isInit){
           // TODO remove orgUuid for dugnad and replace with /api/dugnad/org/:dugnad_id
@@ -35,9 +35,15 @@ export class DugnadService {
           this.orgService.subscribeToDugnad(this.dugnadSubject.asObservable());
         }
 
-
+        subscription.unsubscribe();
         res();
       });
+    });
+  }
+
+  isInitObservable(){
+    return new Promise<Observable<boolean>>((res, rej) => {
+      res(this.isInitSubject.asObservable());
     });
   }
 
@@ -45,6 +51,16 @@ export class DugnadService {
     return new Promise<Observable<Dugnad>>((res, rej) => {
       res(this.dugnadSubject.asObservable());
     });
+  }
+
+  editDugnad(dugnad: Dugnad){
+    return new Promise((res, rej) => {
+      this.putDugnad(dugnad).subscribe(() => {
+        this.dugnad = dugnad;
+        this.dugnadSubject.next(Object.assign(new Dugnad('','','','','','','','','', this.dungad)));
+        res()
+      }, err => rej(err));
+    })
   }
 
   getActivities(){
@@ -120,6 +136,27 @@ export class DugnadService {
 	  });
 
 	}
+
+  private putDugnad(dugnad: Dugnad){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    let body = JSON.stringify({ dugnad:dugnad });
+    return this.http
+    .put(
+      'http://localhost:8888/api/dugnad/',
+      body,
+      { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+      if (res) {
+        console.log("Dugnad updated");
+      }
+      return res;
+      });
+
+  }
 
   addActivityHttp(activity: Activity){
     delete activity.uuid;

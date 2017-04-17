@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div *ngIf="attendants">
+    <user-box *ngFor="let attendant of attendants"
+      [style.background-color]="memberIsMarked(attendant)"
+      [user]="attendant"
+      (click)="clickMember(attendant)">
+    </user-box>
+    <span *ngIf="attendants.length == 0">Ingen meldinger tilgjengelig</span>
+  </div>
+  <div class="buttons">
+    <button (click)="removeMembers()">Fjern medlemmer</button>
+    <button (click)="cancle()">Avbryt</button>
+  </div>
+</div>

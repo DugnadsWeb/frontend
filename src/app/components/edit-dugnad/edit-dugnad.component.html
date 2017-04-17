@@ -1,0 +1,107 @@
+<div *ngIf="dugnad"
+  id="container">
+	<div class="row">
+		<div class="col-md-3">
+
+		</div>
+		<div class="col-md-12 kolonne" style="margin-top: 1px;">
+
+		<!--	<div id="tittelContainer">
+				<h1 id="tittel">Opprett dugnad</h1>
+			</div> -->
+
+
+
+				<div class="panel-body" id="block1">
+					<form (ngSubmit)="onSubmit($event)">
+						<div class="form-group">
+							<label>Dugnadsnavn: </label>
+							<input name="dugNavn"
+                type="text"
+                placeholder="Dugnadsnavn"
+                class="form-control"
+                id="dugNavn"
+                required
+                [(ngModel)]="dugnad.title">
+							<small id="navnHelp" class="form-text text-muted">Dette er navnet deltagerene vil se</small>
+						</div>
+						<div class="form-group">
+							<label>Beskrivelse:</label>
+							<textarea
+                name="dugBeskrivelse"
+                class="form-control"
+                id="dugBeskrivelse"
+                rows="3"
+                required
+                [(ngModel)]="dugnad.description"></textarea>
+							<small id="beskrivelseHelp" class="form-text text-muted">Beskriv dugnaden for deltagerene</small>
+						</div>
+						<div class="form-group">
+							<label>Motested: </label>
+							<input name="dugSted"
+                type="text"
+                class="form-control"
+                id="dugSted"
+                required
+                [(ngModel)]="dugnad.location">
+							<small id="motestedHelp" class="form-text text-muted">Angi motested/område for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Startdato: </label>
+							<input name="dugStartDato"
+                type="date"
+                class="form-control"
+                id="dugStartDato"
+                required
+                [(ngModel)]="startDate">
+							<small id="startDatoHelp" class="form-text text-muted">Angi startdato for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Møtetid: </label>
+							<input name="dugStartTid"
+              type="time"
+              class="form-control"
+              id="dugStarttid"
+              required
+              [(ngModel)]="startTime">
+							<small id="startTidHelp" class="form-text text-muted">Angi starttid for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Sluttdato: </label>
+							<input name="dugSluttDato"
+              type="date"
+              class="form-control"
+              id="dugSluttDato"
+              required
+              [(ngModel)]="endDate">
+							<small id="sluttDatoHelp" class="form-text text-muted">Angi avsluttningsdato for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Avsluttnings tidspunkt: </label>
+							<input name="dugSluttTid"
+                type="time"
+                class="form-control"
+                id="dugSluttTid"
+                required
+                [(ngModel)]="endTime">
+							<small id="sluttTidHelp" class="form-text text-muted">Angi avsluttnings tidspunkt for dugnaden</small>
+						</div>
+						<div class="form-group">
+							<label>Maks antall deltagere: </label>
+							<input name="dugAnt"
+                type="number"
+                class="form-control"
+                id="dugAnt"
+                required
+                [(ngModel)]="dugnad.maxPartisipants">
+							<small id="antHelp" class="form-text text-muted">Angi maks antall deltagere(0 for ubegrenset)</small>
+						</div>
+						<button type="submit" class="btn btn-default">Opprett dugnad</button>
+					</form>
+
+
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div> <!-- ROW END -->
+</div>

@@ -1,11 +1,15 @@
-<div *ngIf="members">
-  <ng-container *ngFor="let member of members">
-    <user-box [style.background-color]="memberIsMarked(member)"
-      [user]="member"
-      (click)="clickMember(member)">
-    </user-box>
-  </ng-container>
-  <span *ngIf="members.length == 0">Ingen meldinger tilgjengelig</span>
+<div class="wrapper">
+  <div *ngIf="members">
+    <ng-container *ngFor="let member of members">
+      <user-box [style.background-color]="memberIsMarked(member)"
+        [user]="member"
+        (click)="clickMember(member)">
+      </user-box>
+    </ng-container>
+    <span *ngIf="members.length == 0">Ingen meldinger tilgjengelig</span>
+  </div>
+  <div class="buttons">
+    <button (click)="addMembers()">Legg til</button>
+    <button (click)="events.emit({type: 'close'})">Avbryt</button>
+  </div>
 </div>
-<button (click)="addMembers()">Legg til</button>
-<button (click)="events.emit({type: 'close'})">Avbryt</button>

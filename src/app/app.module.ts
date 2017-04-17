@@ -51,6 +51,10 @@ import { AttendantsListComponent } from './components/attendants-list/attendants
 import { ActivityViewComponent } from './components/activity-view/activity-view.component';
 import { EditActivityComponent } from './components/edit-activity/edit-activity.component';
 import { AddMemberToActivityComponent } from './components/add-member-to-activity/add-member-to-activity.component';
+import { RemoveMemberFromActivityComponent } from './components/remove-member-from-activity/remove-member-from-activity.component';
+import { EditDugnadComponent } from './components/edit-dugnad/edit-dugnad.component';
+import { OrgStatsComponent } from './components/org-stats/org-stats.component';
+
 
 
 // app services imports
@@ -126,6 +130,9 @@ const appRoutes: Routes = [
     AttendantsListComponent,
     EditActivityComponent,
     AddMemberToActivityComponent,
+    RemoveMemberFromActivityComponent,
+    EditDugnadComponent,
+    OrgStatsComponent,
   ],
   imports: [
     BrowserModule,
@@ -149,7 +156,8 @@ const appRoutes: Routes = [
     MakeDugnadComponent,
     EditActivityComponent,
     AttendantsListComponent,
-    AddMemberToActivityComponent]
+    AddMemberToActivityComponent,
+    RemoveMemberFromActivityComponent ]
 })
 
 export class AppModule { }

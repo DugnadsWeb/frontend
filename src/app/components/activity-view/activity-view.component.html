@@ -1,26 +1,32 @@
 <div class="container activity-box">
-  <ng-container *ngIf="attendants">
-    <button *ngIf="isUserApplied === false"
-      (click)="applyTo()">
-      Bli med
-    </button>
-    <button *ngIf="isUserApplied === true"
-      (click)="unapplyTo()">
-      Meld av
-    </button>
-  </ng-container>
-  <dialog-container *ngIf="attendants"
-    [btnText]="'Påmelte'"
-    [component]="attendantsListComponent">
-  </dialog-container>
-  <dialog-container *ngIf="true"
-    [btnText]="'Rediger aktivitet'"
-    [component]="editActivityComponent">
-  </dialog-container>
-  <dialog-container *ngIf="true"
-    [btnText]="'Legg til medlemmer'"
-    [component]="addMemberToActivityComponent">
-  </dialog-container>
+  <div>
+    <ng-container *ngIf="attendants">
+      <button *ngIf="isUserApplied === false"
+        (click)="applyTo()">
+        Bli med
+      </button>
+      <button *ngIf="isUserApplied === true"
+        (click)="unapplyTo()">
+        Meld av
+      </button>
+    </ng-container>
+    <dialog-container *ngIf="attendants"
+      [btnText]="'Påmelte'"
+      [component]="attendantsListComponent">
+    </dialog-container>
+    <dialog-container *ngIf="isUserAdmin"
+      [btnText]="'Rediger aktivitet'"
+      [component]="editActivityComponent">
+    </dialog-container>
+    <dialog-container *ngIf="isUserAdmin"
+      [btnText]="'Legg til medlemmer'"
+      [component]="addMemberToActivityComponent">
+    </dialog-container>
+    <dialog-container *ngIf="isUserAdmin"
+      [btnText]="'Fjern medlemmer'"
+      [component]="removeMemberFromActivityComponent">
+    </dialog-container>
+  </div>
   <div class="row">
     <h2 class="col-md-8">
       {{activity.title}}

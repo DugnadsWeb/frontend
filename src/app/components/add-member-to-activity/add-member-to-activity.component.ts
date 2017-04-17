@@ -75,7 +75,6 @@ export class AddMemberToActivityComponent implements OnInit, Dialogable {
   }
 
   memberIsMarked(member): string{
-
     if (this.selectedMembers.indexOf(member) != -1){
       return '#a7edff';
     }

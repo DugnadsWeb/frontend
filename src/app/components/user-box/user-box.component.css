@@ -1,5 +1,13 @@
+
+
 div {
-  padding: 2px;
-  margin: 2px;
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
   background-color: inherit;
+}
+
+img {
+  height: 100px;
+  width: 100px;
 }

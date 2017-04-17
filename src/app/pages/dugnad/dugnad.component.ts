@@ -6,6 +6,7 @@ import { Dugnad } from '../../models/models';
 import { DugnadService, OrgService } from '../../services/services';
 import { DugnadInfoComponent } from '../../components/dugnad-info/dugnad-info.component';
 import { ActivityListComponent } from '../../components/activity-list/activity-list.component';
+import { EditDugnadComponent } from '../../components/edit-dugnad/edit-dugnad.component';
 
 @Component({
   selector: 'app-dugnad',
