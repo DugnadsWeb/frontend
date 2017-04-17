@@ -61,6 +61,7 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
+import { ContactUssComponent } from './components/contact-uss/contact-uss.component';
 
 
 
@@ -126,6 +127,7 @@ const appRoutes: Routes = [
     AttendantsListComponent,
     EditActivityComponent,
     AddMemberToActivityComponent,
+    ContactUssComponent,
   ],
   imports: [
     BrowserModule,
