@@ -12,6 +12,7 @@ export class Dugnad{
     public maxPartisipants,
     status){
       this.status = true?status=='true':false
+	  
     }
 
     getTimesAsObeject(){
