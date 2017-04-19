@@ -57,7 +57,7 @@ export class DugnadService {
     return new Promise((res, rej) => {
       this.putDugnad(dugnad).subscribe(() => {
         this.dugnad = dugnad;
-        this.dugnadSubject.next(Object.assign(new Dugnad('','','','','','','','','', this.dungad)));
+        this.dugnadSubject.next(Object.assign(new Dugnad('','','','','','','','','',), this.dugnad));
         res()
       }, err => rej(err));
     })

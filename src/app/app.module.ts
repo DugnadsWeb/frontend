@@ -54,6 +54,8 @@ import { AddMemberToActivityComponent } from './components/add-member-to-activit
 import { RemoveMemberFromActivityComponent } from './components/remove-member-from-activity/remove-member-from-activity.component';
 import { EditDugnadComponent } from './components/edit-dugnad/edit-dugnad.component';
 import { OrgStatsComponent } from './components/org-stats/org-stats.component';
+import { ContactUssComponent } from './components/contact-uss/contact-uss.component';
+import { MemberAttendansOverviewComponent } from './components/member-attendans-overview/member-attendans-overview.component';
 
 
 
@@ -65,7 +67,6 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
-import { ContactUssComponent } from './components/contact-uss/contact-uss.component';
 
 
 
@@ -135,6 +136,7 @@ const appRoutes: Routes = [
     EditDugnadComponent,
     OrgStatsComponent,
     ContactUssComponent,
+    MemberAttendansOverviewComponent,
   ],
   imports: [
     BrowserModule,
