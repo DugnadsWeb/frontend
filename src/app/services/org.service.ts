@@ -654,7 +654,6 @@ export class OrgService {
       getDugnads(){
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('authorization', 'Bearer ' + this.authService.getToken());
         return this.http
     			.get(
     				'http://localhost:8888/api/org/dugnads/'+this.org.uuid,
@@ -699,6 +698,30 @@ export class OrgService {
       	  });
 
     	}
+
+      getAttendantsStatsByYear(year){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http
+    			.get(
+    				'http://localhost:8888/api/org/stats/attendants/year/'+this.org.uuid+'/'+year,
+            { headers }
+    			)
+    			.map(res => res.json())
+    			.map((res) => {
+            let ret = [];
+            console.log(res);
+            for (let i=0;i<res.length;i++){
+              ret.push({user: new User(res[i].user.email, res[i].user.firstName,
+                 res[i].user.lastName, res[i].user.phone)
+                , count: res[i].count});
+            }
+            return ret;
+    			})
+    			.catch((error:any) => {
+          		return Observable.throw(new Error(error.status));
+          });
+      }
 
 
 }

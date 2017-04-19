@@ -1,3 +1,12 @@
-<p>
-  org-stats works!
-</p>
+<div>
+  <select (change)="yearChange($event)">
+    <option *ngFor="let dugnad of dugnads" value="dugnad.year">
+      {{dugnad.year}}
+    </option>
+  </select>
+  <div>
+    <member-attendans-overview *ngIf="selectedYear"
+      [year]="selectedYear">
+    </member-attendans-overview>
+  </div>
+</div>

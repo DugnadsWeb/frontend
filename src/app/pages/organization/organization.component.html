@@ -21,6 +21,7 @@
       <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Beskjeder</a></li>
       <li role="presentation"><a href="#members" aria-controls="members" role="tab" data-toggle="tab">Medlemmer</a></li>
       <li *ngIf="isAdmin" role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Admin Panel</a></li>
+      <li *ngIf="isAdmin" role="presentation"><a href="#stats" aria-controls="stats" role="tab" data-toggle="tab">Statistikk</a></li>
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="home">
@@ -46,6 +47,10 @@
           [org]="org"
           (memberAdded)="memberAdded($event)">
         </org-admin-panel>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="stats">
+        <org-stats>
+        </org-stats>
       </div>
     </div>
   </div>
