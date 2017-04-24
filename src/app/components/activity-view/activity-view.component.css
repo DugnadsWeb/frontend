@@ -3,8 +3,27 @@
   border-radius: 5px;
   padding: 2em;
   margin: 1em;
+  background-color: WHITE;
 }
 
 .activity-box h2 {
   margin: 0;
 }
+.row {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.buttons {
+	width: 100px;
+	float: left;
+	height: 40px;
+	
+}
+
+#fix{
+	width: 100px;
+	
+}
+
+
