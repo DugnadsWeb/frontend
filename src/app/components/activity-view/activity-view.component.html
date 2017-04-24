@@ -28,30 +28,30 @@
   <div>
     Beskrivelse: {{ activity.description }}
   </div>
-    <div>
+    <div class="row">
     <ng-container *ngIf="attendants">
-      <button *ngIf="isUserApplied === false"
+      <button class="buttons" *ngIf="isUserApplied === false"
         (click)="applyTo()">
         Bli med
       </button>
-      <button *ngIf="isUserApplied === true"
+      <button class="buttons" *ngIf="isUserApplied === true"
         (click)="unapplyTo()">
         Meld av
       </button>
     </ng-container>
-    <dialog-container *ngIf="attendants"
-      [btnText]="'Påmelte'"
+    <dialog-container id="fix" class="buttons" *ngIf="attendants"
+      [btnText]="'Påmeldte medlemmer'"
       [component]="attendantsListComponent">
     </dialog-container>
-    <dialog-container *ngIf="isUserAdmin"
+    <dialog-container class="buttons" *ngIf="isUserAdmin"
       [btnText]="'Rediger aktivitet'"
       [component]="editActivityComponent">
     </dialog-container>
-    <dialog-container *ngIf="isUserAdmin"
+    <dialog-container class="buttons" *ngIf="isUserAdmin"
       [btnText]="'Legg til medlemmer'"
       [component]="addMemberToActivityComponent">
     </dialog-container>
-    <dialog-container *ngIf="isUserAdmin"
+    <dialog-container class="buttons" *ngIf="isUserAdmin"
       [btnText]="'Fjern medlemmer'"
       [component]="removeMemberFromActivityComponent">
     </dialog-container>
