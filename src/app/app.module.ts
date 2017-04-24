@@ -83,6 +83,7 @@ const appRoutes: Routes = [
   { path: 'info-hub', component: InfoHubComponent },
   { path: 'dugnad/:id', component: DugnadComponent },
   { path: 'toc', component: TableOfContentComponent},
+  { path: 'contactUss', component: ContactUssComponent},
   { path: '**', component: NotFoundComponent },
 
 

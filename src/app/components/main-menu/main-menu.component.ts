@@ -32,9 +32,9 @@ export class MainMenuComponent implements OnInit {
       this.navBarElements = ["Profil","Registrer Org", "Organisasjoner", "Oversikt"];
 	  }
 	  else{
-		  this.atagsrc ="Logg inn";
-      this.navBarElements = ["Login"];
-      this.routerElements = ["login"];
+	  this.atagsrc ="Logg inn";
+      this.navBarElements = ["Om oss","Login"];
+      this.routerElements = [ "contactUss","login"];
 	  }
   }
 
