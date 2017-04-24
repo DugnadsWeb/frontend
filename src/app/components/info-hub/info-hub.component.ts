@@ -90,6 +90,10 @@ export class InfoHubComponent implements OnInit {
     this.dugnader = dugnadsList;
   }
 
+  routeToOrg(clicked){
+        this.router.navigate(['org/', clicked]);
+  }
+
 }
 class OrgDug {
   orgName: string;
