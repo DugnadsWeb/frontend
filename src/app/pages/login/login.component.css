@@ -31,13 +31,13 @@
 	float: left;
 }
 #linkLeft{
-	  color: black;
+	  color: white;
     text-decoration: none;
 
 }
 #linkLeft:hover 
 {
-     color:black;
+     color:white;
      text-decoration:none; 
      cursor:pointer;  
 }
