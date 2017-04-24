@@ -100,6 +100,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
     this.attendants.forEach(attendant => {
       if (logedInUserEmail == attendant.email){
         this.isUserApplied = true;
+	
       }
     })
   }
