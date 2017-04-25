@@ -5,6 +5,10 @@ import { DugnadService, UserService } from '../../services/services';
 import {Dugnad} from "../../models/dugnad";
 import {forEach} from "@angular/router/src/utils/collection";
 import {Organization} from "../../models/organization";
+import {observableToBeFn} from "rxjs/testing/TestScheduler";
+import {OrgService} from "../../services/org.service";
+import {User} from "../../models/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-info-hub',
@@ -17,27 +21,24 @@ import {Organization} from "../../models/organization";
 export class InfoHubComponent implements OnInit {
 
   jwt_decode = require('jwt-decode');
-  email = "";
-  orgUUID = "";
-
-
-  org: { orgName: string; uuid: string;};
-
-  dugnader : Dugnad[];
-  orgs: OrgDug[];
-
+  memberships: any[];
 
   constructor(private authService: AuthService,
               private userService: UserService,
               private router: Router,
-              private dugnadService: DugnadService) { }
+              private dugnadService: DugnadService,
+              private orgService: OrgService) { }
 
   ngOnInit() {
 
-    this.getOrganizations();
+      let user = this.authService.getDecodedToken();
 
-  }
+      this.memberships = user.memberships;
+      console.log(this.memberships);
 
+   }
+
+/*
   getOrganizations(){
     let token = localStorage.getItem('auth_token');
     let decoded = this.jwt_decode(token);
@@ -91,11 +92,12 @@ export class InfoHubComponent implements OnInit {
   }
 
   routeToOrg(clicked){
+        console.log(clicked);
         this.router.navigate(['org/', clicked]);
   }
-
+*/
 }
-class OrgDug {
+/*class OrgDug {
   orgName: string;
   uuid: string;
 
@@ -103,4 +105,4 @@ class OrgDug {
     this.orgName = orgName;
     this.uuid = uuid;
   }
-}
+}*/

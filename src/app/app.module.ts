@@ -59,7 +59,7 @@ import { MemberAttendansOverviewComponent } from './components/member-attendans-
 import { FunctionsComponent } from './components/functions/functions.component';
 import { ActivityToCreateSelectorComponent } from './components/activity-to-create-selector/activity-to-create-selector.component';
 import { CreateSalesActivityComponent } from './components/create-sales-activity/create-sales-activity.component';
-
+import { OrgBoxComponent } from './components/org-box/org-box.component';
 
 // app services imports
 import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService, ActivityService } from './services/services';
@@ -145,6 +145,7 @@ const appRoutes: Routes = [
     FunctionsComponent,
     ActivityToCreateSelectorComponent,
     CreateSalesActivityComponent,
+    OrgBoxComponent,
   ],
   imports: [
     BrowserModule,

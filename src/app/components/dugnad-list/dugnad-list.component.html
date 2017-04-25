@@ -1,5 +1,5 @@
 <div class="container" *ngIf="dugnads">
-  <dialog-container *ngIf="isAdmin" 
+  <dialog-container *ngIf="isAdmin"
     [component]="makeDugnadComponent"
     [btnText]="'Opprett dugnad'">
   </dialog-container>
@@ -8,4 +8,7 @@
     *ngFor="let dugnad of dugnads"
     [dugnad]="dugnad">
   </dugnad-view>
+  <div *ngIf="dugnads.length == 0">
+    <h4>Det er for øyeblikket ingen aktive dugnader</h4>
+  </div>
 </div>

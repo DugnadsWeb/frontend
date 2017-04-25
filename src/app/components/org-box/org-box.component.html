@@ -1,0 +1,13 @@
+<ng-container *ngIf="org">
+<h3 class="list-group-item-heading" (click)="routeToOrg(org.uuid)">
+
+
+  <span class="glyphicon glyphicon-link"></span>
+
+  {{org.orgName}}
+
+</h3>
+
+<app-dugnad-list>
+</app-dugnad-list>
+</ng-container>
