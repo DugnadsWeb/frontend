@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { CreateActivityComponent } from '../create-activity/create-activity.component';
+import { ActivityToCreateSelectorComponent } from '../activity-to-create-selector/activity-to-create-selector.component';
 import { Activity } from '../../models/models';
 import { OrgService, DugnadService, ActivityService } from '../../services/services';
 import { ActivityViewComponent } from '../activity-view/activity-view.component';
@@ -15,7 +15,7 @@ export class ActivityListComponent implements OnInit {
 
   activities: Activity[];
   activitiesSubscription: Subscription;
-  component = CreateActivityComponent;
+  component = ActivityToCreateSelectorComponent;
   // TODO replace with auth service
   isAdmin = true;
   isAdminSubscription: Subscription;

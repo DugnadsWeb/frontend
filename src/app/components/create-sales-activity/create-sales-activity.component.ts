@@ -2,12 +2,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Activity } from '../../models/models';
 import { DugnadService } from '../../services/services';
 
+
 @Component({
-  selector: 'app-create-activity',
-  templateUrl: './create-activity.component.html',
-  styleUrls: ['./create-activity.component.css']
+  selector: 'app-create-sales-activity',
+  templateUrl: './create-sales-activity.component.html',
+  styleUrls: ['./create-sales-activity.component.css']
 })
-export class CreateActivityComponent implements OnInit {
+export class CreateSalesActivityComponent implements OnInit {
+
 
   data:any;
   events = new EventEmitter<any>();
@@ -20,6 +22,7 @@ export class CreateActivityComponent implements OnInit {
   startDate;
   endTime;
   endDate;
+  product;
 
   constructor(private dugnadService: DugnadService) { }
 

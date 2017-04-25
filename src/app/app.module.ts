@@ -57,6 +57,8 @@ import { OrgStatsComponent } from './components/org-stats/org-stats.component';
 import { ContactUssComponent } from './components/contact-uss/contact-uss.component';
 import { MemberAttendansOverviewComponent } from './components/member-attendans-overview/member-attendans-overview.component';
 import { FunctionsComponent } from './components/functions/functions.component';
+import { ActivityToCreateSelectorComponent } from './components/activity-to-create-selector/activity-to-create-selector.component';
+import { CreateSalesActivityComponent } from './components/create-sales-activity/create-sales-activity.component';
 
 
 // app services imports
@@ -141,6 +143,8 @@ const appRoutes: Routes = [
     ContactUssComponent,
     MemberAttendansOverviewComponent,
     FunctionsComponent,
+    ActivityToCreateSelectorComponent,
+    CreateSalesActivityComponent,
   ],
   imports: [
     BrowserModule,
@@ -165,7 +169,9 @@ const appRoutes: Routes = [
     EditActivityComponent,
     AttendantsListComponent,
     AddMemberToActivityComponent,
-    RemoveMemberFromActivityComponent ]
+    RemoveMemberFromActivityComponent,
+    ActivityToCreateSelectorComponent,
+    CreateSalesActivityComponent]
 })
 
 export class AppModule { }

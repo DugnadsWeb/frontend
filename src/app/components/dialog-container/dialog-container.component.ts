@@ -58,8 +58,7 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
     (<any>cr).instance.data = this.componentData;
     // subscribe to confirm and cancle events
     (<any>cr).instance.events.subscribe(event => {
-      if(event.type == 'close') { this.closeDialog()}
-      this.events.emit(event);
+      this.eventHandler(event);
     });
     //cr.instance.data = this.componentData;
   }
@@ -71,6 +70,13 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
   closeDialog(){
     this.dialogWindow.vcRef.clear();
     this.isActive = false;
+  }
+
+  eventHandler(event){
+    if(event.type == 'close') { this.closeDialog()}
+    if(event.type == 'changeComponent') { this.component = event.component;
+       this.openDialog() }
+    this.events.emit(event);
   }
 
 
