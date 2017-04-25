@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
 	token = window.localStorage.getItem('auth_token');
-	
+
   constructor(private authService: AuthService, private router: Router, public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef) {
   	overlay.defaultViewContainer = vcRef;
   	}
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   	if(this.token)
   	{
-  		this.router.navigate(['profile']);	
+  		this.router.navigate(['profile']);
   	}
   }
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           	this.router.navigate(['']);
         }
     },(error) => {
-    	
+
     	if(error){
     		this.modal.alert()
     		.title('Login Failed')

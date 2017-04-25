@@ -30,27 +30,27 @@
 				<div id="tittelContainer">
 					<h1 id="tittel">Logg inn</h1>
 				</div>
-				
+
 				<div class="panel panel-primary">
 					<div class="panel-body" id="block1">
 						<form (ngSubmit)="onSubmit($event)">
-								<label>Email</label> 
+								<label>Email</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 								<input class="form-control" id="email" name="email" required="" type="email"  placeholder="Email" [(ngModel)]="email">
 							</div>
-							
-						<label>Passord</label> 
+
+						<label>Passord</label>
 						  <div class="input-group">
 						   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 								<input class="form-control" id="password" name="password" required=""  placeholder="Passord"type="password" [(ngModel)]="password">
 							</div>
-						
+
 							<br/>
 							<button class="btn btn-info" type="submit">Logg inn</button>
 						</form>
 						<hr>
-						
+
 						<button id="left" type="button" class="btn btn-info">
 						<a id="linkLeft" href="../register">Register ny bruker</a>
 						</button>

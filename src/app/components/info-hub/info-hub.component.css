@@ -27,14 +27,14 @@
 .panel-body{
 	overflow: auto;
 }
-.panel-heading {	
-	
+.panel-heading {
+
 	color: black;
 	background-color: rgb(194,229,229);
 	border-bottom-color: rgb(194,229,229);
 }
 #block1{
-	
+
 	margin-top: 30px;
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	   -moz-box-shadow: 0 8px 6px -6px black;
@@ -45,16 +45,16 @@
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	   -moz-box-shadow: 0 8px 6px -6px black;
 	        box-shadow: 0 10px 20px -6px black;
-	
-	
+
+
 }
 .row{
 		border-radius: 3px;
-	
+
 
 			padding-bottom: 50px;
-			
-			
+
+
 			margin-top: 40px;
 	}
 #tittelContainer{
@@ -74,11 +74,11 @@
     position: absolute;
 	font-size: 3vw;
 	border-radius: 100px;
-	border-color: rgb(26,61,61);	
+	border-color: rgb(26,61,61);
 }
-		
+
 #tittel + .row{
-	width: 100%;	
+	width: 100%;
 }
 
 .row{
@@ -88,18 +88,22 @@ border-radius: 3px;
 
 }
 .panel{
-	
+
 	border-style: none;
 	height: 100%;
 }
 
 .kolonne{
-	margin-top: 4%;	
+	margin-top: 4%;
 
 	}
-	
+
 .container{
-	
-	width:80%;	
-	
+
+	width:80%;
+
+}
+
+h3 :hover{
+  cursor: pointer;
 }

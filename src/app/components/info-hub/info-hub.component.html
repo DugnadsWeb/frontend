@@ -5,12 +5,19 @@
 	<div class="col-md-8">
 			<div class="panel panel-primary" id="block1">
             <div class="panel-heading">
-              <h3 class="panel-title">Dugnadsoversikt</h3>
+              <h2 class="panel-title">Dugnadsoversikt</h2>
             </div>
         <div class="panel-body" >
           <ul>
             <ul class="list-group-item-heading" *ngFor="let org of orgs">
-              <h3 class="list-group-item-heading" (click)="routeToOrg(org.uuid)"><span class="glyphicons glyphicons-link"></span>{{org.orgName}}</h3>
+              <h3 class="list-group-item-heading" (click)="routeToOrg(org.uuid)">
+
+
+                <span class="glyphicon glyphicon-link"></span>
+
+                {{org.orgName}}
+
+              </h3>
                 <li class="list-group-item">
                 <hr>
                   <ul>
