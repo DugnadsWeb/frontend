@@ -5973,6 +5973,7 @@ button.close {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
+	margin-top: 50%;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

@@ -27,14 +27,14 @@ export class MainMenuComponent implements OnInit {
   	let token = window.localStorage.getItem('auth_token');
 
 	  if(token){
-		  this.atagsrc ="Logg ut";
-      this.routerElements = ["profile", "register-org", "search", "info-hub"];
-      this.navBarElements = ["Profil","Registrer Org", "Organisasjoner", "Oversikt"];
+	  this.atagsrc ="Logg ut";
+      this.routerElements = ["functions","contactUss","info-hub","register-org","search"];
+      this.navBarElements = ["Funksjoner","Kontakt oss","Min oversikt","Opprett org","Søk etter org"];
 	  }
 	  else{
-		  this.atagsrc ="Logg inn";
-      this.navBarElements = ["Login"];
-      this.routerElements = ["login"];
+	  this.atagsrc ="Logg inn";
+      this.navBarElements = ["Funksjoner","Om oss","Logg inn"];
+      this.routerElements = [ "functions","contactUss","login"];
 	  }
   }
 
@@ -47,13 +47,13 @@ export class MainMenuComponent implements OnInit {
     this.authService.status.subscribe(status => {
       if(status == true) {
         this.atagsrc = "Logg ut";
-        this.routerElements = ["profile", "register-org", "search", "info-hub"];
-        this.navBarElements = ["Profil", "Registrer Org", "Organisasjoner", "Oversikt"];
+        this.routerElements =  ["functions","contactUss","info-hub","register-org","search"];
+        this.navBarElements = ["Funksjoner","Kontakt oss","Min oversikt","Opprett org","Søk etter org"];
       }
       else{
         this.atagsrc = "Logg inn";
-        this.navBarElements = ["Login"];
-        this.routerElements = ["login"];
+        this.navBarElements =  ["Funksjoner","Om oss","Logg inn"];
+        this.routerElements =[ "functions","contactUss","login"];
       }
 
     });
