@@ -5,15 +5,16 @@
     <h2 class="col-md-8">
       {{activity.title}}
     </h2>
-    <div class="col-md-4">
+    <div class="col-md-4" style=" color: green;">
       Åpen for påmelding
     </div>
   </div>
  <ng-container *ngIf="attendants">
-      <div class="mAplied" *ngIf="isUserApplied === false">
+      <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
        Status: Ikke påmeldt
+	  
       </div>
-      <div class="mAplied" *ngIf="isUserApplied === true">
+      <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
         Status: Påmeldt
       </div>
     </ng-container>

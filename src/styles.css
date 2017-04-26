@@ -3,6 +3,7 @@ body{
 	
 	background-color:rgb(242, 241, 239);
 	
+	
 }
 #tittelContainer{
 	border-radius: 3px;
@@ -19,6 +20,12 @@ body{
 #tittel{
 	width: 100%;
 }
+@media only screen and (max-width: 500px) {
+   #orgTitle{
+
+	font-size: large;
+	
+}}
 .panel{
 	
 	border-style: none;
