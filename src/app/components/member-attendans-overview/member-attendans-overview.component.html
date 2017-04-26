@@ -1,6 +1,8 @@
-<div *ngIf="stats">
+<div id="container" *ngIf="stats">
+
   <ng-container *ngFor="let stat of stats">
     <user-box [user]="stat.user">
     </user-box> {{stat.count}}
   </ng-container>
+
 </div>
