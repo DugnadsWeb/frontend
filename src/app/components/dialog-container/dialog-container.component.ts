@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, AfterViewInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { DialogWindowDirective } from '../../directives/dialog-window.directive';
 
 
@@ -20,7 +20,7 @@ export interface Dialogable {
 *
 * TODO implement a cancle button
 */
-export class DialogContainerComponent implements AfterViewInit, OnDestroy {
+export class DialogContainerComponent implements OnInit, OnDestroy {
 
   @Input()
   component;
@@ -36,21 +36,23 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
   @Input()
   componentData:any;
 
+
+  activeComponent;
   isActive: boolean = false;
 
   @ViewChild(DialogWindowDirective) dialogWindow: DialogWindowDirective;
 
   constructor(private cfr: ComponentFactoryResolver) { }
 
-  ngAfterViewInit(){
-
+  ngOnInit(){
+    this.activeComponent = this.component;
   }
 
   openDialog(){
 
     this.isActive = true;
 
-    let cf = this.cfr.resolveComponentFactory(this.component);
+    let cf = this.cfr.resolveComponentFactory(this.activeComponent);
     let vcRef = this.dialogWindow.vcRef;
     vcRef.clear();
 
@@ -70,11 +72,12 @@ export class DialogContainerComponent implements AfterViewInit, OnDestroy {
   closeDialog(){
     this.dialogWindow.vcRef.clear();
     this.isActive = false;
+    this.activeComponent = this.component;
   }
 
   eventHandler(event){
-    if(event.type == 'close') { this.closeDialog()}
-    if(event.type == 'changeComponent') { this.component = event.component;
+    if(event.type == 'close') { this.closeDialog(); }
+    if(event.type == 'changeComponent') { this.activeComponent = event.component;
        this.openDialog() }
     this.events.emit(event);
   }

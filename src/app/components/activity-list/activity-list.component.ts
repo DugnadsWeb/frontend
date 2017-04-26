@@ -28,14 +28,19 @@ export class ActivityListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isOrgServiceInitSubscription = this.orgService.getIsInitObservable().subscribe(observable => {
-      this.dugnadService.getActivities().then(observable => {
-        this.activitiesSubscription = observable.subscribe(activities => this.activities = activities);
-      });
-      this.orgService.isUserAdminObservable().then(observable => {
-        this.isAdminSubscription = observable.subscribe(isAdmin => this.isAdmin = isAdmin);
-      });
+    this.orgService.isInitObservable().then(observable => {
+      this.isOrgServiceInitSubscription = observable.subscribe(isInit => {
+        if (isInit) {
+          this.dugnadService.getActivities().then(observable => {
+            this.activitiesSubscription = observable.subscribe(activities => this.activities = activities);
+          });
+          this.orgService.isUserAdminObservable().then(observable => {
+            this.isAdminSubscription = observable.subscribe(isAdmin => this.isAdmin = isAdmin);
+          });
+          this.isOrgServiceInitSubscription.unsubscribe();
+        }
     })
+  })
   }
 
 

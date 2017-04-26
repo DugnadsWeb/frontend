@@ -62,7 +62,6 @@ export class ActivityService {
         let subscriber = this.getAttendantsHttp().subscribe(ret => {
           this.attendants = ret;
           this.attendantsSource = new BehaviorSubject<User[]>(ret);
-          subscriber.unsubscribe();
           res(this.attendantsSource.asObservable());
         });
       } else {
