@@ -1,0 +1,64 @@
+#container{
+	
+	float: left;
+	background-color: red;
+	-ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+	margin-left: 200px;
+	
+}
+#numbers{
+	display: inline;
+	background-color: green;
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Kristoffer*/
+
+#container{
+	
+background-color: black;
+
+	-ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+	
+
+	
+	
+	
+}
+#container img{
+	
+
+	
+}
+
+div {
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: inherit;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}

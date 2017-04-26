@@ -6,9 +6,10 @@
 	
 	
 }
+
 #nav{
 	
-	
+	display: inline;
 	
 	margin-top: 30px;
 }
@@ -21,6 +22,7 @@
 	
 	
 }
+
 .row{
 	background-color: rgb(194,229,229);
 }
