@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivityToCreateSelectorComponent } from '../activity-to-create-selector/activity-to-create-selector.component';
 import { Activity } from '../../models/models';
 import { OrgService, DugnadService, ActivityService } from '../../services/services';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './activity-list.component.html',
   styleUrls: ['./activity-list.component.css']
 })
-export class ActivityListComponent implements OnInit {
+export class ActivityListComponent implements OnInit, OnDestroy {
 
 
   activities: Activity[];
@@ -39,8 +39,13 @@ export class ActivityListComponent implements OnInit {
           });
           this.isOrgServiceInitSubscription.unsubscribe();
         }
+      })
     })
-  })
+  }
+
+  ngOnDestroy(){
+    this.activitiesSubscription.unsubscribe();
+    this.isAdminSubscription.unsubscribe();
   }
 
 

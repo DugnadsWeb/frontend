@@ -159,11 +159,14 @@ export class DugnadService {
   }
 
   addActivityHttp(activity: Activity){
-    delete activity.uuid;
+    let sendObj:any = Object.assign({}, activity);
+    delete sendObj.uuid;
+    sendObj.type = activity.constructor.name.replace(/./, match => match.toLowerCase());
+    console.log(sendObj);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
-    let body = JSON.stringify({activity:activity,
+    let body = JSON.stringify({activity:sendObj,
        dugnad: {uuid:this.dugnad.uuid}});
     return this.http
       .post(

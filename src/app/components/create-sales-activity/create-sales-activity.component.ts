@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Activity } from '../../models/models';
+import { SalesActivity } from '../../models/models';
 import { DugnadService } from '../../services/services';
 
 
@@ -31,10 +31,10 @@ export class CreateSalesActivityComponent implements OnInit {
   }
 
   onSubmit(){
-    let activity = new Activity(null, this.title,
-      Activity.fromStringToTime(this.startTime, this.startDate),
-      Activity.fromStringToTime(this.endTime, this.endDate),
-      this.description, this.maxPartisipants);
+    let activity = new SalesActivity(null, this.title,
+      SalesActivity.fromStringToTime(this.startTime, this.startDate),
+      SalesActivity.fromStringToTime(this.endTime, this.endDate),
+      this.description, this.maxPartisipants, this.product);
 
     this.dugnadService.addActivity(activity);
     this.events.emit({type:"created"});

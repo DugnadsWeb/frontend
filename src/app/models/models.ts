@@ -4,3 +4,4 @@ export { Message } from './message';
 export { Application } from './application';
 export { Dugnad } from './dugnad';
 export { Activity } from './activity';
+export { SalesActivity } from './sales_activity';

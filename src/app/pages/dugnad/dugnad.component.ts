@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable, Subscription} from 'rxjs';
@@ -11,9 +11,10 @@ import { EditDugnadComponent } from '../../components/edit-dugnad/edit-dugnad.co
 @Component({
   selector: 'app-dugnad',
   templateUrl: './dugnad.component.html',
-  styleUrls: ['./dugnad.component.css']
+  styleUrls: ['./dugnad.component.css'],
+  providers: [ DugnadService ]
 })
-export class DugnadComponent implements OnInit {
+export class DugnadComponent implements OnInit, OnDestroy {
 
   dugnad: Dugnad;
   dugnadSubscription: Subscription;
@@ -41,6 +42,17 @@ export class DugnadComponent implements OnInit {
         })
       })
     })
+  }
+
+  ngOnDestroy(){
+    if (this.dugnadSubscription){
+      this.dugnadSubscription.unsubscribe();
+      this.dugnadSubscription = null;
+    }
+    if (this.isAdminSubscription){
+      this.isAdminSubscription.unsubscribe();
+      this.isAdminSubscription = null;
+    }
 
   }
 
