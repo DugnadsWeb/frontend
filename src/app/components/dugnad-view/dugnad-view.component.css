@@ -8,6 +8,7 @@
 }
 
 .clickbox {
+  
   border: 1px gray solid;
   border-radius: 5px;
   padding-left: 2em;
@@ -16,7 +17,9 @@
   max-width: 50%;
   transition-duration: 0.7s;
 }
-
+.title{
+	
+}
 .active-dugnad {
     color:green;
 }
