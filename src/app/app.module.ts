@@ -60,9 +60,14 @@ import { FunctionsComponent } from './components/functions/functions.component';
 import { ActivityToCreateSelectorComponent } from './components/activity-to-create-selector/activity-to-create-selector.component';
 import { CreateSalesActivityComponent } from './components/create-sales-activity/create-sales-activity.component';
 import { OrgBoxComponent } from './components/org-box/org-box.component';
+import { SalesActivityViewComponent } from './components/sales-activity-view/sales-activity-view.component';
+
+
 
 // app services imports
-import { AuthService, UserService, OrgService, MessageService, AuthGuardService, DugnadService, ActivityService } from './services/services';
+import { AuthService, UserService, OrgService, MessageService,
+  AuthGuardService, DugnadService, ActivityService,
+  SalesActivityService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
@@ -146,6 +151,7 @@ const appRoutes: Routes = [
     ActivityToCreateSelectorComponent,
     CreateSalesActivityComponent,
     OrgBoxComponent,
+    SalesActivityViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -162,7 +168,8 @@ const appRoutes: Routes = [
     MessageService,
     AuthGuardService,
     DugnadService,
-    ActivityService
+    ActivityService,
+    SalesActivityService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ CreateActivityComponent,

@@ -15,16 +15,22 @@
   position:fixed;
   border: 1px solid gray;
   border-radius: 5px;
-  padding: 1em;
+  padding-right: 15px;
   left: 50%;
-  top: 10%;
+  top: 6%;
   width: 50em;
-  overflow-y: scroll;
+  max-height: 88%;
   overflow-x: hidden;
+  overflow-y: auto;
   transform: translate(-50%, 0);
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 5px 2px rgb(125, 100, 25);
 }
+
+.dialog-window > * {
+  overflow-x: hidden;
+}
+
 #fix{
 	width: 100px;
 	height: 40px;
