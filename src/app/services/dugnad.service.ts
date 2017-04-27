@@ -161,7 +161,7 @@ export class DugnadService {
   addActivityHttp(activity: Activity){
     let sendObj:any = Object.assign({}, activity);
     delete sendObj.uuid;
-    sendObj.type = activity.constructor.name.replace(/./, match => match.toLowerCase());
+    sendObj.type = activity.constructor.name
     console.log(sendObj);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

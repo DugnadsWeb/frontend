@@ -40,7 +40,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
   addMemberToActivityComponent = AddMemberToActivityComponent;
   removeMemberFromActivityComponent = RemoveMemberFromActivityComponent;
 
-  constructor(private activityService: ActivityService,
+  constructor(protected activityService: ActivityService,
     private userService: UserService,
     private orgService: OrgService) { }
 
@@ -100,7 +100,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
     this.attendants.forEach(attendant => {
       if (logedInUserEmail == attendant.email){
         this.isUserApplied = true;
-	
+
       }
     })
   }
