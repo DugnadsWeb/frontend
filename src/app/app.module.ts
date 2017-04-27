@@ -74,6 +74,7 @@ import { SortpipePipe } from './models/sortpipe.pipe';
 
 // directives
 import { DialogWindowDirective } from './directives/dialog-window.directive';
+import { UserRowComponent } from './components/user-row/user-row.component';
 
 
 
@@ -152,6 +153,7 @@ const appRoutes: Routes = [
     CreateSalesActivityComponent,
     OrgBoxComponent,
     SalesActivityViewComponent,
+    UserRowComponent,
   ],
   imports: [
     BrowserModule,

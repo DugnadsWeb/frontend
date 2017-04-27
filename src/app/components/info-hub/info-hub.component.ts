@@ -23,13 +23,10 @@ export class InfoHubComponent implements OnInit {
   jwt_decode = require('jwt-decode');
   memberships: any[];
 
-  constructor(private authService: AuthService,
-              private userService: UserService,
-              private router: Router,
-              private dugnadService: DugnadService,
-              private orgService: OrgService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+
 
       let user = this.authService.getDecodedToken();
 
