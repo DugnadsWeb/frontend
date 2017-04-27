@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Organization} from "../../models/organization";
 import {OrgService} from "../../services/org.service";
 import {Dugnad} from "../../models/dugnad";
@@ -29,12 +29,27 @@ export class OrgBoxComponent implements OnInit {
       this.orgService.getOrgObservable().then(
         observ => this.orgSubscription = observ.subscribe(org => {
           this.org = org; console.log(org);}
-        ));
+        ))
       this.orgService.getDugnadsObservable().then(observ => this.dugSubscription = observ.subscribe(dug => {
         this.dugnads = dug;
       }))
     });
 
+  }
+
+  ngOnDestroy(){
+    if(this.dugSubscription){
+
+      this.dugSubscription.unsubscribe();
+      this.dugSubscription = null;
+
+    }
+    if(this.orgSubscription){
+
+      this.orgSubscription.unsubscribe();
+      this.orgSubscription = null;
+
+    }
 
   }
 
