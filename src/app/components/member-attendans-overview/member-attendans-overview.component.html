@@ -1,8 +1,8 @@
 <div id="container" *ngIf="stats">
-
-  <ng-container *ngFor="let stat of stats">
-    <user-box [user]="stat.user">
-    </user-box> {{stat.count}}
-  </ng-container>
-
+<table>
+  <tr *ngFor="let stat of stats">
+    <td><user-box [user]="stat.user"></user-box></td>
+	<td>{{stat.count}}</td>
+  </tr>
+</table>
 </div>
