@@ -1,0 +1,43 @@
+.activity-box {
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  margin: 1em;
+  transition-duration: 0.7s;
+  background-color: WHITE;
+   width: 99.9%;
+}
+.activity-box:hover  {
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  margin: 1em;
+
+  transition-duration: 0.7s;
+  background-color: rgb(194,229,229);
+    box-shadow: 0px 1px 15px 0px gray;
+}
+.activity-box h2 {
+  margin-left: -13px;
+}
+.row {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.buttons {
+	width: 100px;
+	float: left;
+	height: 40px;
+
+}
+
+#fix{
+	width: 100px;
+
+}
+
+.activity-type {
+  color:gray;
+  font-size:16px
+}

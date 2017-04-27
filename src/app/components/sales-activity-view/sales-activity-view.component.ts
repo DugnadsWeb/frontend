@@ -4,7 +4,7 @@ import { SalesActivityService, ActivityService, UserService, OrgService } from '
 
 
 @Component({
-  selector: 'app-sales-activity-view',
+  selector: 'sales-activity-view',
   templateUrl: './sales-activity-view.component.html',
   styleUrls: ['./sales-activity-view.component.css'],
   providers: [ SalesActivityService ]
@@ -17,6 +17,7 @@ export class SalesActivityViewComponent extends ActivityViewComponent implements
     }
 
   ngOnInit() {
+    super.ngOnInit();
   }
 
 }

@@ -18,20 +18,20 @@ import { RemoveMemberFromActivityComponent } from '../remove-member-from-activit
 export class ActivityViewComponent implements OnInit, OnDestroy {
 
   @Input()
-  activity: Activity;
+  protected activity: Activity;
   activitySubscription: Subscription;
   activityServiceInitSubscription: Subscription;
 
   orgServiceInitSubscription: Subscription;
 
-  startTime;
-  endTime;
+  protected startTime;
+  protected endTime;
 
-  attendants: User[];
+  protected attendants: User[];
   attendantsSubscription: Subscription;
 
-  isUserApplied:boolean;
-  isUserAdmin:boolean;
+  protected isUserApplied:boolean;
+  protected isUserAdmin:boolean;
   isUserAdminSubscription: Subscription;
 
   // dialog components

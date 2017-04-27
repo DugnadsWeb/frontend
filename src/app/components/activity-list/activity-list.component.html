@@ -1,9 +1,14 @@
 <div *ngIf="activities">
-  <activity-view *ngFor="let activity of activities"
-    [activity]="activity">
-  </activity-view>
+  <ng-container *ngFor="let activity of activities">
+    <activity-view *ngIf="activity.constructor.name == 'Activity'"
+      [activity]="activity">
+    </activity-view>
+    <sales-activity-view *ngIf="activity.constructor.name == 'SalesActivity'"
+      [activity]="activity">
+    </sales-activity-view>
+  </ng-container>
 </div>
-<dialog-container 
+<dialog-container
   [component]="component"
   [btnText]="'Ny Aktivitet'">
 </dialog-container>

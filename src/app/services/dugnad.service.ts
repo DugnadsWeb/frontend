@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject} from 'rxjs/Rx';
 import { AuthService } from './auth.service';
 import { OrgService } from './org.service';
-import { Organization, User, Application, Dugnad, Activity } from '../models/models';
+import { Organization, User, Application, Dugnad, Activity, SalesActivity } from '../models/models';
 
 @Injectable()
 export class DugnadService {
@@ -161,8 +161,7 @@ export class DugnadService {
   addActivityHttp(activity: Activity){
     let sendObj:any = Object.assign({}, activity);
     delete sendObj.uuid;
-    sendObj.type = activity.constructor.name
-    console.log(sendObj);
+    sendObj.type = activity.constructor.name;
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
@@ -247,9 +246,13 @@ export class DugnadService {
         let ret = []
         for (let i=0;i<res.length;i++){
           let d = res[i];
-          console.log(res);
-          ret.push(new Activity(d.uuid, d.title, d.startTime,
-            d.endTime, d.description, d.maxPartisipants));
+          if (d.type == 'Activity'){
+            ret.push(new Activity(d.uuid, d.title, d.startTime,
+              d.endTime, d.description, d.maxPartisipants));
+          } else if (d.type == 'SalesActivity'){
+            ret.push(new SalesActivity(d.uuid, d.title, d.startTime,
+              d.endTime, d.description, d.maxPartisipants, d.productName));
+          }
         }
         return ret;
       })
