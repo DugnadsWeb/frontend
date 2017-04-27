@@ -30,7 +30,7 @@
                   <ul>
                   <p class="list-group-item-text">Ferdige dugnader:</p>
                     <li class="list-group-item" *ngFor="let dug of dugnader">
-                      <ng-container *ngIf="org.uuid == dug.orgUuid && !dug.status">
+                      <ng -container *ngIf="org.uuid == dug.orgUuid && !dug.status">
                         <h4 class="list-group-item-heading">{{dug.title}}</h4>
                         <p class="list-group-item-text">{{dug.startTime | date:'d/M/y H:mm' }}</p>
                         <p class="list-group-item-text">{{dug.endTime | date:'d/M/y H:mm'}}</p>
