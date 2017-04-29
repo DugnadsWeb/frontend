@@ -3,3 +3,73 @@
 
 
 }
+
+.statusCountInner{
+	
+	margin-top: 9%;
+	margin-left: 45%;
+	font-size: large;
+	
+}
+th{
+	background-color: rgb (194,229,229); 
+    font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;		
+}
+
+th:after {
+	
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+th:first-child {
+
+	
+}
+
+th:last-child {
+
+}
+
+td {
+
+	border-bottom: 1px solid #d2d2d2;
+	border-top: 1px solid #d2d2d2;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+td:first-child {
+	box-shadow: inset 1px 0 0 #d2d2d2;
+}	
+
+td:last-child {
+
+	box-shadow: inset -1px 0 0 #d2d2d2;
+}	
+
+tr {
+		background-color: rgb (194,229,229);
+}
+
+tr:nth-child(odd) td {
+		background-color: rgb (194,229,229);
+}
+
+
+table tr{
+		background-color: rgb (194,229,229);
+	
+		margin-top: 10px;
+	
+}
