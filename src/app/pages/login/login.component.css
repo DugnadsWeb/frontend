@@ -1,6 +1,6 @@
-.panel-heading {	
+.panel-heading {
 	background-color: rgb (194,229,229);
-	
+
 }
 #tittelContainer{
 	border-radius: 3px;
@@ -20,14 +20,14 @@
     position: absolute;
 	font-size: 3vw;
 	border-radius: 100px;
-	border-color: rgb(26,61,61);	
+	border-color: rgb(26,61,61);
 }
-		
+
 #tittel + .row{
-	width: 100%;	
+	width: 100%;
 }
 #left{
-	
+
 	float: left;
 }
 #linkLeft{
@@ -35,23 +35,23 @@
     text-decoration: none;
 
 }
-#linkLeft:hover 
+#linkLeft:hover
 {
      color:white;
-     text-decoration:none; 
-     cursor:pointer;  
+     text-decoration:none;
+     cursor:pointer;
 }
 .row{
 background-color:rgb(242, 241, 239);
 
 border-radius: 3px;
 
-			
-			
+
+
 			padding-bottom: 50px;
 }
 .panel{
-	
+
 	border-style: none;
 	height: 100%;
 	width:100%;
@@ -61,13 +61,13 @@ border-radius: 3px;
 	margin-top: 40px;
 
 	}
-	
+
 .container{
-	
-	width:80%;	
-	
+
+	width:80%;
+
 }
 .modal-dialog{
 	margin-top: 300px;
-	
+
 }

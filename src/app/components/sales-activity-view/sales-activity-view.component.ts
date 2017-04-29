@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, forwardRef } from '@angular/core';
 import { ActivityViewComponent } from '../activity-view/activity-view.component';
 import { SalesActivityService, ActivityService, UserService, OrgService } from '../../services/services';
 
@@ -7,13 +7,13 @@ import { SalesActivityService, ActivityService, UserService, OrgService } from '
   selector: 'sales-activity-view',
   templateUrl: './sales-activity-view.component.html',
   styleUrls: ['./sales-activity-view.component.css'],
-  providers: [ SalesActivityService ]
+  providers: [ ActivityService, SalesActivityService ]
 })
 export class SalesActivityViewComponent extends ActivityViewComponent implements OnInit {
 
-  constructor(salesActivityService: SalesActivityService, orgService:OrgService,
-    userService: UserService) {
-      super(salesActivityService, userService, orgService);
+  constructor( private salesActivityService: SalesActivityService,
+    orgService:OrgService, userService: UserService, activityService: ActivityService) {
+      super(activityService, userService, orgService);
     }
 
   ngOnInit() {
