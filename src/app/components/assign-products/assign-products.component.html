@@ -1,0 +1,14 @@
+<h2>Gi produkt</h2>
+<div *ngIf="memberProducts">
+  <table>
+    <tr>
+      <th>Medlem</th>
+      <th>Antall varer</th>
+    </tr>
+    <tr *ngFor="let mp of memberProducts">
+      <td>{{mp.user.firstName}} {{mp.user.lastName}}</td>
+      <td><input type="number" [(ngModel)]="mp.product"/></td>
+    </tr>
+  </table>
+  <button (click)="giveProduct()">Lagre</button>
+</div>

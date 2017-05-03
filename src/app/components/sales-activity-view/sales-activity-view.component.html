@@ -44,6 +44,10 @@
       [btnText]="'Påmeldte medlemmer'"
       [component]="attendantsListComponent">
     </dialog-container>
+    <dialog-container class="buttons"
+      [btnText]="'Registrer Salg'"
+      [component]="setSoldAmmountComponent">
+    </dialog-container>
     <dialog-container class="buttons" *ngIf="isUserAdmin"
       [btnText]="'Rediger aktivitet'"
       [component]="editActivityComponent">
@@ -55,6 +59,10 @@
     <dialog-container class="buttons" *ngIf="isUserAdmin"
       [btnText]="'Fjern medlemmer'"
       [component]="removeMemberFromActivityComponent">
+    </dialog-container>
+    <dialog-container class="buttons" *ngIf="isUserAdmin"
+      [btnText]="'Gi produkt'"
+      [component]="assignProductsComponent">
     </dialog-container>
   </div>
 </div>

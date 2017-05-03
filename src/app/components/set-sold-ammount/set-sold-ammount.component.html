@@ -1,0 +1,13 @@
+<h2>Registrer Salg</h2>
+<div *ngIf="userSales">
+  <table>
+    <tr>
+      <th>Jeg har</th>
+      <th>Jeg har solgt</th>
+    </tr>
+    <tr>
+      <td>{{ userSales.product }}</td>
+      <td><input type="int" [(ngModel)]="userSales.sold"/></td>
+  </table>
+  <button (click)="registerSale()">Lagre</button>
+</div>
