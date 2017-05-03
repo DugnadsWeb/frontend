@@ -1,0 +1,22 @@
+#container{
+
+}
+
+div {
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: inherit;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  }
+.left {
+	padding-left: 10px;
+	float: right;
+	margin-top: 19%;
+	font-size: large;
+}

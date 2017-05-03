@@ -61,6 +61,9 @@ import { ActivityToCreateSelectorComponent } from './components/activity-to-crea
 import { CreateSalesActivityComponent } from './components/create-sales-activity/create-sales-activity.component';
 import { OrgBoxComponent } from './components/org-box/org-box.component';
 import { SalesActivityViewComponent } from './components/sales-activity-view/sales-activity-view.component';
+import { SalesActivityStatsComponent } from './components/sales-activity-stats/sales-activity-stats.component';
+import { AssignProductsComponent } from './components/assign-products/assign-products.component';
+import { SetSoldAmmountComponent } from './components/set-sold-ammount/set-sold-ammount.component';
 
 
 
@@ -154,6 +157,9 @@ const appRoutes: Routes = [
     OrgBoxComponent,
     SalesActivityViewComponent,
     UserRowComponent,
+    SalesActivityStatsComponent,
+    AssignProductsComponent,
+    SetSoldAmmountComponent,
   ],
   imports: [
     BrowserModule,
@@ -181,7 +187,10 @@ const appRoutes: Routes = [
     AddMemberToActivityComponent,
     RemoveMemberFromActivityComponent,
     ActivityToCreateSelectorComponent,
-    CreateSalesActivityComponent]
+    CreateSalesActivityComponent,
+    SalesActivityStatsComponent,
+    AssignProductsComponent,
+    SetSoldAmmountComponent]
 })
 
 export class AppModule { }

@@ -1,6 +1,4 @@
-#container{
 
-}
 
 div {
   padding: 5px;
@@ -12,11 +10,4 @@ div {
 img {
   height: 100px;
   width: 100px;
-  border-radius: 100%; 
   }
-.left {
-	padding-left: 10px;
-	float: right;
-	margin-top: 19%;
-	font-size: large;
-}
