@@ -118,6 +118,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
     this.isUserApplied = null;
     this.activityService.removeAttendant(this.userService.getUser());
   }
+ 
 
 
 }
