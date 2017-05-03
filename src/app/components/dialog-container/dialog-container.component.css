@@ -25,6 +25,7 @@
   transform: translate(-50%, 0);
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 5px 2px rgb(125, 100, 25);
+  
 }
 
 .dialog-window > * {
@@ -32,7 +33,10 @@
 }
 
 #fix{
-	width: 100px;
+	width: 162px;
 	height: 40px;
-
+	color: #fff;
+background-color: #5bc0de;
+border-color: #46b8da;
+	margin-top: 20px;
 }

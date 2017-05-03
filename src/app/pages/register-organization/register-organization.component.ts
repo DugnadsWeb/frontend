@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrgService } from '../../services/org.service';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'angular2-modal';
 
 @Component({
   selector: 'app-register-organization',
@@ -15,7 +17,9 @@ export class RegisterOrganizationComponent implements OnInit {
 	phone = "";
 	description = "";
 
-  constructor(private orgService : OrgService, private router : Router) { }
+  constructor(private orgService : OrgService, private router : Router, public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef) {
+  	overlay.defaultViewContainer = vcRef;
+  	}
 
   ngOnInit() {
   }
@@ -25,7 +29,13 @@ export class RegisterOrganizationComponent implements OnInit {
 		this.orgService.registerOrg(this.orgNumber, this.orgName, this.email, this.phone, this.description).subscribe((result)	=> {
 			if(result)
 			{
-				this.router.navigate(['']);
+				/*this.router.navigate(['']);*/
+								this.modal.alert()
+					.title('Vellykket!')
+					.body('Organisasjonen ble opprettet')
+					.dialogClass('modalStyle')
+					.okBtn('ok')
+					.open();
 			}
 		});
 	}

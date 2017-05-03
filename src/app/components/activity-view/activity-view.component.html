@@ -1,11 +1,21 @@
 
 <div class="container activity-box">
+ <div id="div">
+  <div id="navnPaTips">Navn:{{activity.title}}  
+  
+  <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
+       Status: Ikke påmeldt
 
+      </div>
+      <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
+        Status: Påmeldt
+      </div> 
+	  </div>
   <div class="row">
-    <h2 class="col-md-8">
+    <h2 class="col-md-10">
       {{activity.title}} <span class="activity-type">(Aktivitet)</span>
     </h2>
-    <div class="col-md-4" style=" color: green;">
+    <div class="col-md-2" style=" color: green;">
       Åpen for påmelding
     </div>
   </div>
@@ -29,18 +39,19 @@
   <div>
     Beskrivelse: {{ activity.description }}
   </div>
-    <div class="row">
+    <div class="row row2">
     <ng-container *ngIf="attendants">
-      <button class="buttons" *ngIf="isUserApplied === false"
+      <button class="buttons exeption btn btn-info" *ngIf="isUserApplied === false"
         (click)="applyTo()">
         Bli med
       </button>
-      <button class="buttons" *ngIf="isUserApplied === true"
+      <button class="buttons exeption btn btn-danger" *ngIf="isUserApplied === true"
         (click)="unapplyTo()">
         Meld av
       </button>
     </ng-container>
-    <dialog-container id="fix" class="buttons" *ngIf="attendants"
+	<div id ="buttGroup">
+    <dialog-container class="buttons" *ngIf="attendants"
       [btnText]="'Påmeldte medlemmer'"
       [component]="attendantsListComponent">
     </dialog-container>
@@ -56,5 +67,7 @@
       [btnText]="'Fjern medlemmer'"
       [component]="removeMemberFromActivityComponent">
     </dialog-container>
+  </div>
+  </div>
   </div>
 </div>

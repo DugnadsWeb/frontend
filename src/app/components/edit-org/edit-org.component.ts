@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Organization } from '../../models/models';
 import { OrgService } from '../../services/services';
 import { Subscription } from 'rxjs';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'angular2-modal';
 
 @Component({
   selector: 'edit-org',
@@ -14,7 +16,9 @@ export class EditOrgComponent implements OnInit {
   org: Organization;
   orgSubscription: Subscription;
 
-  constructor(private orgService: OrgService) { }
+  constructor(private orgService: OrgService, public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef) {
+  	overlay.defaultViewContainer = vcRef;
+  	}
 
   ngOnInit() {
     this.orgService.getOrgObservable().then(observer => {
@@ -26,5 +30,11 @@ export class EditOrgComponent implements OnInit {
 
   onSubmit(event){
     this.orgService.editOrg(this.org);
+						this.modal.alert()
+					.title('Vellykket!')
+					.body('Informasjonen har blitt endret')
+					.dialogClass('modalStyle')
+					.okBtn('ok')
+					.open();
   }
 }

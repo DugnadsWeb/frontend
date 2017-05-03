@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     		this.modal.alert()
     		.title('Login Failed')
     		.body('Autentisering misslykket, sjekk at du har stavet korrekt.')
+			.dialogClass('modalStyle')
     		.open();
     	}
     });

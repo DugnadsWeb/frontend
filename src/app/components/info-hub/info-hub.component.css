@@ -67,7 +67,7 @@ overflow: hidden;
 .row{
 		border-radius: 3px;
 
-
+	overflow: visible;
 			padding-bottom: 50px;
 
 
@@ -98,7 +98,7 @@ overflow: hidden;
 }
 
 .row{
-
+overflow: visible;
 
 border-radius: 3px;
 
@@ -116,7 +116,7 @@ border-radius: 3px;
 
 .container{
 
-	
+	overflow: visible;
 
 }
 

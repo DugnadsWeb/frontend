@@ -20,23 +20,78 @@
 .activity-box h2 {
   margin-left: -13px;
 }
+
+
+.activity-box{
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.activity-box #navnPaTips{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+.activity-box:hover #navnPaTips {
+    visibility: visible;
+}
+
+
+
 .row {
   width: 100%;
   margin: 0 auto;
+  
 }
-
+.row2{
+	
+	margin-left: -30px;
+	
+	
+}
+.exeption{
+	
+	margin-left: 10px;
+	
+	
+}
 .buttons {
-	width: 100px;
+	width: 162px;
 	float: left;
 	height: 40px;
-
+	margin-left: 30px;
+	margin-top: 10px;
+	
 }
-
+.exeption{
+	
+	margin-top: 31px;
+	padding: none;	
+	
+	
+}
 #fix{
 	width: 100px;
 
 }
-
+#buttGroup{
+	
+	height: 100px;
+	
+	
+}
 .activity-type {
   color:gray;
   font-size:16px
