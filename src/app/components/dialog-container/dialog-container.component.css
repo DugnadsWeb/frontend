@@ -25,6 +25,7 @@
   transform: translate(-50%, 0);
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 5px 2px rgb(125, 100, 25);
+  
 }
 
 .dialog-window > * {
