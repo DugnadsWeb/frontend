@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import { OrgService } from '../../services/services';
 import { Dugnad } from '../../models/models';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { MakeDugnadComponent } from '../../components/make-dugnad/make-dugnad.co
   templateUrl: './dugnad-list.component.html',
   styleUrls: ['./dugnad-list.component.css']
 })
-export class DugnadListComponent implements OnInit {
+export class DugnadListComponent implements OnInit, OnDestroy {
 
   makeDugnadComponent = MakeDugnadComponent;
 
@@ -36,6 +36,21 @@ export class DugnadListComponent implements OnInit {
         this.isOrgServiceInitSubscription.unsubscribe();
       }
     })
+  }
+
+  ngOnDestroy(){
+    if(this.dugnadsSubscription){
+      this.dugnadsSubscription.unsubscribe();
+      this.dugnadsSubscription = null;
+    }
+    if(this.isAdminSubscription){
+      this.isAdminSubscription.unsubscribe();
+      this.isAdminSubscription = null;
+    }
+    if(this.isOrgServiceInitSubscription){
+      this.isOrgServiceInitSubscription.unsubscribe();
+      this.isOrgServiceInitSubscription = null;
+    }
   }
 
 }

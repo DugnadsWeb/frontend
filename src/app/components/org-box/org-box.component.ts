@@ -3,6 +3,7 @@ import {Organization} from "../../models/organization";
 import {OrgService} from "../../services/org.service";
 import {Dugnad} from "../../models/dugnad";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-org-box',
@@ -10,7 +11,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./org-box.component.css'],
   providers: [OrgService]
 })
-export class OrgBoxComponent implements OnInit {
+export class OrgBoxComponent implements OnInit, OnDestroy {
 
   @Input()
   uuid:string;
@@ -20,7 +21,7 @@ export class OrgBoxComponent implements OnInit {
   orgSubscription: Subscription;
 
 
-  constructor(private orgService: OrgService) { }
+  constructor(private orgService: OrgService, private router: Router) { }
 
   ngOnInit() {
     console.log(this.uuid);
@@ -53,4 +54,7 @@ export class OrgBoxComponent implements OnInit {
 
   }
 
+  routeToOrg(clicked){
+    this.router.navigate(['org/', clicked]);
+  }
 }

@@ -48,10 +48,10 @@ export class MakeDugnadComponent implements OnInit {
       this.dugLocation, Dugnad.fromStringToTime(this.dugStartTime, this.dugStartDate),
       Dugnad.fromStringToTime(this.dugEndTime, this.dugEndDate), this.dugAnt, true);
 
-
 		this.orgService.addDugnad(dugnad).then(() => {
       this.events.emit({type: 'close'})
     })
 
 	}
+
 }
