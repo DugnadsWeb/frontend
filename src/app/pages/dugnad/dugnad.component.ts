@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable, Subscription} from 'rxjs';
@@ -13,6 +13,7 @@ import { EditDugnadComponent } from '../../components/edit-dugnad/edit-dugnad.co
   templateUrl: './dugnad.component.html',
   styleUrls: ['./dugnad.component.css'],
   providers: [ DugnadService ]
+  //encapsulation: ViewEncapsulation.Native
 })
 export class DugnadComponent implements OnInit, OnDestroy {
 

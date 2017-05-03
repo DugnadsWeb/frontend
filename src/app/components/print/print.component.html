@@ -1,4 +1,11 @@
 <button (click)="printDiv()"
-        class="btn btn-sm btn-primary">Print</button>
+        class="btn btn-sm btn-primary">Print Deltagerliste</button>
 <div id="printpage">
+    <ul *ngFor="let act of activities">
+      <h2>{{act.title}}</h2>
+      <ng-container *ngFor="let item of act.attends">
+        <li>{{item.firstName}} {{item.lastName}}</li>
+      </ng-container>
+    </ul>
+
 </div>

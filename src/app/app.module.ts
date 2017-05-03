@@ -70,7 +70,7 @@ import { SetSoldAmmountComponent } from './components/set-sold-ammount/set-sold-
 // app services imports
 import { AuthService, UserService, OrgService, MessageService,
   AuthGuardService, DugnadService, ActivityService,
-  SalesActivityService } from './services/services';
+  SalesActivityService, PrintService } from './services/services';
 
 // app models/pipes etc
 import { SortpipePipe } from './models/sortpipe.pipe';
@@ -179,7 +179,8 @@ const appRoutes: Routes = [
     AuthGuardService,
     DugnadService,
     ActivityService,
-    SalesActivityService
+    SalesActivityService,
+    PrintService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ CreateActivityComponent,

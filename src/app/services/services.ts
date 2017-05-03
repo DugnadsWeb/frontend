@@ -6,3 +6,4 @@ export { AuthGuardService } from './auth-guard.service';
 export { DugnadService } from './dugnad.service';
 export { ActivityService } from './activity.service';
 export { SalesActivityService } from './sales-activity.service';
+export { PrintService } from './print.service';

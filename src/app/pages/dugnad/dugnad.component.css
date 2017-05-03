@@ -3,17 +3,21 @@
 	border-radius: 3px;
 	margin-left: 15px;
 	font-size: 4vw;
-	
-	
+
+
 }
 .row{
 	background-color: rgb(194,229,229);
 	margin-left: 1px;
-	
+
 }
 @media only screen and (max-width: 500px) {
    #orgTitle{
-	
+
 	font-size: medium;
-	
+
 }}
+
+.printHTML{
+  visibility: visible;
+}
