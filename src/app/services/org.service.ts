@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject, Subscription, Observer } from 'rxjs/Rx';
 import { AuthService } from './auth.service';
@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class OrgService {
+export class OrgService implements OnDestroy {
 
   isInit: boolean = false;
   isInitSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -43,7 +43,7 @@ export class OrgService {
               private userService: UserService,
               private authService: AuthService) { }
 
-
+  // "constructor"
   init(orgId){
     return new Promise((res, rej) => {
       // TODO ugly fix for http requests, but it works for now
@@ -56,6 +56,16 @@ export class OrgService {
         res();
       })
     })
+  }
+
+  // "destructor"
+  ngOnDestroy(){
+    if (!!this.isUserApplicantSubscription)
+      this.isUserApplicantSubscription.unsubscribe();
+    if (!!this.isUserAdminSubscription)
+      this.isUserAdminSubscription.unsubscribe();
+    if (!!this.isUserMemberSubscription)
+      this.isUserMemberSubscription.unsubscribe();
   }
 
   // #################
@@ -158,10 +168,9 @@ export class OrgService {
           rej("User already applied");
         }
       })
-      let subscription = this.applyToOrg(applicant).subscribe(() => {
+      this.applyToOrg(applicant).subscribe(() => {
         this.applicants.push(applicant);
         this.applicantsSubject.next(Object.assign([], this.applicants));
-        subscription.unsubscribe();
         res();
       }, err => rej(err)); // transmit http request error
     });
