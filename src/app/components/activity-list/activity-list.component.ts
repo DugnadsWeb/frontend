@@ -44,8 +44,10 @@ export class ActivityListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.activitiesSubscription.unsubscribe();
-    this.isAdminSubscription.unsubscribe();
+    if (!!this.activitiesSubscription)
+      this.activitiesSubscription.unsubscribe();
+    if (this.isAdminSubscription)
+      this.isAdminSubscription.unsubscribe();
   }
 
 

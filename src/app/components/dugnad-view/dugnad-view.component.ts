@@ -39,7 +39,6 @@ export class DugnadViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.dugnadService.destroy();
     if (!!this.dugnadSubscription)
       this.dugnadSubscription.unsubscribe();
   }

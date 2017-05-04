@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { User } from '../../models/models';
 import { ActivityService, OrgService} from '../../services/services';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { UserBoxComponent } from '../user-box/user-box.component';
   templateUrl: './add-member-to-activity.component.html',
   styleUrls: ['./add-member-to-activity.component.css']
 })
-export class AddMemberToActivityComponent implements OnInit, Dialogable {
+export class AddMemberToActivityComponent implements OnInit, Dialogable, OnDestroy {
 
   data:any
   events = new EventEmitter<any>();
@@ -38,14 +38,22 @@ export class AddMemberToActivityComponent implements OnInit, Dialogable {
       this.activityIsInitSubscription = observable.subscribe(isInit => {
         this.activityServiceInit = isInit;
         this.onServicesInit();
+        if (isInit) this.activityIsInitSubscription.unsubscribe();
       })
     })
     this.orgService.isInitObservable().then( observable => {
       this.orgIsInitSubscription = observable.subscribe(isInit => {
         this.orgServiceInit = isInit;
+        if (isInit) this.orgIsInitSubscription.unsubscribe();
         this.onServicesInit();
       })
     })
+  }
+
+  ngOnDestroy(){
+    if (!!this.attendantsSubscription) this.attendantsSubscription.unsubscribe();
+    if (!!this.membersSubscription) this.membersSubscription.unsubscribe();
+    if (!!this.adminsSubscription) this.adminsSubscription.unsubscribe();
   }
 
   onServicesInit(){

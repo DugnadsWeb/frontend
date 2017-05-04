@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject} from 'rxjs/Rx';
 import { AuthService } from './auth.service';
@@ -6,7 +6,7 @@ import { OrgService } from './org.service';
 import { Organization, User, Application, Dugnad, Activity, SalesActivity } from '../models/models';
 
 @Injectable()
-export class DugnadService {
+export class DugnadService implements OnDestroy {
 
   private isInitSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -38,6 +38,12 @@ export class DugnadService {
       });
     });
   }
+
+  ngOnDestroy(){
+    this.dugnadSubject.complete();
+  }
+
+  // public methods
 
   isInitObservable(){
     return new Promise<Observable<boolean>>((res, rej) => {
@@ -86,9 +92,6 @@ export class DugnadService {
     });
   }
 
-  destroy(){
-    this.dugnadSubject.complete();
-  }
 
   // #############
   // HTTP calls ##

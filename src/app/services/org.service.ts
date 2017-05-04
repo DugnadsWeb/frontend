@@ -66,6 +66,9 @@ export class OrgService implements OnDestroy {
       this.isUserAdminSubscription.unsubscribe();
     if (!!this.isUserMemberSubscription)
       this.isUserMemberSubscription.unsubscribe();
+    this.dugnadsSubscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    })
   }
 
   // #################
