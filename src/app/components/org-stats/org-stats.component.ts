@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrgService } from '../../services/services';
 import { Subscription } from 'rxjs';
 import { Dugnad } from '../../models/models';
@@ -9,7 +9,7 @@ import { Dugnad } from '../../models/models';
   templateUrl: './org-stats.component.html',
   styleUrls: ['./org-stats.component.css']
 })
-export class OrgStatsComponent implements OnInit {
+export class OrgStatsComponent implements OnInit, OnDestroy {
 
   orgServiceInitSubscription: Subscription;
 
@@ -38,6 +38,10 @@ export class OrgStatsComponent implements OnInit {
       })
     })
 
+  }
+
+  ngOnDestroy(){
+    if(!!this.dugnadSubscription)this.dugnadSubscription.unsubscribe();
   }
 
   // returns [{year: int, dugnads:[dugnads in year]}]

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivityService } from '../../services/services';
 import { User } from '../../models/models';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { Dialogable } from '../dialog-container/dialog-container.component';
   templateUrl: './attendants-list.component.html',
   styleUrls: ['./attendants-list.component.css']
 })
-export class AttendantsListComponent implements OnInit, Dialogable {
+export class AttendantsListComponent implements OnInit, Dialogable, OnDestroy {
 
   events: EventEmitter<any> = new EventEmitter();
   data:any;
@@ -26,6 +26,10 @@ export class AttendantsListComponent implements OnInit, Dialogable {
         console.log(this.attendants);
       })
     })
+  }
+
+  ngOnDestroy(){
+    if (!!this.attendantsSubscription)this.attendantsSubscription.unsubscribe();
   }
 
 }

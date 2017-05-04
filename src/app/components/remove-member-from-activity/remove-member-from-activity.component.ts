@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { Dialogable } from '../dialog-container/dialog-container.component';
 import { ActivityService } from '../../services/services';
 import { User } from '../../models/models';
@@ -11,7 +11,7 @@ import { UserBoxComponent } from '../user-box/user-box.component';
   templateUrl: './remove-member-from-activity.component.html',
   styleUrls: ['./remove-member-from-activity.component.css']
 })
-export class RemoveMemberFromActivityComponent implements OnInit, Dialogable {
+export class RemoveMemberFromActivityComponent implements OnInit, Dialogable, OnDestroy {
 
   events = new EventEmitter<any>();
   data:any;
@@ -38,6 +38,10 @@ export class RemoveMemberFromActivityComponent implements OnInit, Dialogable {
         }
       })
     })
+  }
+
+  ngOnDestroy(){
+    if(!!this.attendantsSubscription)this.attendantsSubscription.unsubscribe();
   }
 
   clickMember(member){

@@ -28,7 +28,6 @@ export class SetSoldAmmountComponent implements OnInit, OnDestroy, Dialogable {
         salesStats.forEach(val => {
           if (this.userService.getUser().email == val.user.email) {
             this.userSales = val;
-            console.log(val);
           }
         })
       })

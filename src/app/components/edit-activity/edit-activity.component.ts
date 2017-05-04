@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivityService } from '../../services/services';
 import { Subscription } from 'rxjs';
 import { Activity } from '../../models/models';
@@ -9,7 +9,7 @@ import { Dialogable } from '../dialog-container/dialog-container.component';
   templateUrl: './edit-activity.component.html',
   styleUrls: ['./edit-activity.component.css']
 })
-export class EditActivityComponent implements OnInit, Dialogable {
+export class EditActivityComponent implements OnInit, Dialogable, OnDestroy {
 
   events = new EventEmitter<any>();
   data:any;
@@ -46,6 +46,10 @@ export class EditActivityComponent implements OnInit, Dialogable {
         }
       })
     }).catch(err => console.log(err))
+  }
+
+  ngOnDestroy(){
+    if(!!this.activitySubscription) this.activitySubscription.unsubscribe();
   }
 
   onSubmit(){

@@ -44,6 +44,7 @@ export class MembershipBtnComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.isMemberSubscription.unsubscribe();
     this.isAppliedSubscription.unsubscribe();
+    this.isAdminSubscription.unsubscribe();
   }
 
   apply(){

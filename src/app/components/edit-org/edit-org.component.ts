@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewContainerRef } from '@angular/core';
 import { Organization } from '../../models/models';
 import { OrgService } from '../../services/services';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { Overlay } from 'angular2-modal';
   templateUrl: './edit-org.component.html',
   styleUrls: ['./edit-org.component.css']
 })
-export class EditOrgComponent implements OnInit {
+export class EditOrgComponent implements OnInit, OnDestroy {
 
 
   org: Organization;
@@ -26,6 +26,10 @@ export class EditOrgComponent implements OnInit {
         this.org = org;
       })
     })
+  }
+
+  ngOnDestroy(){
+    if(this.orgSubscription)this.orgSubscription.unsubscribe();
   }
 
   onSubmit(event){
