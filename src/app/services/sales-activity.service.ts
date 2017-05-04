@@ -48,8 +48,8 @@ export class SalesActivityService{
           val.product = ammount;
           this.activitySalesStatsSubject.next(Object.assign([], this.activitySalesStats));
         }
-      })
-      this.httpPostProduct(user, activity, ammount).subscribe();
+      });
+      this.httpPostProduct(user, activity, ammount).subscribe(ret => console.log(ret));
     })
   }
 

@@ -29,40 +29,42 @@
   <div>
     Beskrivelse: {{ activity.description }}
   </div>
-    <div class="row">
+    <div class="row row2">
     <ng-container *ngIf="attendants">
-      <button class="buttons" *ngIf="isUserApplied === false"
+      <button class="buttons exeption btn btn-info" *ngIf="isUserApplied === false"
         (click)="applyTo()">
         Bli med
       </button>
-      <button class="buttons" *ngIf="isUserApplied === true"
+      <button class="buttons exeption btn btn-danger" *ngIf="isUserApplied === true"
         (click)="unapplyTo()">
         Meld av
       </button>
     </ng-container>
-    <dialog-container id="fix" class="buttons" *ngIf="attendants"
-      [btnText]="'Påmeldte medlemmer'"
-      [component]="attendantsListComponent">
-    </dialog-container>
-    <dialog-container class="buttons"
-      [btnText]="'Registrer Salg'"
-      [component]="setSoldAmmountComponent">
-    </dialog-container>
-    <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Rediger aktivitet'"
-      [component]="editActivityComponent">
-    </dialog-container>
-    <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Legg til medlemmer'"
-      [component]="addMemberToActivityComponent">
-    </dialog-container>
-    <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Fjern medlemmer'"
-      [component]="removeMemberFromActivityComponent">
-    </dialog-container>
-    <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Gi produkt'"
-      [component]="assignProductsComponent">
-    </dialog-container>
+    <div id ="buttGroup">
+      <dialog-container id="fix" class="buttons" *ngIf="attendants"
+        [btnText]="'Påmeldte medlemmer'"
+        [component]="attendantsListComponent">
+      </dialog-container>
+      <dialog-container class="buttons" *ngIf="isUserApplied"
+        [btnText]="'Registrer Salg'"
+        [component]="setSoldAmmountComponent">
+      </dialog-container>
+      <dialog-container class="buttons" *ngIf="isUserAdmin"
+        [btnText]="'Rediger aktivitet'"
+        [component]="editActivityComponent">
+      </dialog-container>
+      <dialog-container class="buttons" *ngIf="isUserAdmin"
+        [btnText]="'Legg til medlemmer'"
+        [component]="addMemberToActivityComponent">
+      </dialog-container>
+      <dialog-container class="buttons" *ngIf="isUserAdmin"
+        [btnText]="'Fjern medlemmer'"
+        [component]="removeMemberFromActivityComponent">
+      </dialog-container>
+      <dialog-container class="buttons" *ngIf="isUserAdmin"
+        [btnText]="'Gi produkt'"
+        [component]="assignProductsComponent">
+      </dialog-container>
+    </div>
   </div>
 </div>

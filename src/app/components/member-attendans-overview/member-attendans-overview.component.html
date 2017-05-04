@@ -1,20 +1,20 @@
 <div id="container" *ngIf="stats">
-  
+
   <table>
    <tr>
     <th>Navn</th>
     <th>Antall dugnader gjennomført</th>
   </tr>
     <tr *ngFor="let stat of stats">
-	
+
 	    <td><user-box [user]="stat.user"></user-box></td>
 		<td class="statsCount">
-			<p class = "statusCountInner">	
+			<p class = "statusCountInner">
 				{{stat.count}}
 			</p>
 		</td>
-	
+
 	</tr>
-		
+
   </table>
 </div>

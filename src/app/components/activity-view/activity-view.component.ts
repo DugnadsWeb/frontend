@@ -91,7 +91,12 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.attendantsSubscription.unsubscribe();
+    if (!!this.attendantsSubscription)
+      this.attendantsSubscription.unsubscribe();
+    if (!!this.activitySubscription)
+      this.activitySubscription.unsubscribe();
+    if (!!this.isUserAdminSubscription)
+      this.isUserAdminSubscription.unsubscribe();
   }
 
   checkIfUserApplied(){
@@ -118,7 +123,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
     this.isUserApplied = null;
     this.activityService.removeAttendant(this.userService.getUser());
   }
- 
+
 
 
 }

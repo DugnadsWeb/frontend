@@ -1,26 +1,24 @@
 #container{
-	
+
 
 
 }
 
 .statusCountInner{
-	
+
 	margin-top: 9%;
 	margin-left: 45%;
 	font-size: large;
-	
+
 }
 th{
-	background-color: rgb (194,229,229); 
-    font-weight: bold;
+	background-color: rgb (194,229,229);
 	padding: 10px 15px;
 	position: relative;
-	text-shadow: 0 1px 0 #000;		
 }
 
 th:after {
-	
+
 	content: '';
 	display: block;
 	height: 25%;
@@ -33,7 +31,7 @@ th:after {
 
 th:first-child {
 
-	
+
 }
 
 th:last-child {
@@ -51,12 +49,12 @@ td {
 
 td:first-child {
 	box-shadow: inset 1px 0 0 #d2d2d2;
-}	
+}
 
 td:last-child {
 
 	box-shadow: inset -1px 0 0 #d2d2d2;
-}	
+}
 
 tr {
 		background-color: rgb (194,229,229);
@@ -69,7 +67,7 @@ tr:nth-child(odd) td {
 
 table tr{
 		background-color: rgb (194,229,229);
-	
+
 		margin-top: 10px;
-	
+
 }

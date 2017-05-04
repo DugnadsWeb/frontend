@@ -40,7 +40,8 @@ export class AssignProductsComponent implements OnInit, Dialogable, OnDestroy {
 
   giveProduct(){
     this.memberProducts.forEach(val => {
-      this.salesActivityService.registerProduct(val[0], val[1]);
+      console.log(val);
+      this.salesActivityService.registerProduct(val.user, val.product);
     })
     this.events.emit({type: 'close'});
   }

@@ -23,7 +23,7 @@ export class DugnadService {
 
   init(dugnadId){
     return new Promise((res, rej) => {
-      let subscription = this.getDugnadHttp(dugnadId).subscribe(dugnad => {
+      this.getDugnadHttp(dugnadId).subscribe(dugnad => {
         this.dugnad = dugnad;
         this.dugnadSubject = new BehaviorSubject(dugnad);
         this.isInitSubject.next(true);
@@ -34,8 +34,6 @@ export class DugnadService {
         } else {
           this.orgService.subscribeToDugnad(this.dugnadSubject.asObservable());
         }
-
-        subscription.unsubscribe();
         res();
       });
     });
@@ -86,6 +84,10 @@ export class DugnadService {
       this.activitiesSubject.next(this.activities);
       subscription.unsubscribe();
     });
+  }
+
+  destroy(){
+    this.dugnadSubject.complete();
   }
 
   // #############
