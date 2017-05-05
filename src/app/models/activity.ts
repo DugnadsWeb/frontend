@@ -1,5 +1,7 @@
 export class Activity {
 
+  public type = 'Activity';
+
   constructor(public uuid, public title, public startTime,
     public endTime, public description, public maxPartisipants){
 
