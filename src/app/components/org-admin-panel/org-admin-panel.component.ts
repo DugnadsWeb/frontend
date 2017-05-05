@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Organization } from '../../models/models';
+import {OrgService} from "../../services/org.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -16,7 +18,8 @@ export class OrgAdminPanelComponent implements OnInit {
   @Output()
   memberAdded = new EventEmitter();
 
-  constructor() { }
+  constructor(private orgService: OrgService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,6 +27,11 @@ export class OrgAdminPanelComponent implements OnInit {
   addedMember(event){
     console.log(event)
     this.memberAdded.emit(event);
+  }
+
+  deleteOrg(uuid){
+    this.orgService.deleteOrgHttp(uuid).subscribe();
+    this.router.navigate(['']);
   }
 
 }

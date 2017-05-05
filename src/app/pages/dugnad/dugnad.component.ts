@@ -25,7 +25,8 @@ export class DugnadComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
     private dugnadService: DugnadService,
-    private orgService: OrgService) { }
+    private orgService: OrgService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -58,7 +59,8 @@ export class DugnadComponent implements OnInit, OnDestroy {
   }
 
   deleteDugnad(uuid){
-    this.dugnadService.deleteDugnadHttp(uuid);
+    this.orgService.removeDugnad(uuid);
+    this.router.navigate(['org/' + this.dugnad.orgUuid]);
   }
 
 }
