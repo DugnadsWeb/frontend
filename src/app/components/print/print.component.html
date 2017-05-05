@@ -1,10 +1,26 @@
 <button (click)="printDiv()"
         class="btn btn-sm btn-primary">Print Deltagerliste</button>
 <div id="printpage">
+  <h1 *ngIf="dug">Dugnad: {{dug.title}}</h1>
     <ul *ngFor="let act of activities">
-      <h2>{{act.title}}</h2>
-      <ng-container *ngFor="let item of act.attends">
-        <li>{{item.firstName}} {{item.lastName}}</li>
+      <h2>Aktivitet: {{act.title}}</h2>
+      <p>Påmeldte: </p>
+      <ng-container >
+        <table>
+          <tr>
+            <th>Fornavn</th>
+            <th>Etternavn</th>
+            <th>Mail</th>
+            <th>Møtt opp</th>
+          </tr>
+          <tr *ngFor="let item of act.attends">
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.email}}</td>
+            <td></td>
+          </tr>
+        </table>
+       <!-- <li>{{item.firstName}} {{item.lastName}}</li> -->
       </ng-container>
     </ul>
 

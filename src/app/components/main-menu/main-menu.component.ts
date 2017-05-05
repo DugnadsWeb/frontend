@@ -15,7 +15,7 @@ export class MainMenuComponent implements OnInit {
 	dropdownElements = [];
 	dropdownRoutes = [];
 
-	atagsrc = "";
+  buttonText = "";
 
 
   constructor(private authService: AuthService, private router: Router)
@@ -27,14 +27,14 @@ export class MainMenuComponent implements OnInit {
   	let token = window.localStorage.getItem('auth_token');
 
 	  if(token){
-	  this.atagsrc ="Logg ut";
-      this.routerElements = ["functions","contactUss","info-hub","register-org","search"];
-      this.navBarElements = ["Funksjoner","Kontakt oss","Min oversikt","Opprett org","Søk etter org"];
+	    this.buttonText ="Logg ut";
+      this.routerElements = ["info-hub","register-org","search", "contactUss"];
+      this.navBarElements = ["Min oversikt","Opprett org","Søk etter org", "Kontakt oss"];
 	  }
 	  else{
-	  this.atagsrc ="Logg inn";
-      this.navBarElements = ["Funksjoner","Om oss","Logg inn"];
-      this.routerElements = [ "functions","contactUss","login"];
+	    this.buttonText ="Logg inn";
+      this.navBarElements = ["Om oss","Logg inn"];
+      this.routerElements = ["contactUss","login"];
 	  }
   }
 
@@ -46,14 +46,14 @@ export class MainMenuComponent implements OnInit {
   {
     this.authService.status.subscribe(status => {
       if(status == true) {
-        this.atagsrc = "Logg ut";
-        this.routerElements =  ["functions","contactUss","info-hub","register-org","search"];
-        this.navBarElements = ["Funksjoner","Kontakt oss","Min oversikt","Opprett org","Søk etter org"];
+        this.buttonText ="Logg ut";
+        this.routerElements = ["info-hub","register-org","search", "contactUss"];
+        this.navBarElements = ["Min oversikt","Opprett org","Søk etter org", "Kontakt oss"];
       }
       else{
-        this.atagsrc = "Logg inn";
-        this.navBarElements =  ["Funksjoner","Om oss","Logg inn"];
-        this.routerElements =[ "functions","contactUss","login"];
+        this.buttonText ="Logg inn";
+        this.navBarElements = ["Om oss","Logg inn"];
+        this.routerElements = ["contactUss","login"];
       }
 
     });

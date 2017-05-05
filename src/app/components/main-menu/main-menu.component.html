@@ -32,7 +32,7 @@
                             <li id="white" *ngFor="let item of dropdownElements"><a (click)="routerHelper(item)">{{item}}</a></li>
 														<li class="divider"></li>
                             <li>
-                            	<a #logBtn [text]="atagsrc" id="logoutBTN" class="btn btn-default" (click)="loginOrOut(event)"></a>
+                            	<a #logBtn [text]="buttonText" id="logoutBTN" class="btn btn-default" (click)="loginOrOut(event)"></a>
 														</li>
                         </ul>
                     </li>

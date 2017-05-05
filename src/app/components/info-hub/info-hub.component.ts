@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService} from '../../services/auth.service';
-import { DugnadService, UserService } from '../../services/services';
-import {Dugnad} from "../../models/dugnad";
-import {forEach} from "@angular/router/src/utils/collection";
-import {Organization} from "../../models/organization";
-import {observableToBeFn} from "rxjs/testing/TestScheduler";
-import {OrgService} from "../../services/org.service";
-import {User} from "../../models/user";
-import {Subscription} from "rxjs";
+
 
 @Component({
   selector: 'app-info-hub',

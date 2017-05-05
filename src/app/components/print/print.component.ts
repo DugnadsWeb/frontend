@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {PrintService} from "../../services/print.service";
 import {DugnadService} from "../../services/dugnad.service";
 import {Dugnad} from "../../models/dugnad";
@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   templateUrl: './print.component.html',
   styleUrls: ['./print.component.css']
 })
-export class PrintComponent implements OnInit {
+export class PrintComponent implements OnInit, OnDestroy {
 
   @Input()
   dug:Dugnad;
@@ -58,6 +58,13 @@ export class PrintComponent implements OnInit {
 
     console.log(this.attendants);
     window.print();
+  }
+
+  ngOnDestroy() {
+    if(this.activitesSubscription){
+      this.activitesSubscription.unsubscribe();
+      this.activitesSubscription = null;
+    }
   }
 
 }

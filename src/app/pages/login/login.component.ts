@@ -48,6 +48,10 @@ export class LoginComponent implements OnInit {
 
     }
 
+    registerRoute(){
+      this.router.navigate(['register']);
+    }
+
 
 
 }
