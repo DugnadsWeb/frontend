@@ -57,4 +57,8 @@ export class DugnadComponent implements OnInit, OnDestroy {
 
   }
 
+  deleteDugnad(uuid){
+    this.dugnadService.deleteDugnadHttp(uuid);
+  }
+
 }
