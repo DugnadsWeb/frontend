@@ -88,7 +88,19 @@ export class DugnadService implements OnDestroy {
     if (!this.activities) {throw {type:"state error", message:"activities is not instantiated, call getActivities first."}}
     let subscription = this.addActivityHttp(activity).subscribe(activity => {
       this.activities.push(activity);
-      this.activitiesSubject.next(this.activities);
+      this.activitiesSubject.next(Object.assign([],this.activities));
+      subscription.unsubscribe();
+    });
+  }
+
+  removeActivity(uuid){
+    let subscription = this.deleteActivityHttp(uuid).subscribe( () => {
+      for(let i = 0; i < this.activities.length; i++){
+        if(this.activities[i].uuid == uuid){
+          this.activities.splice(i,1);
+        }
+      }
+      this.activitiesSubject.next(Object.assign([],this.activities));
       subscription.unsubscribe();
     });
   }
@@ -266,18 +278,20 @@ export class DugnadService implements OnDestroy {
       });
     }
 
-  deleteDugnadHttp(uuid){
+  deleteActivityHttp(uuid){
+
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
+
     return this.http
       .delete(
-        environment.API_URL + '/dugnad/' + uuid
+        environment.API_URL + '/activity/' + uuid, {headers}
       )
       .map(res => res.json())
       .map((res) => {
         if(res){
-          console.log("dugnad deleted");
+          console.log("activity deleted");
         }
       })
       .catch((error:any) => {

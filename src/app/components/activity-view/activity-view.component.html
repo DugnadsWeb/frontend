@@ -1,15 +1,15 @@
 
 <div class="container activity-box">
  <div id="div">
-  <div id="navnPaTips">Navn:{{activity.title}}  
-  
+  <div id="navnPaTips">Navn:{{activity.title}}
+
   <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
        Status: Ikke påmeldt
 
       </div>
       <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
         Status: Påmeldt
-      </div> 
+      </div>
 	  </div>
   <div class="row">
     <h2 class="col-md-10">
@@ -67,6 +67,8 @@
       [btnText]="'Fjern medlemmer'"
       [component]="removeMemberFromActivityComponent">
     </dialog-container>
+
+    <button class="buttons" (click)="deleteActivity(activity.uuid)">Slett Aktivitet</button>
   </div>
   </div>
   </div>

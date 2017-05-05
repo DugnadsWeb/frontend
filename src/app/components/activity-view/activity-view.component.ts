@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, ChangeDetectorRef} from '@angular/core';
 import { Activity, User } from '../../models/models';
 import { ActivityService, UserService, OrgService } from '../../services/services';
 import { DialogContainerComponent } from '../dialog-container/dialog-container.component';
@@ -8,6 +8,8 @@ import { AttendantsListComponent } from '../attendants-list/attendants-list.comp
 import { EditActivityComponent } from '../edit-activity/edit-activity.component';
 import { AddMemberToActivityComponent } from '../add-member-to-activity/add-member-to-activity.component';
 import { RemoveMemberFromActivityComponent } from '../remove-member-from-activity/remove-member-from-activity.component';
+import {Router} from "@angular/router";
+import {DugnadService} from "../../services/dugnad.service";
 
 @Component({
   selector: 'activity-view',
@@ -42,7 +44,8 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
 
   constructor(public activityService: ActivityService,
     private userService: UserService,
-    private orgService: OrgService) { }
+    private orgService: OrgService,
+    private dugnadService: DugnadService) { }
 
   ngOnInit() {
     let times = this.activity.getTimesAsObeject();
@@ -122,6 +125,11 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
   unapplyTo(){
     this.isUserApplied = null;
     this.activityService.removeAttendant(this.userService.getUser());
+  }
+
+  deleteActivity(uuid){
+    this.dugnadService.removeActivity(uuid);
+    //this.router.navigate([])
   }
 
 

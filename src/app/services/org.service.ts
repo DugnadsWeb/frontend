@@ -99,6 +99,18 @@ export class OrgService implements OnDestroy {
     })
   }
 
+  removeDugnad(uuid){
+    let subscription = this.deleteDugnadHttp(uuid).subscribe( () => {
+      for(let i = 0; i < this.dugnads.length; i++){
+        if(this.dugnads[i].uuid == uuid){
+          this.dugnads.splice(i,1);
+        }
+      }
+      this.dugnadsSubject.next(Object.assign([],this.dugnads));
+      subscription.unsubscribe();
+    });
+  }
+
   getDugnadsObservable(){
     return new Promise<Observable<Dugnad[]>>((res, rej) => {
       if (!this.dugnads) {
@@ -735,6 +747,48 @@ export class OrgService implements OnDestroy {
           		return Observable.throw(new Error(error.status));
           });
       }
+
+  deleteOrgHttp(uuid){
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+
+    return this.http
+      .delete(
+        environment.API_URL + '/org/' + uuid, {headers}
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if(res){
+          console.log("org deleted");
+        }
+      })
+      .catch((error:any) => {
+        return Observable.throw(new Error(error.status));
+      });
+  }
+
+  deleteDugnadHttp(uuid){
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+
+    return this.http
+      .delete(
+        environment.API_URL + '/dugnad/' + uuid, {headers}
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if(res){
+          console.log("dugnad deleted");
+        }
+      })
+      .catch((error:any) => {
+        return Observable.throw(new Error(error.status));
+      });
+  }
 
 
 }
