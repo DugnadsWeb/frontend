@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { DialogWindowDirective } from '../../directives/dialog-window.directive';
-import { BrowserDomAdapter } from '@angular/platform-browser/src/browser/browser_adapter';
+//import { BrowserDomAdapter } from '@angular/platform-browser/src/browser/browser_adapter';
 
 export interface Dialogable {
   events: EventEmitter<any>;
@@ -38,7 +38,7 @@ export class DialogContainerComponent implements OnInit, OnDestroy {
   @Input()
   title: string;
 
-  private dom = new BrowserDomAdapter();
+  //private dom = new BrowserDomAdapter();
 
   // component to be opened by this.openDialog()
   activeComponent;
@@ -54,7 +54,7 @@ export class DialogContainerComponent implements OnInit, OnDestroy {
   }
 
   openDialog(){
-    this.dom.setStyle(this.dom.query('body'), 'overflow', 'hidden');
+    //this.dom.setStyle(this.dom.query('body'), 'overflow', 'hidden');
     this.isActive = true;
 
     let cf = this.cfr.resolveComponentFactory(this.activeComponent);
@@ -78,7 +78,7 @@ export class DialogContainerComponent implements OnInit, OnDestroy {
     this.dialogWindow.vcRef.clear();
     this.isActive = false;
     this.activeComponent = this.component;
-    this.dom.setStyle(this.dom.query('body'), 'overflow', 'initial');
+    //this.dom.setStyle(this.dom.query('body'), 'overflow', 'initial');
   }
 
   eventHandler(event){

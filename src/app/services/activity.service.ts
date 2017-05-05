@@ -3,6 +3,7 @@ import { Activity, User } from '../models/models';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthService } from '../services/services';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -110,7 +111,7 @@ export class ActivityService {
     });
     return this.http
       .post(
-      'http://localhost:8888/api/activity/apply',
+      environment.API_URL + '/activity/apply',
       body,
       { headers }
     )
@@ -136,7 +137,7 @@ export class ActivityService {
     });
     return this.http
       .put(
-      'http://localhost:8888/api/activity/',
+      environment.API_URL + '/activity/',
       body,
       { headers }
     )
@@ -157,7 +158,7 @@ export class ActivityService {
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/activity/'+this.activityId,
+        environment.API_URL + '/activity/'+this.activityId,
         { headers }
       )
       .map(res => res.json())
@@ -172,7 +173,7 @@ export class ActivityService {
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/activity/attendants/'+this.activityId,
+        environment.API_URL + '/activity/attendants/'+this.activityId,
         { headers }
       )
       .map(res => res.json())

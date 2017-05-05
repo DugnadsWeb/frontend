@@ -1,5 +1,6 @@
-<div class="panel panel-primary">
-    <h4>Forespørsler om medlemmskap: {{applications?.length}}</h4>
+<div *ngIf="applicants" 
+  class="panel panel-primary">
+    <h4>Forespørsler om medlemmskap: {{applicants.length}}</h4>
 	<ng-container *ngIf="applicants">
     <div *ngIf="applicants.length > 0" class="container">
       <applicant-row

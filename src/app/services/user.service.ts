@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 import { AuthService } from './auth.service';
 import { User } from '../models/models';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -64,7 +65,7 @@ export class UserService {
     console.log(body);
     return this.http
       .post(
-        'http://localhost:8888/api/user/',
+        environment.API_URL + '/user/',
         body,
         { headers }
       )
@@ -81,7 +82,7 @@ export class UserService {
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
 		return this.http
 			.get(
-				'http://localhost:8888/api/user/'+userId,
+				environment.API_URL + '/user/'+userId,
 				{headers}
 			)
 			.map(res => res.json())
@@ -102,7 +103,7 @@ export class UserService {
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/user/applications/'+userId,
+        environment.API_URL + '/user/applications/'+userId,
         { headers }
       )
       .map(res => res.json())
@@ -127,7 +128,7 @@ export class UserService {
     console.log(body);
     return this.http
       .post(
-        'http://localhost:8888/api/user/picture',
+        environment.API_URL + '/user/picture',
         body,
         { headers }
       )
@@ -157,7 +158,7 @@ export class UserService {
 		let body = JSON.stringify({user: {email: email}});
 		return this.http
 			.get(
-				'http://localhost:8888/api/user/picture/'+email,
+				environment.API_URL + '/user/picture/'+email,
 				{headers}
 			)
 			.map(res => res.json())
@@ -183,7 +184,7 @@ export class UserService {
     let body = JSON.stringify({user: {email: email}});
     return this.http
       .get(
-        'http://localhost:8888/api/user/organizations/'+email,
+        environment.API_URL + '/user/organizations/'+email,
         {headers}
       )
       .map(res => res.json())

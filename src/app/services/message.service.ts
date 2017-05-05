@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import { AuthService} from './auth.service';
 import { Organization, User, Message } from '../models/models';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MessageService {
@@ -29,7 +30,7 @@ export class MessageService {
       });
       return this.http
         .post(
-          'http://localhost:8888/api/msg/',
+          environment.API_URL + '/msg/',
           body,
           { headers }
         )
@@ -48,7 +49,7 @@ export class MessageService {
       headers.append('authorization', 'Bearer ' + this.authService.getToken());
       return this.http
         .get(
-          'http://localhost:8888/api/msg/'+myType+'/'+myId,
+          environment.API_URL + '/msg/'+myType+'/'+myId,
           { headers }
         )
         .map(res => res.json())
