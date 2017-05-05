@@ -167,7 +167,6 @@ export class DugnadService implements OnDestroy {
   addActivityHttp(activity: Activity){
     let sendObj:any = Object.assign({}, activity);
     delete sendObj.uuid;
-    sendObj.type = activity.constructor.name;
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
