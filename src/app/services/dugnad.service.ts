@@ -265,4 +265,23 @@ export class DugnadService implements OnDestroy {
           return Observable.throw(new Error(error.status));
       });
     }
+
+  deleteDugnadHttp(uuid){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', 'Bearer ' + this.authService.getToken());
+    return this.http
+      .delete(
+        environment.API_URL + '/dugnad/' + uuid
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if(res){
+          console.log("dugnad deleted");
+        }
+      })
+      .catch((error:any) => {
+        return Observable.throw(new Error(error.status));
+      });
+  }
 }
