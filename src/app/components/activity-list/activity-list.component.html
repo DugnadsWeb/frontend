@@ -1,9 +1,9 @@
 <div *ngIf="activities">
   <ng-container *ngFor="let activity of activities">
-    <activity-view *ngIf="activity.constructor.name == 'Activity'"
+    <activity-view *ngIf="activity.type == 'Activity'"
       [activity]="activity">
     </activity-view>
-    <sales-activity-view *ngIf="activity.constructor.name == 'SalesActivity'"
+    <sales-activity-view *ngIf="activity.type == 'SalesActivity'"
       [activity]="activity">
     </sales-activity-view>
   </ng-container>
