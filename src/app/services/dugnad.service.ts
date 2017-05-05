@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject} from 'rxjs/Rx';
 import { AuthService } from './auth.service';
 import { OrgService } from './org.service';
 import { Organization, User, Application, Dugnad, Activity, SalesActivity } from '../models/models';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class DugnadService implements OnDestroy {
@@ -103,7 +104,7 @@ export class DugnadService implements OnDestroy {
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/dugnad/'+id,
+        environment.API_URL + '/dugnad/'+id,
         { headers }
       )
       .map(res => res.json())
@@ -128,7 +129,7 @@ export class DugnadService implements OnDestroy {
 	console.log(body);
 	return this.http
 	  .post(
-		'http://localhost:8888/api/dugnad/',
+		environment.API_URL + '/dugnad/',
 		body,
 		{ headers }
 	  )
@@ -149,7 +150,7 @@ export class DugnadService implements OnDestroy {
     let body = JSON.stringify({ dugnad:dugnad });
     return this.http
     .put(
-      'http://localhost:8888/api/dugnad/',
+      environment.API_URL + '/dugnad/',
       body,
       { headers }
       )
@@ -174,7 +175,7 @@ export class DugnadService implements OnDestroy {
        dugnad: {uuid:this.dugnad.uuid}});
     return this.http
       .post(
-      'http://localhost:8888/api/activity/',
+      environment.API_URL + '/activity/',
       body,
       { headers }
     )
@@ -198,7 +199,7 @@ export class DugnadService implements OnDestroy {
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/dugnad/organization/'+id,
+        environment.API_URL + '/dugnad/organization/'+id,
         { headers }
       )
       .map(res => res.json())
@@ -217,7 +218,7 @@ export class DugnadService implements OnDestroy {
 	{
 		return this.http
 			.get(
-				'http://localhost:8888/api/dugnad/all'
+				environment.API_URL + '/dugnad/all'
 			)
 			.map(res => res.json())
 			.map((res) => {
@@ -240,7 +241,7 @@ export class DugnadService implements OnDestroy {
   getActivitiesHttp(){
     return this.http
       .get(
-        'http://localhost:8888/api/dugnad/activities/' + this.dugnad.uuid
+        environment.API_URL + '/dugnad/activities/' + this.dugnad.uuid
       )
       .map(res => res.json())
       .map((res) => {

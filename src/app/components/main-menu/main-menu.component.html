@@ -11,10 +11,10 @@
                     <span class="icon-bar"></span>
                 </button>
 								<li>
-                	<a  id="navbar-name"class="navbar-brand" (click)="takeMeHome(event)">
+                	<a  id="navbar-name"class="navbar-brand" (click)="takeMeHome($event)">
                 	Dugnadsweb
 					</a>
-					<a class="navbar-brand" (click)="takeMeHome(event)">
+					<a class="navbar-brand" (click)="takeMeHome($event)">
 										<img src="../../assets/img/Wlogo.png" width="60" height="30" alt="">
 									</a>
 								</li>
@@ -32,7 +32,7 @@
                             <li id="white" *ngFor="let item of dropdownElements"><a (click)="routerHelper(item)">{{item}}</a></li>
 														<li class="divider"></li>
                             <li>
-                            	<a #logBtn [text]="atagsrc" id="logoutBTN" class="btn btn-default" (click)="loginOrOut(event)"></a>
+                            	<a #logBtn [text]="atagsrc" id="logoutBTN" class="btn btn-default" (click)="loginOrOut($event)"></a>
 														</li>
                         </ul>
                     </li>

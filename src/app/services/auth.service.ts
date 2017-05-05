@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import {Observable, Observer} from 'rxjs/Rx';
 const jwt_decode = require('jwt-decode');
-
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +16,7 @@ export class AuthService {
     this.loggedIn = !!localStorage.getItem('auth_token');
     this.status = new Observable(observer => {
       this.observer = observer
-      this.observer.next(!!this.getToken);  
+      this.observer.next(!!this.getToken);
     }).share();
 
   }
@@ -48,7 +48,7 @@ export class AuthService {
     let body = JSON.stringify({ email, password });
     return this.http
       .post(
-        'http://localhost:8888/api/auth/',
+        environment.API_URL + '/auth/',
         body,
         { headers }
       )

@@ -18,20 +18,20 @@ import { RemoveMemberFromActivityComponent } from '../remove-member-from-activit
 export class ActivityViewComponent implements OnInit, OnDestroy {
 
   @Input()
-  protected activity: Activity;
+  activity: Activity;
   activitySubscription: Subscription;
   activityServiceInitSubscription: Subscription;
 
   orgServiceInitSubscription: Subscription;
 
-  protected startTime;
-  protected endTime;
+  startTime;
+  endTime;
 
-  protected attendants: User[];
+  attendants: User[];
   attendantsSubscription: Subscription;
 
-  protected isUserApplied:boolean;
-  protected isUserAdmin:boolean;
+  isUserApplied:boolean;
+  isUserAdmin:boolean;
   isUserAdminSubscription: Subscription;
 
   // dialog components
@@ -40,7 +40,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
   addMemberToActivityComponent = AddMemberToActivityComponent;
   removeMemberFromActivityComponent = RemoveMemberFromActivityComponent;
 
-  constructor(protected activityService: ActivityService,
+  constructor(public activityService: ActivityService,
     private userService: UserService,
     private orgService: OrgService) { }
 

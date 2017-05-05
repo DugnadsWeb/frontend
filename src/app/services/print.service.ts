@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Observable, Subject, BehaviorSubject} from "rxjs";
 import {AuthService} from "./auth.service";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PrintService {
@@ -30,7 +31,7 @@ export class PrintService {
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/dugnad/print/'+uuid,
+        environment.API_URL + '/dugnad/print/'+uuid,
         { headers }
       )
       .map(res => res.json())

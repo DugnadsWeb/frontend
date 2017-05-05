@@ -17,7 +17,7 @@ export class ApproveOrgApplicationComponent implements OnInit {
   @Output()
   memberAdded = new EventEmitter();
 
-  applicants: User[];
+  public applicants: User[];
 
   constructor(private orgService: OrgService) { }
 

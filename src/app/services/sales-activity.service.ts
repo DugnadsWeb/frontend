@@ -5,6 +5,7 @@ import { ActivityService } from './activity.service';
 import { UserService } from './user.service';
 import { User, Activity } from '../models/models';
 import { Subscription, BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export class SalesStat {
   constructor (public user: User, public product: number, public sold: number){}
@@ -102,7 +103,7 @@ export class SalesActivityService{
 		headers.append('authorization', 'Bearer ' + this.authService.getToken());
     return this.http
       .get(
-        'http://localhost:8888/api/activity/sales/stats/' + activityId,
+        environment.API_URL + '/activity/sales/stats/' + activityId,
         { headers }
       )
       .map(res => res.json())
@@ -134,7 +135,7 @@ export class SalesActivityService{
     });
     return this.http
       .post(
-      'http://localhost:8888/api/activity/sales/set-items-sold',
+      environment.API_URL + '/activity/sales/set-items-sold',
       body,
       { headers }
     )
@@ -162,7 +163,7 @@ export class SalesActivityService{
     });
     return this.http
       .post(
-      'http://localhost:8888/api/activity/sales/set-member-supply',
+      environment.API_URL + '/activity/sales/set-member-supply',
       body,
       { headers }
     )

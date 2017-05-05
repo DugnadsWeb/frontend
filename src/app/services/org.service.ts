@@ -6,6 +6,7 @@ import { UserService } from './user.service';
 import { Organization, User, Application, Dugnad, Activity } from '../models/models';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class OrgService implements OnDestroy {
@@ -428,7 +429,7 @@ export class OrgService implements OnDestroy {
     console.log(body);
     return this.http
       .post(
-        'http://localhost:8888/api/org/',
+        environment.API_URL + '/org/',
         body,
         { headers }
       )
@@ -446,7 +447,7 @@ export class OrgService implements OnDestroy {
 	{
 		return this.http
 			.get(
-				'http://localhost:8888/api/org/all'
+				environment.API_URL + '/org/all'
 			)
 			.map(res => res.json())
 			.map((res) => {
@@ -470,7 +471,7 @@ export class OrgService implements OnDestroy {
   getOrgHttp(uuid: string){
     let headers = new Headers();
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
-    return this.http.get('http://localhost:8888/api/org/'+uuid, {headers: headers})
+    return this.http.get(environment.API_URL + '/org/'+uuid, {headers: headers})
     .map(res => res.json())
     .map(res => {
       return new Organization(res.uuid, res.orgName, res.orgNumber, res.email, res.phone, res.description);
@@ -485,7 +486,7 @@ export class OrgService implements OnDestroy {
   getMembersHttp(){
     let headers = new Headers();
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
-    return this.http.get('http://localhost:8888/api/org/members/'+this.org.uuid, {headers: headers})
+    return this.http.get(environment.API_URL + '/org/members/'+this.org.uuid, {headers: headers})
     .map(res => res.json())
     .map(res => {
       let ret = {members:[], admins:[]};
@@ -506,7 +507,7 @@ export class OrgService implements OnDestroy {
   getAdminsHttp(uuid: string){
     let headers = new Headers();
     headers.append('authorization', 'Bearer ' + this.authService.getToken());
-    return this.http.get('http://localhost:8888/api/org/members/'+uuid, {headers: headers})
+    return this.http.get(environment.API_URL + '/org/members/'+uuid, {headers: headers})
     .map(res => res.json())
     .map(res => {
       let ret = [];
@@ -532,7 +533,7 @@ export class OrgService implements OnDestroy {
       });
     return this.http
       .post(
-        'http://localhost:8888/api/org/apply',
+        environment.API_URL + '/org/apply',
         body,
         { headers }
       )
@@ -556,7 +557,7 @@ export class OrgService implements OnDestroy {
         });
       return this.http
         .post(
-          'http://localhost:8888/api/org/rmmember',
+          environment.API_URL + '/org/rmmember',
           body,
           { headers }
         )
@@ -572,7 +573,7 @@ export class OrgService implements OnDestroy {
       getApplicants(){
         let headers = new Headers();
         headers.append('authorization', 'Bearer ' + this.authService.getToken());
-        return this.http.get('http://localhost:8888/api/org/applicants/'+this.org.uuid,
+        return this.http.get(environment.API_URL + '/org/applicants/'+this.org.uuid,
         {headers: headers})
         .map(res => res.json())
         .map(res => {
@@ -605,7 +606,7 @@ export class OrgService implements OnDestroy {
           });
         return this.http
           .post(
-            'http://localhost:8888/api/org/applicant',
+            environment.API_URL + '/org/applicant',
             body,
             { headers }
           )
@@ -626,7 +627,7 @@ export class OrgService implements OnDestroy {
         console.log(body);
         return this.http
           .put(
-            'http://localhost:8888/api/org/',
+            environment.API_URL + '/org/',
             body,
             { headers }
           )
@@ -650,7 +651,7 @@ export class OrgService implements OnDestroy {
           });
         return this.http
           .post(
-            'http://localhost:8888/api/org/chadmin',
+            environment.API_URL + '/org/chadmin',
             body,
             { headers }
           )
@@ -668,7 +669,7 @@ export class OrgService implements OnDestroy {
         headers.append('Content-Type', 'application/json');
         return this.http
     			.get(
-    				'http://localhost:8888/api/org/dugnads/'+this.org.uuid,
+    				environment.API_URL + '/org/dugnads/'+this.org.uuid,
             { headers }
     			)
     			.map(res => res.json())
@@ -695,7 +696,7 @@ export class OrgService implements OnDestroy {
       	console.log(body);
       	return this.http
       	  .post(
-      		'http://localhost:8888/api/dugnad/',
+      		environment.API_URL + '/dugnad/',
       		body,
       		{ headers }
       	  )
@@ -716,7 +717,7 @@ export class OrgService implements OnDestroy {
         headers.append('Content-Type', 'application/json');
         return this.http
     			.get(
-    				'http://localhost:8888/api/org/stats/attendants/year/'+this.org.uuid+'/'+year,
+    				environment.API_URL + '/org/stats/attendants/year/'+this.org.uuid+'/'+year,
             { headers }
     			)
     			.map(res => res.json())

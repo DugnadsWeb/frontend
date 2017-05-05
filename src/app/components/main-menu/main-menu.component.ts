@@ -15,8 +15,10 @@ export class MainMenuComponent implements OnInit {
 	dropdownElements = [];
 	dropdownRoutes = [];
 
-	atagsrc = "";
+  public event;
 
+  // TODO give descriptive name
+	atagsrc = "";
 
   constructor(private authService: AuthService, private router: Router)
   {

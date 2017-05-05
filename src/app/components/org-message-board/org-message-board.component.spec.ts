@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrgMessageBoeardComponent } from './org-message-boeard.component';
+import { OrgMessageBoardComponent } from './org-message-board.component';
 
-describe('OrgMessageBoeardComponent', () => {
-  let component: OrgMessageBoeardComponent;
-  let fixture: ComponentFixture<OrgMessageBoeardComponent>;
+describe('OrgMessageBoardComponent', () => {
+  let component: OrgMessageBoardComponent;
+  let fixture: ComponentFixture<OrgMessageBoardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgMessageBoeardComponent ]
+      declarations: [ OrgMessageBoardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrgMessageBoeardComponent);
+    fixture = TestBed.createComponent(OrgMessageBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
