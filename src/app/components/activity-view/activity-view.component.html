@@ -1,11 +1,13 @@
 
-<div class="container activity-box">
+<div *ngIf="attendants"
+  class="container activity-box">
  <div id="div">
   <div id="navnPaTips">Navn:{{activity.title}}
 
-  <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
+  <div *ngIf="isUserApplied === false"
+    style=" color: red;"
+    class="mAplied">
        Status: Ikke påmeldt
-
       </div>
       <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
         Status: Påmeldt
@@ -15,21 +17,30 @@
     <h2 class="col-md-10">
       {{activity.title}} <span class="activity-type">(Aktivitet)</span>
     </h2>
-    <div class="col-md-2" style=" color: green;">
+    <div *ngIf="activity.isActive && activity.maxPartisipants > attendants.length"
+      class="col-md-2"
+      style=" color: green;">
       Åpen for påmelding
+    </div>
+    <div *ngIf="!activity.isActive || attendants.length >= activity.maxPartisipants"
+      class="col-md-2"
+      style=" color: red;">
+      Påmelding er stengt
     </div>
   </div>
  <ng-container *ngIf="attendants">
-      <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
-       Status: Ikke påmeldt
+    <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
+     Status: Ikke påmeldt
 
-      </div>
-      <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
-        Status: Påmeldt
-      </div>
-    </ng-container>
+    </div>
+    <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
+      Status: Påmeldt
+    </div>
+  </ng-container>
 
-
+  <div>
+    Deltagelse: {{ attendants.length }} av {{ activity.maxPartisipants }} påmeldte
+  </div>
   <div>
     Starter: {{ startTime.hour }}:{{ startTime.min }} - {{ startTime.day }}.{{ startTime.month }}.{{ startTime.year }}
   </div>
@@ -39,17 +50,20 @@
   <div>
     Beskrivelse: {{ activity.description }}
   </div>
-    <div class="row row2">
-    <ng-container *ngIf="attendants">
-      <button class="buttons exeption btn btn-info" *ngIf="isUserApplied === false"
-        (click)="applyTo()">
-        Bli med
-      </button>
-      <button class="buttons exeption btn btn-danger" *ngIf="isUserApplied === true"
-        (click)="unapplyTo()">
-        Meld av
-      </button>
-    </ng-container>
+  <div class="row row2">
+
+  <button class="buttons exeption btn btn-info" *ngIf="!isUserApplied && activity.isActive && attendants.length < activity.maxPartisipants"
+    (click)="applyTo()">
+    Bli med
+  </button>
+  <button class="buttons exeption btn btn-danger" *ngIf="isUserApplied && activity.isActive"
+    (click)="unapplyTo()">
+    Meld av
+  </button>
+  <button class="buttons exeption btn" disabled
+    *ngIf="!activity.isActive || (attendants.length >= activity.maxPartisipants && !isUserApplied)">
+    Påmelding stengt
+  </button>
 	<div id ="buttGroup">
     <dialog-container class="buttons" *ngIf="attendants"
       [btnText]="'Påmeldte medlemmer'"

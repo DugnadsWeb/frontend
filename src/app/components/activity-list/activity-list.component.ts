@@ -32,7 +32,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
       this.isOrgServiceInitSubscription = observable.subscribe(isInit => {
         if (isInit) {
           this.dugnadService.getActivities().then(observable => {
-            this.activitiesSubscription = observable.subscribe(activities => this.activities = activities);
+            this.activitiesSubscription = observable.subscribe(activities => {this.activities = activities; console.log(activities)});
           });
           this.orgService.isUserAdminObservable().then(observable => {
             this.isAdminSubscription = observable.subscribe(isAdmin => this.isAdmin = isAdmin);

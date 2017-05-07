@@ -16,7 +16,6 @@ export class AssignProductsComponent implements OnInit, Dialogable, OnDestroy {
   data:any;
 
 
-  salesStats:SalesStat[];
   salesStatsSubscription: Subscription;
 
   memberProducts;
@@ -28,8 +27,8 @@ export class AssignProductsComponent implements OnInit, Dialogable, OnDestroy {
   ngOnInit() {
     this.salesActivityService.getSalesStats().then(observable => {
       this.salesStatsSubscription = observable.subscribe(salesStats => {
-        this.salesStats = salesStats;
-        this.memberProducts = Object.assign([], salesStats);
+        console.log("stats updated in assign");
+        this.memberProducts = salesStats;
       })
     })
   }

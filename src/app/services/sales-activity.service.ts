@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthService } from './auth.service';
 import { ActivityService } from './activity.service';
@@ -12,18 +12,23 @@ export class SalesStat {
 }
 
 @Injectable()
-export class SalesActivityService{
+export class SalesActivityService implements OnDestroy{
 
-  acttivity: Activity;
-  isActivityServiceInit = false;
-  isActivityServiceInitSubscription: Subscription;
+  activityAttendantsSubscription: Subscription;
 
 
   activitySalesStats: SalesStat[];
-  activitySalesStatsSubject: BehaviorSubject<SalesStat[]>;
+  activitySalesStatsSubject = new BehaviorSubject<SalesStat[]>([]);
 
   constructor(private authService: AuthService,
      private activityService: ActivityService, private http:Http) {
+       console.log("salesac serv is construc")
+       this.attendantsSubscriber();
+  }
+
+  ngOnDestroy(){
+    if (this.activityAttendantsSubscription)
+      this.activityAttendantsSubscription.unsubscribe();
   }
 
   getSalesStats(){
@@ -35,7 +40,7 @@ export class SalesActivityService{
       this.getActivityPromise().then(activity => {
         this.httpGetActivitySalesStats(activity.uuid).subscribe(salesStats => {
           this.activitySalesStats = salesStats;
-          this.activitySalesStatsSubject = new BehaviorSubject(Object.assign([], this.activitySalesStats));
+          this.activitySalesStatsSubject.next(Object.assign([], this.activitySalesStats));
           res(this.activitySalesStatsSubject.asObservable());
         })
       })
@@ -67,28 +72,51 @@ export class SalesActivityService{
   }
 
   updateStats(){
+    console.log('updateStats is vcalled')
     this.getActivityPromise().then(activity => {
       this.httpGetActivitySalesStats(activity.uuid).subscribe(salesStats => {
         this.activitySalesStats = salesStats;
-        this.activitySalesStatsSubject = new BehaviorSubject(Object.assign([], this.activitySalesStats));
+        this.activitySalesStatsSubject.next(Object.assign([], this.activitySalesStats));
       })
     })
   }
 
+  // ##################
+  // private methods ##
+  // ##################
+
   private getActivityPromise(){
     return new Promise<Activity>((res, rej) => {
+      this.activityServiceIsInitPromise().then(() => {
+        this.activityService.getActivityObservable().then(observable => {
+          let activitySubscription = observable.subscribe(activity => {
+            res(activity);
+            activitySubscription.unsubscribe();
+          })
+        })
+      })
+    })
+  }
+
+  private activityServiceIsInitPromise(){
+    return new Promise((res, rej) => {
       this.activityService.isInitObservable().then(observable => {
         let initSubscription = observable.subscribe(isInit => {
           if (isInit){
-            this.activityService.getActivityObservable().then(observable => {
-              let activitySubscription = observable.subscribe(activity => {
-                res(activity);
-                initSubscription.unsubscribe();
-                activitySubscription.unsubscribe();
-              })
-            })
+            res();
+            initSubscription.unsubscribe();
           }
         })
+      })
+    })
+  }
+
+  private attendantsSubscriber(){
+    this.activityServiceIsInitPromise(). then(() => {
+      this.activityService.getAttendants().then(observable => {
+        this.activityAttendantsSubscription = observable.subscribe(attendants => {
+          this.updateStats();
+        }, err => console.log(err), () => console.log("imout"))
       })
     })
   }

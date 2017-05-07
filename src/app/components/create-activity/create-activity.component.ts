@@ -31,7 +31,7 @@ export class CreateActivityComponent implements OnInit {
     let activity = new Activity(null, this.title,
       Activity.fromStringToTime(this.startTime, this.startDate),
       Activity.fromStringToTime(this.endTime, this.endDate),
-      this.description, this.maxPartisipants);
+      this.description, this.maxPartisipants, false);
 
     this.dugnadService.addActivity(activity);
     this.events.emit({type:"created"});

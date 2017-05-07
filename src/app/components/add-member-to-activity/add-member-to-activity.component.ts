@@ -38,14 +38,14 @@ export class AddMemberToActivityComponent implements OnInit, Dialogable, OnDestr
       this.activityIsInitSubscription = observable.subscribe(isInit => {
         this.activityServiceInit = isInit;
         this.onServicesInit();
-        if (isInit) this.activityIsInitSubscription.unsubscribe();
+        if (isInit) {this.activityIsInitSubscription.unsubscribe()};
       })
     })
     this.orgService.isInitObservable().then( observable => {
       this.orgIsInitSubscription = observable.subscribe(isInit => {
         this.orgServiceInit = isInit;
-        if (isInit) this.orgIsInitSubscription.unsubscribe();
         this.onServicesInit();
+        if (isInit) {this.orgIsInitSubscription.unsubscribe()};
       })
     })
   }
@@ -69,6 +69,7 @@ export class AddMemberToActivityComponent implements OnInit, Dialogable, OnDestr
       this.membersSubscription = observable.subscribe(members => {
         // add members not in attendants list
         this.addUserFromList(members)
+        console.log(members)
       })
     });
     // get org admins
@@ -76,8 +77,10 @@ export class AddMemberToActivityComponent implements OnInit, Dialogable, OnDestr
       this.adminsSubscription = observable.subscribe(admins => {
         // add members not in attendants list
         this.addUserFromList(admins)
+        console.log(admins)
       })
     });
+    console.log("inits unsubscribe");
     this.activityIsInitSubscription.unsubscribe();
     this.orgIsInitSubscription.unsubscribe();
   }

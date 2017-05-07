@@ -196,7 +196,7 @@ export class DugnadService implements OnDestroy {
         console.log("Activity created succesfully");
       }
       return new Activity(res.uuid, res.title, res.startTime, res.endTime,
-        res.description, res.maxPartisipants);
+        res.description, res.maxPartisipants, res.isActive);
       }).catch((error:any) => {
         console.log(error);
         return Observable.throw(new Error(error));
@@ -265,10 +265,10 @@ export class DugnadService implements OnDestroy {
           let d = res[i];
           if (d.type == 'Activity'){
             ret.push(new Activity(d.uuid, d.title, d.startTime,
-              d.endTime, d.description, d.maxPartisipants));
+              d.endTime, d.description, d.maxPartisipants, d.isActive));
           } else if (d.type == 'SalesActivity'){
             ret.push(new SalesActivity(d.uuid, d.title, d.startTime,
-              d.endTime, d.description, d.maxPartisipants, d.productName));
+              d.endTime, d.description, d.maxPartisipants, d.productName, d.isActive));
           }
         }
         return ret;

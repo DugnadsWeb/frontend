@@ -54,6 +54,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
 
     this.activityService.init(this.activity.uuid);
 
+
     // activity observable
     this.activityService.isInitObservable().then(observable => {
       this.activityServiceInitSubscription = observable.subscribe(isInit => {

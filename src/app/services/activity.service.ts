@@ -14,7 +14,7 @@ export class ActivityService {
   private activitySubject: BehaviorSubject<Activity>;
   private isInitSubject = new BehaviorSubject<boolean>(false);
 
-  private attendantsSource: BehaviorSubject<User[]>;
+  private attendantsSource = new BehaviorSubject<User[]>([]);
   public attendants: User[];
 
 
@@ -28,7 +28,7 @@ export class ActivityService {
     this.activityId = activityId;
     this.getActivity().subscribe(activity => {
       this.activity = activity;
-      this.activitySubject = new BehaviorSubject<Activity>(Object.assign(new Activity('','','','','',''), this. activity));
+      this.activitySubject = new BehaviorSubject<Activity>(Object.assign(new Activity('','','','','','', false), this.activity));
       this.isInitSubject.next(true);
     })
   }
@@ -51,8 +51,8 @@ export class ActivityService {
     // TODO implement!
     // and notifiy dugnad;
     this.putApplication(activity).subscribe(() => {
-      this.activity = Object.assign(new Activity('','','','','',''), activity);
-      this.activitySubject.next(this.activity);
+      this.activity = activity;
+      this.activitySubject.next((Object.assign(new Activity('','','','','','', false), this.activity)));
     })
   }
 
@@ -60,9 +60,9 @@ export class ActivityService {
   getAttendants(){
     return new Promise<Observable<User[]>>((res, rej) => {
       if (!this.attendants){
-        let subscriber = this.getAttendantsHttp().subscribe(ret => {
+        this.getAttendantsHttp().subscribe(ret => {
           this.attendants = ret;
-          this.attendantsSource = new BehaviorSubject<User[]>(ret);
+          this.attendantsSource.next(ret);
           res(this.attendantsSource.asObservable());
         });
       } else {
@@ -164,7 +164,7 @@ export class ActivityService {
       .map(res => res.json())
       .map((res) => {
         return new Activity(res.uuid, res.title, res.startTime,
-          res.endTime, res.description, res.maxPartisipants);
+          res.endTime, res.description, res.maxPartisipants, res.isActive);
       });
   }
 

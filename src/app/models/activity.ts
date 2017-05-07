@@ -1,10 +1,11 @@
 export class Activity {
 
   public type = 'Activity';
+  public isActive: boolean;
 
   constructor(public uuid, public title, public startTime,
-    public endTime, public description, public maxPartisipants){
-
+    public endTime, public description, public maxPartisipants, isActive){
+      this.isActive = isActive == 'true';
   }
 
   getTimesAsObeject(){
