@@ -71,6 +71,9 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
           this.activityService.getActivityObservable().then(observable => {
             this.activitySubscription = observable.subscribe(activity => {
               this.activity = activity;
+              let times = activity.getTimesAsObeject();
+              this.startTime = times[0];
+              this.endTime = times[1];
             })
           }).catch(err => console.log(err));
           this.activityServiceInitSubscription.unsubscribe();
@@ -84,7 +87,7 @@ export class ActivityViewComponent implements OnInit, OnDestroy {
         if (isInit){
           this.orgService.isUserAdminObservable().then(observable => {
             this.isUserAdminSubscription = observable.subscribe(isAdmin => {
-              this.isUserAdmin = isAdmin
+              this.isUserAdmin = isAdmin;
             })
           })
           this.orgServiceInitSubscription.unsubscribe();
