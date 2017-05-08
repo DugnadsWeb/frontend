@@ -16,8 +16,15 @@
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="buttons">
+          <app-print
+          [dug]="dugnad"></app-print>
+        </div>
+        <button class="buttons" (click)="deleteDugnad(dugnad.uuid)">Slett Dugnad</button>
         <activity-list>
         </activity-list>
+
+
       </div>
       <div role="tabpanel" class="tab-pane" id="info">
         <dugnad-info [dugnad]="dugnad">
@@ -32,10 +39,6 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="admin">
         <edit-dugnad></edit-dugnad>
-      </div>
-        <app-print
-        [dug]="dugnad"></app-print>
-      </div>
-      <button (click)="deleteDugnad(dugnad.uuid)">Slett Dugnad</button>
+
   </div>
 </div>

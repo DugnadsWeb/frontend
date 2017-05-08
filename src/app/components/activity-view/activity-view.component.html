@@ -81,8 +81,11 @@
       [btnText]="'Fjern medlemmer'"
       [component]="removeMemberFromActivityComponent">
     </dialog-container>
+    <dialog-container class="buttons" *ngIf="isUserAdmin"
+      [btnText]="'Slett Aktivitet'"
+      (click)="deleteActivity(activity.uuid)"></dialog-container>
 
-    <button class="buttons" (click)="deleteActivity(activity.uuid)">Slett Aktivitet</button>
+
   </div>
   </div>
   </div>
