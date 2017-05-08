@@ -1,33 +1,25 @@
 
 <div *ngIf="attendants"
   class="container activity-box">
- <div id="div">
-  <div id="navnPaTips">Navn:{{activity.title}}
-
-  <div *ngIf="isUserApplied === false"
-    style=" color: red;"
-    class="mAplied">
-       Status: Ikke påmeldt
-      </div>
-      <div class="mAplied" *ngIf="isUserApplied === true" style=" color: green;">
-        Status: Påmeldt
-      </div>
-	  </div>
-  <div class="row">
-    <h2 class="col-md-10">
+ 
+ 
+<div id="titleA">
+    <h2>
       {{activity.title}} <span class="activity-type">(Aktivitet)</span>
     </h2>
+	</div>
+	
     <div *ngIf="activity.isActive && activity.maxPartisipants > attendants.length"
-      class="col-md-2"
+		class="activityIsActive"
       style=" color: green;">
       Åpen for påmelding
     </div>
     <div *ngIf="!activity.isActive || attendants.length >= activity.maxPartisipants"
-      class="col-md-2"
+      class="activityIsActive"
       style=" color: red;">
       Påmelding er stengt
     </div>
-  </div>
+
  <ng-container *ngIf="attendants">
     <div class="mAplied" *ngIf="isUserApplied === false" style=" color: red;" >
      Status: Ikke påmeldt
@@ -69,24 +61,24 @@
       [btnText]="'Påmeldte medlemmer'"
       [component]="attendantsListComponent">
     </dialog-container>
+	 <dialog-container class="buttons" *ngIf="isUserAdmin"
+      [btnText]="'Legg til medlemmer'"
+      [component]="addMemberToActivityComponent">
+    </dialog-container>
+	<dialog-container class="buttons" *ngIf="isUserAdmin"
+      [btnText]="'Fjern medlemmer'"
+      [component]="removeMemberFromActivityComponent">
+    </dialog-container>
     <dialog-container class="buttons" *ngIf="isUserAdmin"
       [btnText]="'Rediger aktivitet'"
       [component]="editActivityComponent">
     </dialog-container>
     <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Legg til medlemmer'"
-      [component]="addMemberToActivityComponent">
-    </dialog-container>
-    <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Fjern medlemmer'"
-      [component]="removeMemberFromActivityComponent">
-    </dialog-container>
-    <dialog-container class="buttons" *ngIf="isUserAdmin"
-      [btnText]="'Slett Aktivitet'"
+      [btnText]="'Slett Aktivitet'" 
       (click)="deleteActivity(activity.uuid)"></dialog-container>
 
 
-  </div>
+  
   </div>
   </div>
 </div>

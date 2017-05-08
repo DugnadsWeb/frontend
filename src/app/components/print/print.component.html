@@ -1,5 +1,5 @@
 <button (click)="printDiv()"
-        class="btn btn-sm btn-primary">Print Deltagerliste</button>
+        class="btn btn-sm btn-primary printBtn">Print Deltagerliste<span class="glyphicon glyphicon-print margin"></span></button>
 <div id="printpage">
   <h1 *ngIf="dug">Dugnad: {{dug.title}}</h1>
     <ul *ngFor="let act of activities">

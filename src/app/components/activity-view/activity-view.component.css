@@ -17,11 +17,24 @@
   background-color: rgb(194,229,229);
     box-shadow: 0px 1px 15px 0px gray;
 }
-.activity-box h2 {
-  margin-left: -13px;
+#titleA{
+ width:50%;
+  
+ 
 }
-
-
+#titleA h2{
+	 
+	text-align: justify;
+	width:25%;
+	
+}
+.activityIsActive{
+	
+	
+	
+	
+	
+}
 /*.activity-box{
     position: relative;
     display: inline-block;
@@ -68,7 +81,7 @@
 	
 }
 .buttons {
-	width: 162px;
+	width: 150px;
 	float: left;
 	height: 40px;
 	margin-left: 30px;
@@ -93,6 +106,7 @@
 	
 }
 .activity-type {
+	
   color:gray;
   font-size:16px
 }
