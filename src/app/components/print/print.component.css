@@ -21,6 +21,17 @@
 	
 }
 }
+@media screen and (max-width: 480px) {
+   .printBtn{
+       margin-left: 60%;	
+	  margin-top: 29%;
+	  width: 160px;
+	  height: 40px;
+	  color: #fff;
+      background-color: #5bc0de;
+      border-color: #46b8da;
+    }
+}
 @media print {
   body *{
     visibility:hidden;
