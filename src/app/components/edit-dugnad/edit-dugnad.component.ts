@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DugnadService } from '../../services/services';
 import { Subscription } from 'rxjs';
 import { Dugnad } from '../../models/models';
+import {Router} from "@angular/router";
+import {OrgService} from "../../services/org.service";
 
 @Component({
   selector: 'edit-dugnad',
@@ -19,7 +21,8 @@ export class EditDugnadComponent implements OnInit, OnDestroy {
   endTime;
   endDate;
 
-  constructor(private dugnadService: DugnadService) { }
+  constructor(private dugnadService: DugnadService, private orgService: OrgService,
+              private router: Router) { }
 
   ngOnInit() {
     this.dugnadService.isInitObservable().then(observable => {
@@ -49,6 +52,11 @@ export class EditDugnadComponent implements OnInit, OnDestroy {
     this.dugnad.setStartTimeFromDateTimeString(this.startTime, this.startDate);
     this.dugnad.setEndTimeFromDateTimeString(this.endTime, this.endDate);
     this.dugnadService.editDugnad(this.dugnad);
+  }
+
+  deleteDugnad(uuid){
+    this.orgService.removeDugnad(uuid);
+    this.router.navigate(['org/' + this.dugnad.orgUuid]);
   }
 
 }
