@@ -21,3 +21,12 @@
 .printHTML{
   visibility: visible;
 }
+
+.buttons {
+  width: 162px;
+  float: left;
+  height: 40px;
+  margin-left: 30px;
+  margin-top: 10px;
+
+}

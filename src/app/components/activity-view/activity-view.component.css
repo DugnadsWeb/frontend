@@ -22,11 +22,11 @@
 }
 
 
-.activity-box{
+/*.activity-box{
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
-}
+}*/
 
 .activity-box #navnPaTips{
     visibility: hidden;
