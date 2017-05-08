@@ -28,36 +28,28 @@ export class PrintComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.attendants = [];
 
-    this.printService.init(this.dug.uuid).then( () => {
+    /*this.printService.init(this.dug.uuid).then( () => {
       this.printService.getInfo().then(observable => {
         this.activitesSubscription = observable.subscribe(printInfo => {
           this.activities = printInfo;
 
-          /*for(let i = 0; i < this.activities.length; i++){
-            for(let j = 0; j < this.activities[i].attends.length; j++){
-              this.attendants.push(this.activities[i].attends[j]);
-            }
-          }*/
-
         })
       })
-    });
+    });*/
   }
 
   printDiv(){
-
-    /*for(let i = 0; i < this.activities.length; i++){
-      for(let j = 0; j < this.activities[i].attends.length; j++){
-        this.attendants.push(this.activities[i].attends[j]);
-      }
-    }*/
-
-    console.log(this.activities);
-
-    console.log(this.attendants);
-    window.print();
+    this.printService.init(this.dug.uuid).then( () => {
+      this.printService.getInfo().then(observable => {
+        this.activitesSubscription = observable.subscribe(printInfo => {
+          this.activities = printInfo;
+          setTimeout(() => {
+            window.print(),1;
+          })
+        })
+      })
+    });
   }
 
   ngOnDestroy() {
