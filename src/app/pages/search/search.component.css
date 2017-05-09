@@ -57,14 +57,22 @@ li:hover {
 	margin-left: 50%;
    margin-top: 15%;
    transform: translate(-50%, -25%);
-   
+   width: 100%;
    position: relative;
+   overflow:auto;
 }
 #block2{
  margin-left: 50%;
 margin-top: 50px;
    transform: translate(-50%, 0%);
  
+}
+#block2{
+	 
+}
+.align{
+	float:left;
+	
 }
 .panel-heading {	
 	background-color: rgb (194,229,229);

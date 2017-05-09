@@ -9,20 +9,20 @@
 			</div>
 			<div class="panel panel-primary">
 			<div id="block2">
-			<input type="text" id="searchBox" #searchBox (keyup)="searchFunction($event, searchBox.value)" placeholder="Søk etter organisasjon..">
+			<input type="text" class="form-control"  id="searchBox" #searchBox (keyup)="searchFunction($event, searchBox.value)" placeholder="Søk etter en organisasjon">
+			 <i class="glyphicon glyphicon-search form-control-feedback"></i>
 				</div>
-				<div class="panel-body" id="block1">
-					
-						
+				<div class="panel-body" id="block1">						
 						<ul id="myUL">
 						<li *ngFor="let name of (namelist | sortpipe)" (click)="routeToOrg(name)">
 						{{ name }}
 						</li>
 					</ul>
-					<div class="col-md-3"></div>
+					
 				</div><!-- ROW END -->
 			</div>
 			</div>
 		</div>
+		<div class="col-md-3"></div>
 	</div>
 </div>
