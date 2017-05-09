@@ -81,3 +81,8 @@ h3{
 	font-size: 22px;
 	
 }
+@media screen and (max-width: 480px) {
+   #tittel{		
+		font-size:large;
+	}
+}
