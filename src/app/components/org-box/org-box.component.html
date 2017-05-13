@@ -1,13 +1,14 @@
 <ng-container *ngIf="org">
-<h3 class="list-group-item-heading" (click)="routeToOrg(org.uuid)">
+<div class="list-group-item-heading float" (click)="routeToOrg(org.uuid)">
 
+	
+<h3><span class="glyphicon glyphicon-link"></span></h3>
 
-  <span class="glyphicon glyphicon-link"></span>
+  <h3 class="hover">{{org.orgName}}</h3>
 
-  {{org.orgName}}
-
-</h3>
+</div>
 
 <app-dugnad-list>
 </app-dugnad-list>
 </ng-container>
+<hr>
