@@ -1,8 +1,22 @@
+
 h3 :hover{
   cursor: pointer;
 }
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> 82efa8d648be3885339e8c5e2f4944de1f311be2
+.float{
+	
+	position: relative;
+	
+}
+.float h3{
+	
+	float: left;
+	
+}
+.hover:hover{
+	  cursor: pointer;
+}
+hr{
+	background-color:rgb(193, 196, 201);
+	border-color: rgb(193, 196, 201);
+	
+}
