@@ -30,13 +30,22 @@ export class RegisterOrganizationComponent implements OnInit {
 			if(result)
 			{
 				/*this.router.navigate(['']);*/
-								this.modal.alert()
+           this.modal.alert()
 					.title('Vellykket!')
 					.body('Organisasjonen ble opprettet')
 					.dialogClass('modalStyle')
 					.okBtn('ok')
 					.open();
 			}
-		});
+		},(error:any) => {
+		  if(error){
+        this.modal.alert()
+          .title('Noe gikk galt')
+          .body('Sjekk at alle felter er riktig fyllt ut')
+          .dialogClass('modalStyle')
+          .okBtn('ok')
+          .open();
+      }
+    });
 	}
 }
