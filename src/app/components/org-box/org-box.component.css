@@ -1,4 +1,22 @@
+
 h3 :hover{
   cursor: pointer;
 }
-
+.float{
+	
+	position: relative;
+	
+}
+.float h3{
+	
+	float: left;
+	
+}
+.hover:hover{
+	  cursor: pointer;
+}
+hr{
+	background-color:rgb(193, 196, 201);
+	border-color: rgb(193, 196, 201);
+	
+}
