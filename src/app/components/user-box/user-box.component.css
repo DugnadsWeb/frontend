@@ -1,4 +1,6 @@
-
+p {
+  text-align: center;
+}
 
 div {
   padding: 5px;
@@ -8,6 +10,8 @@ div {
 }
 
 img {
+  display: block;
+  margin: 0 auto;
   height: 100px;
   width: 100px;
   }
