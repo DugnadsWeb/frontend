@@ -451,6 +451,9 @@ export class OrgService implements OnDestroy {
           console.log("organization created succesfully");
         }
         return res;
+      })
+      .catch((error:any) => {
+        return Observable.throw(new Error(error.status));
       });
 
 	}

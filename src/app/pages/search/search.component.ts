@@ -61,7 +61,7 @@ export class SearchComponent implements OnInit {
 
 		for(var i = 0; i < searchList.length; i++){
 			var a = searchList[i];
-
+      //keyCode 8 er backspace
 			if(event.keyCode == 8)
 			{
 				for(var i = 0; i < this.tmpNamelist.length; i++)

@@ -74,6 +74,12 @@ export class UserService {
           console.log("user created succesfully");
 
         return res;
+      })
+      .catch((error:any) => {
+        if(error.status == 400)
+        {
+          return Observable.throw(new Error(error.status));
+        }
       });
 	}
 

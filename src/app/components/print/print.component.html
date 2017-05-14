@@ -4,7 +4,8 @@
   <h1 *ngIf="dug">Dugnad: {{dug.title}}</h1>
     <ul *ngFor="let act of activities">
       <h2>Aktivitet: {{act.title}}</h2>
-      <p>Påmeldte: </p>
+      <h2>Oppmøte: {{act.startTime | date:'d/M/y H:mm'}}</h2>
+      <h3>Påmeldte</h3>
       <ng-container >
         <table>
           <tr>

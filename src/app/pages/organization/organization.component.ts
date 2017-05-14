@@ -26,6 +26,7 @@ export class OrganizationComponent implements OnInit {
   admins: User[];
   adminsSubscription: Subscription;
   isAdmin: boolean;
+  isMember: boolean;
   memberPic: Array<any>;
 
 
@@ -48,6 +49,7 @@ export class OrganizationComponent implements OnInit {
           this.admins = admins;
         }, err => console.log(err)));
         this.orgService.isUserAdminObservable().then(ret => ret.subscribe(isUserAdmin => this.isAdmin = isUserAdmin));
+        this.orgService.isUserMemberObservable().then(ret => ret.subscribe(isMember => this.isMember = isMember));
       })
     })
 
